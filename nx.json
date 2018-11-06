@@ -7,5 +7,42 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "client": {
+      "tags": [
+        "client"
+      ]
+    },
+    "client-e2e": {
+      "tags": []
+    },
+    "client-admin": {
+      "tags": [
+        "client admin"
+      ]
+    },
+    "client-admin-e2e": {
+      "tags": []
+    },
+    "astro-api": {
+      "tags": [
+        "astro api backend"
+      ]
+    },
+    "socket-api": {
+      "tags": [
+        "api socket backend"
+      ]
+    },
+    "data-models": {
+      "tags": [
+        "api backend client socket"
+      ]
+    },
+    "ui-core": {
+      "tags": [
+        "client"
+      ]
+    }
+  }
 }
