@@ -20,14 +20,14 @@ export interface CatalogModel {
   galexId?: string;
   sdssId?: string;
   panstarrsId?: string;
-  "2massId?": string;
+  "2massId"?: string;
   ukidssId?: string;
   wiseId?: string;
   allwiseId?: string;
   wdId?: string;
   kId?: string;
   wdsId?: string;
-  "1rxsId?": string;
+  "1rxsId"?: string;
   lhsId?: string;
   gjId?: string;
   varId?: string;
