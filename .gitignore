@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# api env files
+apps/astro-api/src/config.ts
+apps/socket-api/src/config.ts
