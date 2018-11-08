@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'nearest-stars-login',
@@ -11,4 +12,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(f: NgForm) {
+    console.log(f.value);
+  }
 }

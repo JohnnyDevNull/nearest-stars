@@ -1,3 +1,32 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form class="ns-signin m-auto" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <h3 class="mt-5 mb-3">Sign In</h3>
+        <div class="form-group">
+          <input type="email"
+                 class="form-control"
+                 id="emailInput"
+                 placeholder="Email"
+                 name="email"
+                 ngModel
+                 required>
+        </div>
+        <div class="form-group">
+          <input type="password"
+                 class="form-control"
+                 id="passwordInput"
+                 placeholder="Password"
+                 name="password"
+                 ngModel
+                 required>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="rememberCheck">
+          <label class="form-check-label" for="rememberCheck">Keep me signed in.</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>

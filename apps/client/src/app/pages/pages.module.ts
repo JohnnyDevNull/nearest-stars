@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import { SignupComponent } from './signup/signup.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule
   ],
   providers: [
   ]
