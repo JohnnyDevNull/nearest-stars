@@ -1,9 +1,9 @@
+import { EntitySchema } from 'typeorm';
+import { IdentifierModel } from './identifier.model';
+
 export interface CoordinatesModel {
 
-  /**
-   * The identifier.id the data belongs to.
-   */
-  objectId?: number;
+  identifier: IdentifierModel;
 
   /**
    * equatorial coordinates of the star
@@ -32,4 +32,44 @@ export interface CoordinatesModel {
    * unit/format: arcsec
    */
   decErr?: number;
+
+  /**
+   * year of the location
+   */
+  epoch?: number;
+
 }
+
+export const CoordinatesEntity = new EntitySchema<CoordinatesModel>({
+  name: 'Coordinates',
+  columns: {
+    ra: {
+      type: Number,
+      width: 10
+    },
+    raErr: {
+      type: Number,
+      width: 10
+    },
+    dec: {
+      type: Number,
+      width: 10
+    },
+    decErr: {
+      type: Number,
+      width: 10
+    },
+    epoch: {
+      type: Number,
+      width: 10
+    }
+  },
+  relations: {
+    identifier: {
+      target: 'Identifier',
+      type: 'one-to-one',
+      inverseSide: 'coordinates',
+      joinColumn: true
+    }
+  }
+});
