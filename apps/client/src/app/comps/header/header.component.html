@@ -20,7 +20,21 @@
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
       </ul>
-      <ul class="navbar-nav">
+
+      <form class="form-inline mt-2 mt-md-0 ml-lg-5"
+            #f="ngForm"
+            (ngSubmit)="onSubmit(f)">
+        <input class="form-control form-control-sm mr-sm-2"
+               type="text"
+               name="search"
+               placeholder="Search"
+               aria-label="Search"
+               ngModel>
+        <button class="btn btn-sm btn-outline-success my-2 my-sm-0"
+                type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ml-3">
         <ng-container *ngIf="!isLoggedIn(); else logout">
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/login">Login</a>
@@ -38,18 +52,7 @@
           </li>
         </ng-template>
       </ul>
-      <form class="form-inline mt-2 mt-md-0 ml-lg-5"
-            #f="ngForm"
-            (ngSubmit)="onSubmit(f)">
-        <input class="form-control mr-sm-2"
-               type="text"
-               name="search"
-               placeholder="Search"
-               aria-label="Search"
-               ngModel>
-        <button class="btn btn-outline-success my-2 my-sm-0"
-                type="submit">Search</button>
-      </form>
+
     </div>
   </div>
 </nav>

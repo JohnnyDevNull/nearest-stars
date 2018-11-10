@@ -1,28 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { StateService } from '../../services/state/state-service';
+import { SearchService } from '../search/search.service';
 
 @Component({
   selector: 'nearest-stars-header',
   templateUrl: './header.component.html'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   public isCollapsed = true;
 
   constructor(
-    private stateServ: StateService
+    private stateServ: StateService,
+    private searchServ: SearchService
   ) {
-  }
-
-  ngOnInit() {
   }
 
   public isLoggedIn(): boolean {
     return this.stateServ.getIsLoggedIn();
   }
 
-  onSubmit(f: NgForm) {
-    console.log(f.value.search);
+  public onSubmit(f: NgForm): void {
+    this.searchServ.searchSubj.next({
+      context: 'Search',
+      pattern: f.value.search
+    });
   }
 }
