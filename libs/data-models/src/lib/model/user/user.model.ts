@@ -9,7 +9,7 @@ export interface UserModel {
   password?: string;
   activated?: boolean;
   activatedAt?: Date;
-  locked: boolean;
+  locked?: boolean;
   lockedAt?: Date;
   createdAt?: Date;
   updatedAt?: Date;
