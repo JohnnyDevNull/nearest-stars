@@ -24,14 +24,14 @@ describe('index route', () => {
   });
 
   test('test response statusCode', () => {
-    // expect.assertions(1);
+    (<any>expect).assertions(1);
     return request(app).get('/').then(response => {
       expect((<any>response).statusCode).toBe(200);
     });
   });
 
   test('test response body', async () => {
-    // expect.assertions(1);
+    (<any>expect).assertions(1);
     const response = await request(app).get('/');
     expect((<any>response).body).toEqual({meta: {code: 0, message: 'The api is online!'}});
   });
