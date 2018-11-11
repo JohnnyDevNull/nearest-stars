@@ -1,4 +1,3 @@
-import { EntitySchema } from 'typeorm';
 import { IdentifierModel } from './identifier.model';
 
 export interface HistoryModel {
@@ -16,24 +15,3 @@ export interface HistoryModel {
   discAuthor: string;
 
 }
-
-export const HistoryEntity = new EntitySchema<HistoryModel>({
-  name: 'History',
-  columns: {
-    discAt: {
-      type: Date
-    },
-    discAuthor: {
-      type: String,
-      length: 40,
-    },
-  },
-  relations: {
-    identifier: {
-      target: 'Identifier',
-      type: 'one-to-one',
-      inverseSide: 'history',
-      joinColumn: true
-    }
-  }
-});
