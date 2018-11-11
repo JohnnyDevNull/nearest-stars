@@ -2,6 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as errorhandler from 'errorhandler';
 import * as express from 'express';
 import * as morgan from 'morgan';
+import { config } from './config';
 import { environment } from './environments/environment';
 import { MainRouter } from './routes/main-router';
 
@@ -22,6 +23,14 @@ class App {
       // only use in development
       // see: https://www.npmjs.com/package/errorhandler
       this.app.use(errorhandler());
+    }
+
+    if (config.crossOrigin) {
+      this.app.use((req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Request-With, Content-Type, Accept');
+        next();
+      });
     }
 
     // support application/json type post data
