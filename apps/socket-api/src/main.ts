@@ -4,17 +4,26 @@
  **/
 
 import * as express from 'express';
+import * as socketio from 'socket.io';
+import * as httpServer from 'http';
 
 const app = express();
+const http = new httpServer.Server(app);
+const io = socketio(http);
 
 app.get('/', (req, res) => {
-  res.send(`Welcome to socket-api!`);
+  res.send(`socket-api is online!`);
 });
 
-const port = 3333;
-app.listen(port, err => {
+io.on('connection', (socket: any) => {
+  console.log('a user connected');
+});
+
+const PORT = process.env.PORT || 3010;
+
+app.listen(PORT, err => {
   if (err) {
     console.error(err);
   }
-  console.log(`Listening at http://localhost:${port}`);
+  console.log(`Listening at http://localhost:${PORT}`);
 });
