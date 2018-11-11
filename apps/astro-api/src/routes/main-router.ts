@@ -1,5 +1,7 @@
-import { environment } from '../environments/environment';
 import { IndexController } from '../controllers/index-controller';
+import { environment } from '../environments/environment';
+import { TokenRouter } from './token-router';
+import { UsersRouter } from './users-router';
 
 export class MainRouter {
 
@@ -12,6 +14,12 @@ export class MainRouter {
 
   private addRoutes(app) {
     app.route('/').get(this.indexCtrl.getIndex);
+
+    const usersRouter = new UsersRouter();
+          usersRouter.attach(app);
+
+    const tokenRouter = new TokenRouter();
+          tokenRouter.attach(app);
   }
 
   private addErrorHandler(app) {
