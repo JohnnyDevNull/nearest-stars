@@ -1,8 +1,7 @@
-import { BaseRestModel } from '@nearest-stars/data-models';
+import { BaseRestModel, UserModel } from '@nearest-stars/data-models';
 import * as bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { NextFunction } from 'express-serve-static-core';
-import { UserModel } from 'libs/data-models/src/lib/model/user/user.model';
 import { getConnection } from 'typeorm';
 import { config } from './../config';
 
