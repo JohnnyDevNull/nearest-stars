@@ -86,7 +86,8 @@ export const PhysicalInfoEntity = new EntitySchema<PhysicalInfoModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'physicalInfo',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });

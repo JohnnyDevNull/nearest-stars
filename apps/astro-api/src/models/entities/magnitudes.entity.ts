@@ -80,7 +80,8 @@ export const MagnitudesEntity = new EntitySchema<MagnitudesModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'magnitudes',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });

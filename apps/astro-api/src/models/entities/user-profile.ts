@@ -54,7 +54,8 @@ export const UserProfileEntity = new EntitySchema<UserProfileModel>({
       target: 'User',
       type: 'one-to-one',
       joinColumn: true,
-      inverseSide: 'profile'
+      inverseSide: 'profile',
+      primary: true
     }
   }
 });

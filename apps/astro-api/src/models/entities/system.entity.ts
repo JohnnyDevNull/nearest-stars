@@ -46,7 +46,8 @@ export const SystemEntity = new EntitySchema<SystemModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'system',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });

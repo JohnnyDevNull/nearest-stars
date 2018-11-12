@@ -17,7 +17,8 @@ export const HistoryEntity = new EntitySchema<HistoryModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'history',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });

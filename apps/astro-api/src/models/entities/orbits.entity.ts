@@ -150,7 +150,8 @@ export const OrbitsEntity = new EntitySchema<OrbitsModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'orbits',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });

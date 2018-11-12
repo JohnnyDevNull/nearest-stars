@@ -46,19 +46,19 @@ export const VectorsEntity = new EntitySchema<VectorsModel>({
     },
     radVel: {
       type: Number,
-      length: 5,
+      width: 5,
     },
     radVelErrplus: {
       type: Number,
-      length: 5,
+      width: 5,
     },
     radValErrminus: {
       type: Number,
-      length: 5,
+      width: 5,
     },
     orbitType: {
       type: Number,
-      length: 5,
+      width: 5,
     },
   },
   relations: {
@@ -66,7 +66,8 @@ export const VectorsEntity = new EntitySchema<VectorsModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'vectors',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });

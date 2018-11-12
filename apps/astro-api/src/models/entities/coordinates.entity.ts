@@ -30,7 +30,8 @@ export const CoordinatesEntity = new EntitySchema<CoordinatesModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'coordinates',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });

@@ -138,7 +138,8 @@ export const CatalogsEntity = new EntitySchema<CatalogsModel>({
       target: 'Identifier',
       type: 'one-to-one',
       inverseSide: 'catalogs',
-      joinColumn: true
+      joinColumn: true,
+      primary: true
     }
   }
 });
