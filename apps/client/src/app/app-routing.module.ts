@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './comps/main/main.component';
 import { SearchComponent } from './comps/search/search.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { LogoutComponent } from './pages/logout/logout.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { SignoutComponent } from './pages/signout/signout.component';
 import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, children: [
     { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'logout', component: LogoutComponent },
+    { path: 'signin', component: SigninComponent },
+    { path: 'signout', component: SignoutComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'search', component: SearchComponent },
     { path: '**', redirectTo: 'home' }

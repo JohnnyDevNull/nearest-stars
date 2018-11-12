@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nearest-stars-logout',
-  templateUrl: './logout.component.html'
+  selector: 'nearest-stars-signout',
+  templateUrl: './signout.component.html'
 })
-export class LogoutComponent implements OnInit {
+export class SignoutComponent implements OnInit {
 
   constructor() { }
 
