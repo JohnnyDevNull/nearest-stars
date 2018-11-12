@@ -11,6 +11,10 @@ export const IdentifierEntity = new EntitySchema<IdentifierModel>({
       primary: true,
       generated: true
     },
+    objectType: {
+      type: String,
+      length: 10,
+    },
     name: {
       type: String,
       length: 40,

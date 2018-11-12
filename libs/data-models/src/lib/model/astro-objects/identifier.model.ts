@@ -15,6 +15,12 @@ export interface IdentifierModel {
   id?: number;
 
   /**
+   * Identifies the objects type itself.
+   * Like the class of the star, planet or black whole.
+   */
+  objectType?: string;
+
+  /**
    * The named identifier of the object.
    * Primary name by which the object is known.
    */
