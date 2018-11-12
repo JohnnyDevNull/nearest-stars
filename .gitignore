@@ -38,6 +38,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Docker db folder
+/db
+
 # api env files
 apps/astro-api/src/config.ts
 apps/socket-api/src/config.ts

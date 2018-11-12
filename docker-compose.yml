@@ -1,0 +1,89 @@
+version: '3'
+
+networks:
+  corp:
+    driver: bridge
+
+services:
+
+  ns-client:
+    container_name: ns-client
+    networks:
+      - corp
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./dist/apps:/var/www/apps
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - ns-astro-api
+      - ns-socket-api
+    command: ng serve client
+
+  ns-astro-api:
+    container_name: ns-astro-api
+    networks:
+      - corp
+    image: ns-astro-api
+    build: ./apps
+    restart: always
+    volumes:
+      - ./apps/astro-api:/usr/src/apps/astro-api
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - ns-mariadb
+    command: ng serve astro-api
+
+  ns-socket-api:
+    container_name: ns-socket-api
+    networks:
+      - corp
+    image: ns-socket-api
+    build: ./apps
+    restart: always
+    volumes:
+      - ./apps/socket-api:/usr/src/apps/socket-api
+    environment:
+      NODE_ENV: development
+      PORT: 3010
+    ports:
+      - 3010:3010
+    depends_on:
+      - ns-mariadb
+    command: ng serve socket-api
+
+  ns-mariadb:
+    container_name: ns-mariadb
+    networks:
+      - corp
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: supersecret
+      MYSQL_DATABASE: neareststars
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    networks:
+      - corp
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: ns-mariadb
+      PMA_PORT: 3306
+    restart: always
+    ports:
+     - 8080:80
+    volumes:
+     - /sessions
