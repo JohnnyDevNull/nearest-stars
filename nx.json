@@ -16,14 +16,6 @@
     "client-e2e": {
       "tags": []
     },
-    "client-admin": {
-      "tags": [
-        "client admin"
-      ]
-    },
-    "client-admin-e2e": {
-      "tags": []
-    },
     "astro-api": {
       "tags": [
         "astro api backend"
