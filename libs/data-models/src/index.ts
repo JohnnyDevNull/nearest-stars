@@ -11,4 +11,3 @@ export { VectorsModel } from './lib/model/astro-objects/vectors.model';
 export { UserGroupModel } from './lib/model/user/user-group.model';
 export { UserProfileModel } from './lib/model/user/user-profile.model';
 export { UserModel } from './lib/model/user/user.model';
-
