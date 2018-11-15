@@ -37,18 +37,18 @@
       <ul class="navbar-nav ml-3">
         <ng-container *ngIf="!isLoggedIn(); else logout">
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/signin">Login</a>
+            <a class="nav-link" routerLink="/signin">Sign in</a>
           </li>
           <li class="nav-item">
             <span class="nav-text">or</span>
           </li>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/signup">Signup</a>
+            <a class="nav-link" routerLink="/signup">Sign up</a>
           </li>
         </ng-container>
         <ng-template #logout>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/signout">Logout</a>
+            <a class="nav-link" routerLink="/signout">Sign out</a>
           </li>
         </ng-template>
       </ul>
