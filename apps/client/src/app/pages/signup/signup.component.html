@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <form class="ns-signup m-auto">
+      <form class="ns-signup m-auto" #f="ngForm" (ngSubmit)="onSignUp(f)">
         <h3 class="mt-5 mb-3">Sign Up</h3>
         <div class="form-group">
           <label for="emailInput">Email address</label>
@@ -9,25 +9,42 @@
                  class="form-control"
                  id="emailInput"
                  aria-describedby="emailHelp"
-                 placeholder="Enter email">
+                 placeholder="Enter email"
+                 name="email"
+                 ngModel
+                 required>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
           <label for="passwordInput">Password</label>
-          <input type="text" class="form-control" id="passwordInput" placeholder="Password">
+          <input type="text"
+                 class="form-control"
+                 id="passwordInput"
+                 placeholder="Password"
+                 name="password"
+                 ngModel
+                 required>
         </div>
         <hr>
         <div class="form-group">
-          <label for="firstnameInput">Firstname</label>
-          <input type="text" class="form-control" id="firstnameInput" placeholder="Firstname">
-        </div>
-        <div class="form-group">
-          <label for="lastnameInput">Lastname</label>
-          <input type="text" class="form-control" id="lastnameInput" placeholder="Lastname">
+          <label for="usernameInput">Username</label>
+          <input type="text"
+                 class="form-control"
+                 id="usernameInput"
+                 placeholder="Username"
+                 name="username"
+                 ngModel
+                 required>
         </div>
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="policyCheck">
-          <label class="form-check-label" for="policyCheck">Yes, i've read the policies! Bla, bla...</label>
+          <input type="checkbox"
+                 class="form-check-input"
+                 id="policyCheck"
+                 name="policyCheck"
+                 ngModel
+                 required>
+          <label class="form-check-label" for="policyCheck">Yes, i've read the policies! Bla, bla...
+          </label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
