@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
+import { SigninService } from './signin/signin.service';
 import { SignoutComponent } from './signout/signout.component';
 import { SignupComponent } from './signup/signup.component';
 import { SignupService } from './signup/signup.service';
@@ -24,7 +25,8 @@ import { SignupService } from './signup/signup.service';
     HttpClientModule
   ],
   providers: [
-    SignupService
+    SignupService,
+    SigninService
   ]
 })
 export class PagesModule {}
