@@ -26,11 +26,10 @@ export class TokenController {
 
   public createToken = async (req: Request, res: Response, next: NextFunction) => {
 
-    const plainPassword: String = req.body.password;
-    const email: String = req.body.email;
+    const {email, password} = req.body;
     let user: UserModel;
 
-    if (!plainPassword) {
+    if (!password) {
       return next(getError(HttpStatus.OK, 'password is missing'));
     }
 
@@ -51,7 +50,7 @@ export class TokenController {
       return next(getError(HttpStatus.OK, 'unknown user'));
     }
 
-    if (!bcrypt.compareSync(plainPassword, user.password)) {
+    if (!bcrypt.compareSync(password, user.password)) {
       return next(getError(HttpStatus.OK, 'wrong password'));
     }
 

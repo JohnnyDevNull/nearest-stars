@@ -3,6 +3,8 @@ import * as bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { NextFunction } from 'express-serve-static-core';
 import { getConnection } from 'typeorm';
+import * as HttpStatus from '../../../../node_modules/http-status-codes';
+import { getError } from '../functions';
 import { config } from './../config';
 
 export class UsersController {
@@ -62,10 +64,7 @@ export class UsersController {
 
       resSave = await userRepo.save(user);
     } catch ( error ) {
-      const err = new Error(error.message);
-      (<any>err).status = '400';
-      next(err);
-      return;
+      return next(getError(HttpStatus.OK, error.message));;
     }
 
     const result: BaseRestModel<{userId: number}> = {

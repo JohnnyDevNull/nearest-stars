@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UserModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
 import { SignupService } from './signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'nearest-stars-signup',
@@ -14,7 +15,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   public error = '';
 
   public constructor(
-    private signupServ: SignupService
+    private signupServ: SignupService,
+    private router: Router,
   ) {
   }
 
@@ -37,7 +39,13 @@ export class SignupComponent implements OnInit, OnDestroy {
     };
 
     this.subs.push(this.signupServ.doSignup(user).subscribe(
-      (res) => console.log(res),
+      (res) => {
+        if (res.meta !== undefined && res.meta.error === true) {
+          this.error = res.meta.message;
+        } else {
+          this.router.navigate(['/signin']);
+        }
+      },
       (err) => {
         if (err.error !== undefined && err.error.meta !== undefined) {
           this.error = err.error.meta.message;

@@ -30,18 +30,22 @@ export class MainRouter {
         res.status(err.status || 500);
         res.json({'meta': {
           code: err.status,
+          error: true,
           message: err.message
         }});
       });
     }
+
     // production error handler
     app.use(function(err, req, res, next) {
       res.status(err.status || 500);
       res.json({'meta': {
         code: err.status,
+        error: true,
         message: err.message
       }});
     });
+
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
       const err = new Error('Not Found');
