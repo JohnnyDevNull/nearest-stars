@@ -24,16 +24,20 @@ export const UserEntity = new EntitySchema<UserModel>({
       length: 80
     },
     activated: {
-      type: Boolean
+      type: Boolean,
+      default: false
     },
     activatedAt: {
-      type: Date
+      type: Date,
+      default: null
     },
     locked: {
-      type: Boolean
+      type: Boolean,
+      default: false
     },
     lockedAt: {
-      type: Date
+      type: Date,
+      default: null
     },
     createdAt: {
       type: Date,

@@ -33,9 +33,11 @@ export class SignupComponent implements OnInit, OnDestroy {
       username: f.value.username,
       password: f.value.password,
       email: f.value.email
-    }
+    };
+
     this.subs.push(this.signupServ.doSignup(user).subscribe(
-      (res) => console.log(res)
+      (res) => console.log(res),
+      (err) => console.error(err)
     ));
   }
 }

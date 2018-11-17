@@ -32,7 +32,7 @@ export class UsersController {
       const passwordHash = await bcrypt.hash(plainPassword, salt);
 
       user = {
-        username: req.body.userName,
+        username: req.body.username,
         email: req.body.email,
         password: passwordHash
       };
