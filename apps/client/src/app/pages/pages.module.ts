@@ -8,6 +8,7 @@ import { SigninService } from './signin/signin.service';
 import { SignoutComponent } from './signout/signout.component';
 import { SignupComponent } from './signup/signup.component';
 import { SignupService } from './signup/signup.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SignupService } from './signup/signup.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     SignupService,

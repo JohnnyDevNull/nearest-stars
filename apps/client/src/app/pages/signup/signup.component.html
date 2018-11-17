@@ -47,6 +47,11 @@
           </label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <p class="mt-3" *ngIf="error !== ''">
+          <ngb-alert [type]="'danger'" [dismissible]="true" (close)="error = ''">
+            <strong>Error: </strong> {{ error }}
+          </ngb-alert>
+        </p>
       </form>
     </div>
   </div>

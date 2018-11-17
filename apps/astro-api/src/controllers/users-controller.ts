@@ -26,14 +26,15 @@ export class UsersController {
     let user: UserModel;
 
     try {
-      const plainPassword = req.body.password;
+      const {username, email, password} = req.body;
+
       const saltRounds = config.saltRounds;
       const salt = await bcrypt.genSalt(saltRounds);
-      const passwordHash = await bcrypt.hash(plainPassword, salt);
+      const passwordHash = await bcrypt.hash(password, salt);
 
       user = {
-        username: req.body.username,
-        email: req.body.email,
+        username: username,
+        email: email,
         password: passwordHash
       };
     } catch ( error ) {
@@ -48,6 +49,17 @@ export class UsersController {
     try {
       const connection = getConnection();
       const userRepo = connection.getRepository<UserModel>('User');
+
+      let userExists =  await userRepo.findOne({username: user.username});
+      if (userExists !== undefined) {
+        throw new Error('User with username already exists!');
+      }
+
+      userExists =  await userRepo.findOne({email: user.email});
+      if (userExists !== undefined) {
+        throw new Error('User with email already exists!');
+      }
+
       resSave = await userRepo.save(user);
     } catch ( error ) {
       const err = new Error(error.message);

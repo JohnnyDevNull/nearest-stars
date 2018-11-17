@@ -11,6 +11,7 @@ import { SignupService } from './signup.service';
 export class SignupComponent implements OnInit, OnDestroy {
 
   private subs: Subscription[] = [];
+  public error = '';
 
   public constructor(
     private signupServ: SignupService
@@ -37,7 +38,15 @@ export class SignupComponent implements OnInit, OnDestroy {
 
     this.subs.push(this.signupServ.doSignup(user).subscribe(
       (res) => console.log(res),
-      (err) => console.error(err)
+      (err) => {
+        if (err.error !== undefined && err.error.meta !== undefined) {
+          this.error = err.error.meta.message;
+        } else if (err.message !== undefined) {
+          this.error = err.message;
+        } else {
+          this.error = 'Unknown error';
+        }
+      }
     ));
   }
 }
