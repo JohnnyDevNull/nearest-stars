@@ -27,7 +27,6 @@ export class TokenController {
   public createToken = async (req: Request, res: Response, next: NextFunction) => {
 
     const plainPassword: String = req.body.password;
-    const userName: String = req.body.userName;
     const email: String = req.body.email;
     let user: UserModel;
 
@@ -35,8 +34,8 @@ export class TokenController {
       return next(getError(HttpStatus.OK, 'password is missing'));
     }
 
-    if (!email && !userName) {
-      return next(getError(HttpStatus.OK, 'email or userName is missing'));
+    if (!email) {
+      return next(getError(HttpStatus.OK, 'email is missing'));
     }
 
     const connection = getConnection();
@@ -45,10 +44,6 @@ export class TokenController {
     if (email) {
       user = await userRepo.findOne({
         where: { email: email }
-      });
-    } else if (userName) {
-      user = await userRepo.findOne({
-        where: { userName: userName }
       });
     }
 
@@ -90,8 +85,6 @@ export class TokenController {
       }
     };
 
-    // res.cookie('SESSIONID', token, {httpOnly: true, secure: true});
-    // res.cookie('SESSIONID', token);
     res.statusCode = HttpStatus.CREATED;
     res.json(result);
   }

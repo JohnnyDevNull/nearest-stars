@@ -12,6 +12,6 @@ export class SigninService {
   }
 
   doSignin(user: UserModel): Observable<BaseRestModel<any>> {
-    return this.http.post<BaseRestModel<any>>('api/signin', user);
+    return this.http.post<BaseRestModel<any>>('api/token', user);
   }
 }
