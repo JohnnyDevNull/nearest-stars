@@ -1,5 +1,6 @@
 import { UserGroupModel } from './user-group.model';
 import { UserProfileModel } from './user-profile.model';
+import { UserTokenModel } from './user-token.model';
 
 export interface UserModel {
 
@@ -16,5 +17,6 @@ export interface UserModel {
 
   groups?: UserGroupModel[];
   profile?: UserProfileModel;
+  token?: UserTokenModel;
 
 }

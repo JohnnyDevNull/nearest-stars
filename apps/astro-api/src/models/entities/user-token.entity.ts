@@ -1,7 +1,7 @@
 import { UserTokenModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const UserEntity = new EntitySchema<UserTokenModel>({
+export const UserTokenEntity = new EntitySchema<UserTokenModel>({
   name: 'UserToken',
   columns: {
     token: {
@@ -19,6 +19,15 @@ export const UserEntity = new EntitySchema<UserTokenModel>({
     updatedAt: {
       type: Date,
       updateDate: true
+    }
+  },
+  relations: {
+    user: {
+      type: 'one-to-one',
+      target: 'User',
+      joinColumn: true,
+      inverseSide: 'token',
+      primary: true
     }
   }
 });

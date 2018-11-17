@@ -56,6 +56,11 @@ export const UserEntity = new EntitySchema<UserModel>({
       joinTable: { name: 'user_group_map' },
       cascade: true,
       inverseSide: 'users'
+    },
+    token: {
+      target: 'UserToken',
+      type: 'one-to-one',
+      inverseSide: 'user'
     }
   }
 });
