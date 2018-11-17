@@ -27,7 +27,7 @@ export class SearchService implements OnDestroy {
     });
   }
 
-  public getSearchInput(): SearchInputModel {
+  public getSearchInput(): SearchInputModel | null {
     return this.searchInput;
   }
 }
