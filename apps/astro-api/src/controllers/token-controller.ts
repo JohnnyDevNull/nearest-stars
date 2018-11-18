@@ -1,4 +1,4 @@
-import { BaseRestModel, UserModel } from '@nearest-stars/data-models';
+import { BaseRestModel, TokenResponseModel, UserModel } from '@nearest-stars/data-models';
 import * as bcrypt from 'bcrypt';
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
@@ -6,7 +6,6 @@ import { getConnection } from 'typeorm';
 import * as HttpStatus from '../../../../node_modules/http-status-codes';
 import { config } from '../config';
 import { getError } from '../functions';
-import { TokenResponseModel } from '../models/token-response.model';
 
 export class TokenController {
 
@@ -29,12 +28,8 @@ export class TokenController {
     const {email, password} = req.body;
     let user: UserModel;
 
-    if (!password) {
-      return next(getError(HttpStatus.OK, 'password is missing'));
-    }
-
-    if (!email) {
-      return next(getError(HttpStatus.OK, 'email is missing'));
+    if (!password || !email) {
+      return next(getError(HttpStatus.OK, 'Email or password is missing!'));
     }
 
     const connection = getConnection();
@@ -46,13 +41,11 @@ export class TokenController {
       });
     }
 
-    if (!user) {
-      return next(getError(HttpStatus.OK, 'unknown user'));
+    if (!user || !bcrypt.compareSync(password, user.password)) {
+      return next(getError(HttpStatus.OK, 'Unknown user or wrong password!'));
     }
 
-    if (!bcrypt.compareSync(password, user.password)) {
-      return next(getError(HttpStatus.OK, 'wrong password'));
-    }
+    console.log(user);
 
     delete user.password;
     delete user.createdAt;
@@ -76,9 +69,7 @@ export class TokenController {
       data: {
         token: token,
         expiresAt: (<any>payload).exp,
-        firstName: user.profile.firstName,
-        lastName: user.profile.lastName,
-        userName: user.username,
+        username: user.username,
         activated: user.activated,
         locked: user.locked
       }
