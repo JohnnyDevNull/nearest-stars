@@ -1,10 +1,9 @@
-import { TokenResponseModel } from './../../../../../../libs/data-models/src/lib/token-response.model';
-import { SigninService } from './signin.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserModel } from '@nearest-stars/data-models';
 import { Router } from '@angular/router';
+import { UserModel } from '@nearest-stars/data-models';
 import { StateService } from '../../services/state/state-service';
+import { SigninService } from './signin.service';
 
 @Component({
   selector: 'nearest-stars-signin',
@@ -40,6 +39,7 @@ export class SigninComponent implements OnInit {
         if (res.meta !== undefined && res.meta.error === true) {
           this.error = res.meta.message;
         } else {
+          res.data.useLocalStorage = f.value.remember ? true : false;
           this.stateServ.loginSubj.next(res.data);
           this.router.navigate(['/profile']);
         }
