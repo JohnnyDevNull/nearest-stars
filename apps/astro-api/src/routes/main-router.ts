@@ -1,5 +1,6 @@
 import { IndexController } from '../controllers/index-controller';
 import { environment } from '../environments/environment';
+import { BlogRouter } from './blog-router';
 import { TokenRouter } from './token-router';
 import { UsersRouter } from './users-router';
 
@@ -20,6 +21,9 @@ export class MainRouter {
 
     const tokenRouter = new TokenRouter();
           tokenRouter.attach(app);
+
+    const blogRouter = new BlogRouter();
+          blogRouter.attach(app);
   }
 
   private addErrorHandler(app) {
