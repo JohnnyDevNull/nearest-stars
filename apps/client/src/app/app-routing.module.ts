@@ -1,6 +1,9 @@
+import { AdminComponent } from './admin/admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDasboardComponent } from './admin/admin-dasboard/admin-dasboard.component';
+import { AdminUserGroupsComponent } from './admin/admin-user-groups/admin-user-groups.component';
+import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { MainComponent } from './comps/main/main.component';
 import { SearchComponent } from './comps/search/search.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -17,7 +20,11 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'search', component: SearchComponent },
-    { path: 'admin', component: AdminDasboardComponent },
+    { path: 'admin', component: AdminComponent, children: [
+      { path: 'dashboard', component: AdminDasboardComponent},
+      { path: 'users', component: AdminUsersComponent },
+      { path: 'groups', component: AdminUserGroupsComponent }
+    ] },
     { path: '**', redirectTo: 'home' }
   ] }
 ];
