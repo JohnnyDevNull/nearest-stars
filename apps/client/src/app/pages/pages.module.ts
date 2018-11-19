@@ -21,7 +21,6 @@ import { SignupService } from './signup/signup.service';
     ProfileComponent
   ],
   exports: [
-    HomeComponent
   ],
   imports: [
     BrowserModule,

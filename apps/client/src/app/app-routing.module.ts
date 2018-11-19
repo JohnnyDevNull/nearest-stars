@@ -5,8 +5,10 @@ import { AdminImportComponent } from './admin/admin-import/admin-import.componen
 import { AdminUserGroupsComponent } from './admin/admin-user-groups/admin-user-groups.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminComponent } from './admin/admin.component';
+import { BlogComponent } from './comps/blog/blog.component';
 import { MainComponent } from './comps/main/main.component';
 import { SearchComponent } from './comps/search/search.component';
+import { DocsComponent } from './docs/docs.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
@@ -16,6 +18,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 const routes: Routes = [
   { path: '', component: MainComponent, children: [
     { path: 'home', component: HomeComponent },
+    { path: 'blog', component: BlogComponent },
+    { path: 'docs', component: DocsComponent },
     { path: 'signin', component: SigninComponent },
     { path: 'signout', component: SignoutComponent },
     { path: 'signup', component: SignupComponent },

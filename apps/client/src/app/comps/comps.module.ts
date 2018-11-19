@@ -8,18 +8,17 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { SearchComponent } from './search/search.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    SearchComponent
+    SearchComponent,
+    BlogComponent,
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent,
-    MainComponent
   ],
   imports: [
     CommonModule,
