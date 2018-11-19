@@ -48,6 +48,9 @@ export const UserProfileEntity = new EntitySchema<UserProfileModel>({
       type: String,
       length: 20
     },
+    birthDate: {
+      type: Date,
+    }
   },
   relations: {
     user: {
