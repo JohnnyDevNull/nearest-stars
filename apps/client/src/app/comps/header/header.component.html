@@ -34,7 +34,7 @@
                 type="submit">Search</button>
       </form>
 
-      <ul class="navbar-nav ml-3">
+      <ul class="navbar-nav ml-md-3 ml-sm-0">
         <ng-container *ngIf="!isLoggedIn(); else logout">
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/signin">Sign in</a>
@@ -47,8 +47,20 @@
           </li>
         </ng-container>
         <ng-template #logout>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/signout">Sign out</a>
+
+          <li class="nav-item" ngbDropdown>
+            <a class="nav-link"
+               id="navSettingsDropdown"
+               ngbDropdownToggle>
+              <fa-icon [icon]="['fas', 'cog']"></fa-icon>
+              <span class="d-inline d-sm-inline d-md-none ml-2">Settings</span>
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navSettingsDropdown">
+              <a class="dropdown-item" routerLinkActive="active" routerLink="/profile">Profile</a>
+              <a class="dropdown-item" routerLinkActive="active" routerLink="/admin">Admin</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLinkActive="active" routerLink="/signout">Abmelden</a>
+            </div>
           </li>
         </ng-template>
       </ul>
