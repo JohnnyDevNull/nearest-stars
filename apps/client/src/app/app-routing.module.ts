@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminBlogsComponent } from './admin/admin-blogs/admin-blogs.component';
 import { AdminDasboardComponent } from './admin/admin-dasboard/admin-dasboard.component';
+import { AdminExportComponent } from './admin/admin-export/admin-export.component';
 import { AdminImportComponent } from './admin/admin-import/admin-import.component';
+import { AdminUserGroupsItemComponent } from './admin/admin-user-groups/admin-user-groups-item/admin-user-groups-item.component';
 import { AdminUserGroupsComponent } from './admin/admin-user-groups/admin-user-groups.component';
+import { AdminUsersItemComponent } from './admin/admin-users/admin-users-item/admin-users-item.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminComponent } from './admin/admin.component';
 import { BlogComponent } from './comps/blog/blog.component';
@@ -28,8 +32,12 @@ const routes: Routes = [
     { path: 'admin', component: AdminComponent, children: [
       { path: 'dashboard', component: AdminDasboardComponent},
       { path: 'users', component: AdminUsersComponent },
+      { path: 'users/item/:mode', component: AdminUsersItemComponent },
       { path: 'groups', component: AdminUserGroupsComponent },
-      { path: 'import', component: AdminImportComponent }
+      { path: 'groups/item/:mode', component: AdminUserGroupsItemComponent },
+      { path: 'import', component: AdminImportComponent },
+      { path: 'export', component: AdminExportComponent },
+      { path: 'blogs', component: AdminBlogsComponent }
     ] },
     { path: '**', redirectTo: 'home' }
   ] }
