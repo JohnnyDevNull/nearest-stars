@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminBlogsItemComponent } from './admin/admin-blogs/admin-blogs-item/admin-blogs-item.component';
 import { AdminBlogsComponent } from './admin/admin-blogs/admin-blogs.component';
 import { AdminDasboardComponent } from './admin/admin-dasboard/admin-dasboard.component';
 import { AdminExportComponent } from './admin/admin-export/admin-export.component';
@@ -37,7 +38,8 @@ const routes: Routes = [
       { path: 'groups/item/:mode', component: AdminUserGroupsItemComponent },
       { path: 'import', component: AdminImportComponent },
       { path: 'export', component: AdminExportComponent },
-      { path: 'blogs', component: AdminBlogsComponent }
+      { path: 'blogs', component: AdminBlogsComponent },
+      { path: 'blogs/item/:mode', component: AdminBlogsItemComponent }
     ] },
     { path: '**', redirectTo: 'home' }
   ] }

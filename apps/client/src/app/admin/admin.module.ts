@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './../app-routing.module';
+import { AdminBlogsItemComponent } from './admin-blogs/admin-blogs-item/admin-blogs-item.component';
 import { AdminBlogsComponent } from './admin-blogs/admin-blogs.component';
 import { AdminDasboardComponent } from './admin-dasboard/admin-dasboard.component';
 import { AdminExportComponent } from './admin-export/admin-export.component';
@@ -21,7 +22,8 @@ import { AdminComponent } from './admin.component';
     AdminExportComponent,
     AdminBlogsComponent,
     AdminUsersItemComponent,
-    AdminUserGroupsItemComponent
+    AdminUserGroupsItemComponent,
+    AdminBlogsItemComponent
   ],
   exports: [
   ],
