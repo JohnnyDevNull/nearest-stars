@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'nearest-stars-admin',
@@ -8,11 +8,17 @@ import { Router } from '@angular/router';
 export class AdminComponent implements OnInit {
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router
   ) {
   }
 
   ngOnInit() {
+    this.route.url.subscribe(() => {
+      if (this.route.snapshot.children.length === 0) {
+        this.router.navigate(['/admin/dashboard']);
+      }
+    })
   }
 
 }
