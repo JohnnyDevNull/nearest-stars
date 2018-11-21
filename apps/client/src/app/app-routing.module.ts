@@ -34,12 +34,15 @@ const routes: Routes = [
       { path: 'dashboard', component: AdminDasboardComponent},
       { path: 'users', component: AdminUsersComponent },
       { path: 'users/item/:mode', component: AdminUsersItemComponent },
+      { path: 'users/item/:mode/:id', component: AdminUsersItemComponent },
       { path: 'groups', component: AdminUserGroupsComponent },
       { path: 'groups/item/:mode', component: AdminUserGroupsItemComponent },
+      { path: 'groups/item/:mode/:id', component: AdminUserGroupsItemComponent },
       { path: 'import', component: AdminImportComponent },
       { path: 'export', component: AdminExportComponent },
       { path: 'blogs', component: AdminBlogsComponent },
-      { path: 'blogs/item/:mode', component: AdminBlogsItemComponent }
+      { path: 'blogs/item/:mode', component: AdminBlogsItemComponent },
+      { path: 'blogs/item/:mode/:id', component: AdminBlogsItemComponent }
     ] },
     { path: '**', redirectTo: 'home' }
   ] }
