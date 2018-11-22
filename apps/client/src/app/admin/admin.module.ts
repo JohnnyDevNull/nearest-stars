@@ -11,6 +11,10 @@ import { AdminUserGroupsComponent } from './admin-user-groups/admin-user-groups.
 import { AdminUsersItemComponent } from './admin-users/admin-users-item/admin-users-item.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminComponent } from './admin.component';
+import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
+import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
+import { AdminArticlesItemComponent } from './admin-articles/admin-articles-item/admin-articles-item.component';
+import { AdminCategoriesItemComponent } from './admin-categories/admin-categories-item/admin-categories-item.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { AdminComponent } from './admin.component';
     AdminBlogsComponent,
     AdminUsersItemComponent,
     AdminUserGroupsItemComponent,
-    AdminBlogsItemComponent
+    AdminBlogsItemComponent,
+    AdminCategoriesComponent,
+    AdminArticlesComponent,
+    AdminArticlesItemComponent,
+    AdminCategoriesItemComponent
   ],
   exports: [
   ],
