@@ -3,9 +3,9 @@ import * as bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { NextFunction } from 'express-serve-static-core';
 import { getConnection } from 'typeorm';
-import * as HttpStatus from '../../../../node_modules/http-status-codes';
+import * as HttpStatus from 'http-status-codes';
 import { getError } from '../functions';
-import { config } from './../config';
+import { config } from '../config';
 
 export class UsersController {
 

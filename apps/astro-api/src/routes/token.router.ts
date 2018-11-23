@@ -1,4 +1,4 @@
-import { TokenController } from '../controllers/token-controller';
+import { TokenController } from '../controllers/token.controller';
 import { Application } from 'express';
 
 export class TokenRouter {

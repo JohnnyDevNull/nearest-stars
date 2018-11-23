@@ -1,6 +1,6 @@
 import { BaseRestModel } from '@nearest-stars/data-models';
 import { Request, Response } from 'express';
-import * as HttpStatus from '../../../../node_modules/http-status-codes';
+import * as HttpStatus from 'http-status-codes';
 
 export class BlogController {
 

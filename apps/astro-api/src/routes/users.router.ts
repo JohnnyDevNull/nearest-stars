@@ -1,4 +1,4 @@
-import { UsersController } from '../controllers/users-controller';
+import { UsersController } from '../controllers/users.controller';
 import { Application } from 'express';
 
 export class UsersRouter {

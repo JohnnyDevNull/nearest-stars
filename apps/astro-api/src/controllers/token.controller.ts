@@ -3,7 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { getConnection } from 'typeorm';
-import * as HttpStatus from '../../../../node_modules/http-status-codes';
+import * as HttpStatus from 'http-status-codes';
 import { config } from '../config';
 import { getError } from '../functions';
 

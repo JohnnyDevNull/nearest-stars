@@ -1,5 +1,5 @@
 import { Application } from 'express';
-import { BlogController } from '../controllers/blog-controller';
+import { BlogController } from '../controllers/blog.controller';
 
 export class BlogRouter {
 

@@ -4,7 +4,7 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import { config } from './config';
 import { environment } from './environments/environment';
-import { MainRouter } from './routes/main-router';
+import { MainRouter } from './routes/main.router';
 
 class App {
 
