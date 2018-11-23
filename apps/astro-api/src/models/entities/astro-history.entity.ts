@@ -1,8 +1,8 @@
 import { AstroHistoryModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const HistoryEntity = new EntitySchema<AstroHistoryModel>({
-  name: 'History',
+export const AstroHistoryEntity = new EntitySchema<AstroHistoryModel>({
+  name: 'AstroHistory',
   columns: {
     discAt: {
       type: Date
@@ -14,7 +14,7 @@ export const HistoryEntity = new EntitySchema<AstroHistoryModel>({
   },
   relations: {
     identifier: {
-      target: 'Identifier',
+      target: 'AstroObjects',
       type: 'one-to-one',
       inverseSide: 'history',
       joinColumn: true,

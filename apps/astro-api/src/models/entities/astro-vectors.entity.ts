@@ -1,8 +1,8 @@
 import { AstroVectorsModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const VectorsEntity = new EntitySchema<AstroVectorsModel>({
-  name: 'Vectors',
+export const AstroVectorsEntity = new EntitySchema<AstroVectorsModel>({
+  name: 'AstroVectors',
   columns: {
     pmRa: {
       type: Number,
@@ -63,7 +63,7 @@ export const VectorsEntity = new EntitySchema<AstroVectorsModel>({
   },
   relations: {
     identifier: {
-      target: 'Identifier',
+      target: 'AstroObjects',
       type: 'one-to-one',
       inverseSide: 'vectors',
       joinColumn: true,

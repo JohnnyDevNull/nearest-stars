@@ -1,8 +1,8 @@
 import { AstroIdentifierModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const IdentifierEntity = new EntitySchema<AstroIdentifierModel>({
-  name: 'Identifier',
+export const AstroObjectsEntity = new EntitySchema<AstroIdentifierModel>({
+  name: 'AstroObjects',
   columns: {
     id: {
       type: Number,
@@ -26,42 +26,42 @@ export const IdentifierEntity = new EntitySchema<AstroIdentifierModel>({
   },
   relations: {
     catalogs: {
-      target: 'Catalogs',
+      target: 'AstroCatalogs',
       type: 'one-to-one',
       inverseSide: 'identifier'
     },
     coordinates: {
-      target: 'Coordinates',
+      target: 'AstroCoordinates',
       type: 'one-to-one',
       inverseSide: 'identifier'
     },
     history: {
-      target: 'History',
+      target: 'AstroHistory',
       type: 'one-to-one',
       inverseSide: 'identifier'
     },
     magnitudes: {
-      target: 'Magnitudes',
+      target: 'AstroMagnitudes',
       type: 'one-to-one',
       inverseSide: 'identifier'
     },
     orbits: {
-      target: 'Orbits',
+      target: 'AstroOrbits',
       type: 'one-to-one',
       inverseSide: 'identifier'
     },
     physicalInfo: {
-      target: 'PhysicalInfo',
+      target: 'AstroPhysicalInfo',
       type: 'one-to-one',
       inverseSide: 'identifier'
     },
     system: {
-      target: 'System',
+      target: 'AstroSystem',
       type: 'one-to-one',
       inverseSide: 'identifier'
     },
     vectors: {
-      target: 'Vectors',
+      target: 'AstroVectors',
       type: 'one-to-one',
       inverseSide: 'Identifier'
     }

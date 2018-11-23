@@ -1,8 +1,8 @@
 import { AstroCatalogsModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const CatalogsEntity = new EntitySchema<AstroCatalogsModel>({
-  name: 'Catalogs',
+export const AstroCatalogsEntity = new EntitySchema<AstroCatalogsModel>({
+  name: 'AstroCatalogs',
   columns: {
     properName: {
       type: String,
@@ -135,7 +135,7 @@ export const CatalogsEntity = new EntitySchema<AstroCatalogsModel>({
   },
   relations: {
     identifier: {
-      target: 'Identifier',
+      target: 'AstroObjects',
       type: 'one-to-one',
       inverseSide: 'catalogs',
       joinColumn: true,

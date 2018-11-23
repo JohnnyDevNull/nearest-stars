@@ -1,8 +1,8 @@
 import { AstroSystemModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const SystemEntity = new EntitySchema<AstroSystemModel>({
-  name: 'System',
+export const AstroSystemEntity = new EntitySchema<AstroSystemModel>({
+  name: 'AstroSystem',
   columns: {
     diskFlag: {
       type: Boolean
@@ -43,7 +43,7 @@ export const SystemEntity = new EntitySchema<AstroSystemModel>({
   },
   relations: {
     identifier: {
-      target: 'Identifier',
+      target: 'AstroObjects',
       type: 'one-to-one',
       inverseSide: 'system',
       joinColumn: true,

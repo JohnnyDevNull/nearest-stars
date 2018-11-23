@@ -1,8 +1,8 @@
 import { AstroCoordinatesModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const CoordinatesEntity = new EntitySchema<AstroCoordinatesModel>({
-  name: 'Coordinates',
+export const AstroCoordinatesEntity = new EntitySchema<AstroCoordinatesModel>({
+  name: 'AstroCoordinates',
   columns: {
     ra: {
       type: Number,
@@ -27,7 +27,7 @@ export const CoordinatesEntity = new EntitySchema<AstroCoordinatesModel>({
   },
   relations: {
     identifier: {
-      target: 'Identifier',
+      target: 'AstroObjects',
       type: 'one-to-one',
       inverseSide: 'coordinates',
       joinColumn: true,
