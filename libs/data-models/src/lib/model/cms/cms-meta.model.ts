@@ -1,20 +1,20 @@
 import { UserModel } from '../user/user.model';
 
 export interface CmsMetaHead {
-  id?: Number;
-  title?: String;
-  subtitle?: String;
-  alias?: String;
+  id?: number;
+  title?: string;
+  subtitle?: string;
+  alias?: string;
 }
 
 export interface CmsMetaMod {
-  published?: Boolean;
+  published?: boolean;
   publishedAt?: Date;
   createdAt?: Date;
   updatedAt?: Date;
-  locked?: Boolean;
+  locked?: boolean;
   lockedAt?: Date;
-  deleted?: Boolean;
+  deleted?: boolean;
   deletedAt?: Date;
   author?: UserModel;
 }

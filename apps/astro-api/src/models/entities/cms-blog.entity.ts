@@ -1,8 +1,8 @@
+import { CmsBlogModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
-import { CmsCategoryModel } from '@nearest-stars/data-models';
 
-export const CmsCategoryEntity = new EntitySchema<CmsCategoryModel>({
-  name: 'CmsCategory',
+export const CmsBlogEntity = new EntitySchema<CmsBlogModel>({
+  name: 'CmsBlog',
   columns: {
     id: {
       type: Number,
@@ -24,7 +24,7 @@ export const CmsCategoryEntity = new EntitySchema<CmsCategoryModel>({
     },
     text: {
       type: String,
-      length: 4000
+      length: 20000
     },
     published: {
       type: Boolean,
@@ -60,35 +60,18 @@ export const CmsCategoryEntity = new EntitySchema<CmsCategoryModel>({
     author: {
       target: 'User',
       type: 'many-to-one',
-      inverseSide: 'categories',
+      inverseSide: 'articles',
       joinColumn: true
     },
-    type: {
-      target: 'CmsCategoryType',
-      type: 'many-to-one',
-      inverseSide: 'categories',
-      joinColumn: true
-    },
-    blog: {
-      target: 'CmsBlog',
-      type: 'many-to-one',
-      inverseSide: 'categories',
-      joinColumn: true
-    },
-    articles: {
-      target: 'CmsArticle',
+    categories: {
+      target: 'CmsCategory',
       type: 'one-to-many',
-      inverseSide: 'category'
+      inverseSide: 'blog',
     },
     tags: {
       target: 'CmsTag',
       type: 'many-to-many',
-      inverseSide: 'categories'
-    },
-    weblinks: {
-      target: 'CmsWeblink',
-      type: 'one-to-many',
-      inverseSide: 'category'
+      inverseSide: 'articles',
     }
   }
 });

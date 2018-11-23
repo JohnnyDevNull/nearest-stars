@@ -10,6 +10,7 @@ export { AstroPhysicalInfoModel } from './lib/model/astro-objects/astro-physical
 export { AstroSystemModel } from './lib/model/astro-objects/astro-system.model';
 export { AstroVectorModel } from './lib/model/astro-objects/astro-vector.model';
 export { CmsArticleModel } from './lib/model/cms/cms-article.model';
+export { CmsBlogModel } from './lib/model/cms/cms-blog.model';
 export { CmsCategoryTypeModel } from './lib/model/cms/cms-category-type.model';
 export { CmsCategoryModel } from './lib/model/cms/cms-category.model';
 export { CmsMetaHead, CmsMetaMod } from './lib/model/cms/cms-meta.model';
