@@ -4,6 +4,13 @@ import { EntitySchema } from 'typeorm';
 export const AstroSystemEntity = new EntitySchema<AstroSystemModel>({
   name: 'AstroSystem',
   columns: {
+    id: {
+      type: Number,
+      width: 20,
+      unsigned: true,
+      primary: true,
+      generated: true
+    },
     diskFlag: {
       type: Boolean
     },
@@ -42,12 +49,10 @@ export const AstroSystemEntity = new EntitySchema<AstroSystemModel>({
     }
   },
   relations: {
-    object: {
+    objects: {
       target: 'AstroObject',
-      type: 'one-to-one',
+      type: 'one-to-many',
       inverseSide: 'system',
-      joinColumn: true,
-      primary: true
     }
   }
 });

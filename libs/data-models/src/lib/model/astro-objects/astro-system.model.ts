@@ -1,15 +1,7 @@
 import { AstroObjectModel } from './astro-object.model';
 
 export interface AstroSystemModel {
-
-  object?: AstroObjectModel;
-
-  /**
-   * Star system the object belongs to.
-   * Proxima Centauri would be in the system Alpha Centauri
-   */
-  system?: string;
-
+  id?: number;
   diskFlag?: boolean;
   planetsFlag?: boolean;
   nDisks?: number;
@@ -18,4 +10,6 @@ export interface AstroSystemModel {
   nPlanetsDubious?: number;
   nPlanetsPlausible?: number;
   nPlanetsDisproven?: number;
+
+  objects?: AstroObjectModel[];
 }

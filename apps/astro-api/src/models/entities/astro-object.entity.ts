@@ -24,7 +24,14 @@ export const AstroObjectEntity = new EntitySchema<AstroObjectModel>({
     objectType: {
       target: 'AstroObjectType',
       type: 'many-to-one',
+      joinColumn: true,
       inverseSide: 'objects'
+    },
+    system: {
+      target: 'AstroSystem',
+      type: 'many-to-one',
+      joinColumn: true,
+      inverseSide: 'object'
     },
     catalogs: {
       target: 'AstroCatalog',
@@ -53,11 +60,6 @@ export const AstroObjectEntity = new EntitySchema<AstroObjectModel>({
     },
     physicalInfo: {
       target: 'AstroPhysicalInfo',
-      type: 'one-to-one',
-      inverseSide: 'object'
-    },
-    system: {
-      target: 'AstroSystem',
       type: 'one-to-one',
       inverseSide: 'object'
     },
