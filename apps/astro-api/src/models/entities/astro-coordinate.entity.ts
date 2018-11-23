@@ -26,7 +26,7 @@ export const AstroCoordinateEntity = new EntitySchema<AstroCoordinateModel>({
     }
   },
   relations: {
-    identifier: {
+    object: {
       target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'coordinates',

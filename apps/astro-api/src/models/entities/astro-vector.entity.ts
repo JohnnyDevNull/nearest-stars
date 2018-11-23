@@ -62,7 +62,7 @@ export const AstroVectorEntity = new EntitySchema<AstroVectorModel>({
     },
   },
   relations: {
-    identifier: {
+    object: {
       target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'vectors',

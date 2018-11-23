@@ -134,7 +134,7 @@ export const AstroCatalogEntity = new EntitySchema<AstroCatalogModel>({
     },
   },
   relations: {
-    identifier: {
+    object: {
       target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'catalogs',

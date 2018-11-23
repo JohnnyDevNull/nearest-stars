@@ -76,7 +76,7 @@ export const AstroMagnitudeEntity = new EntitySchema<AstroMagnitudeModel>({
     }
   },
   relations: {
-    identifier: {
+    object: {
       target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'magnitudes',

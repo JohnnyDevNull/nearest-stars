@@ -29,42 +29,42 @@ export const AstroObjectEntity = new EntitySchema<AstroObjectModel>({
     catalogs: {
       target: 'AstroCatalog',
       type: 'one-to-one',
-      inverseSide: 'identifier'
+      inverseSide: 'object'
     },
     coordinates: {
       target: 'AstroCoordinate',
       type: 'one-to-one',
-      inverseSide: 'identifier'
+      inverseSide: 'object'
     },
     history: {
       target: 'AstroHistory',
       type: 'one-to-one',
-      inverseSide: 'identifier'
+      inverseSide: 'object'
     },
     magnitudes: {
       target: 'AstroMagnitude',
       type: 'one-to-one',
-      inverseSide: 'identifier'
+      inverseSide: 'object'
     },
     orbits: {
       target: 'AstroOrbit',
       type: 'one-to-one',
-      inverseSide: 'identifier'
+      inverseSide: 'object'
     },
     physicalInfo: {
       target: 'AstroPhysicalInfo',
       type: 'one-to-one',
-      inverseSide: 'identifier'
+      inverseSide: 'object'
     },
     system: {
       target: 'AstroSystem',
       type: 'one-to-one',
-      inverseSide: 'identifier'
+      inverseSide: 'object'
     },
     vectors: {
       target: 'AstroVector',
       type: 'one-to-one',
-      inverseSide: 'Identifier'
+      inverseSide: 'object'
     }
   }
 });

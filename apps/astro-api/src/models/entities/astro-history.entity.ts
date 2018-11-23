@@ -13,7 +13,7 @@ export const AstroHistoryEntity = new EntitySchema<AstroHistoryModel>({
     },
   },
   relations: {
-    identifier: {
+    object: {
       target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'history',

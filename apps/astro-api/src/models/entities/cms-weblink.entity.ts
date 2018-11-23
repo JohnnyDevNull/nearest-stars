@@ -1,7 +1,7 @@
 import { CmsWeblinkModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const WeblinkEntity = new EntitySchema<CmsWeblinkModel>({
+export const CmsWeblinkEntity = new EntitySchema<CmsWeblinkModel>({
   name: 'CmsWeblink',
   columns: {
     id: {

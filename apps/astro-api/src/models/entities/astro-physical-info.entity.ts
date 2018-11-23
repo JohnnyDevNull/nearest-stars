@@ -82,7 +82,7 @@ export const AstroPhysicalInfoEntity = new EntitySchema<AstroPhysicalInfoModel>(
     },
   },
   relations: {
-    identifier: {
+    object: {
       target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'physicalInfo',

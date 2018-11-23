@@ -1,7 +1,7 @@
 import { CmsArticleModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const CmsArticlerEntity = new EntitySchema<CmsArticleModel>({
+export const CmsArticleEntity = new EntitySchema<CmsArticleModel>({
   name: 'CmsArticle',
   columns: {
     id: {

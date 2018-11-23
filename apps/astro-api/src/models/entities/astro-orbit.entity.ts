@@ -146,7 +146,7 @@ export const AstroOrbitEntity = new EntitySchema<AstroOrbitModel>({
     },
   },
   relations: {
-    identifier: {
+    object: {
       target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'orbits',

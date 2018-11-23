@@ -57,7 +57,7 @@ export const UserEntity = new EntitySchema<UserModel>({
     groups: {
       target: 'UserGroup',
       type: 'many-to-many',
-      joinTable: { name: 'UserGroupMap' },
+      joinTable: { name: 'user_group_map'},
       cascade: true,
       inverseSide: 'users'
     },

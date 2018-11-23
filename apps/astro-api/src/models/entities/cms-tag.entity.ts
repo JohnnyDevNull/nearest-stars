@@ -66,21 +66,21 @@ export const CmsTagEntity = new EntitySchema<CmsTagModel>({
     articles: {
       target: 'CmsArticle',
       type: 'many-to-many',
-      joinTable: { name: 'cmsTagArticleMap' },
+      joinTable: { name: 'cms_tag_article_map'},
       inverseSide: 'tags',
       cascade: true
     },
     categories: {
       target: 'CmsCategory',
       type: 'many-to-many',
-      joinTable: { name: 'cmsTagCategoryMap' },
+      joinTable: { name: 'cms_tag_category_map' },
       inverseSide: 'tags',
       cascade: true
     },
     weblinks: {
       target: 'CmsWeblink',
       type: 'many-to-many',
-      joinTable: { name: 'cmsTagWeblinkMap' },
+      joinTable: { name: 'cms_tag_weblink_map' },
       inverseSide: 'tags',
       cascade: true
     }
