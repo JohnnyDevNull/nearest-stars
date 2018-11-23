@@ -1,8 +1,8 @@
-import { AstroOrbitsModel } from '@nearest-stars/data-models';
+import { AstroOrbitModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const AstroOrbitsEntity = new EntitySchema<AstroOrbitsModel>({
-  name: 'AstroOrbits',
+export const AstroOrbitEntity = new EntitySchema<AstroOrbitModel>({
+  name: 'AstroOrbit',
   columns: {
     comp1: {
       type: String,
@@ -147,7 +147,7 @@ export const AstroOrbitsEntity = new EntitySchema<AstroOrbitsModel>({
   },
   relations: {
     identifier: {
-      target: 'AstroObjects',
+      target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'orbits',
       joinColumn: true,

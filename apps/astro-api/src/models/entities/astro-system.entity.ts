@@ -43,7 +43,7 @@ export const AstroSystemEntity = new EntitySchema<AstroSystemModel>({
   },
   relations: {
     identifier: {
-      target: 'AstroObjects',
+      target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'system',
       joinColumn: true,

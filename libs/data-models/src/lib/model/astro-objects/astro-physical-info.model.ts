@@ -1,8 +1,8 @@
-import { AstroIdentifierModel } from './astro-identifier.model';
+import { AstroObjectModel } from './astro-object.model';
 
 export interface AstroPhysicalInfoModel {
 
-  identifier: AstroIdentifierModel;
+  identifier: AstroObjectModel;
 
   specType: string;
   specClass: string;

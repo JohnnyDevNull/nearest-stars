@@ -1,8 +1,8 @@
-import { AstroIdentifierModel } from './astro-identifier.model';
+import { AstroObjectModel } from './astro-object.model';
 
 export interface AstroHistoryModel {
 
-  identifier: AstroIdentifierModel;
+  identifier: AstroObjectModel;
 
   /**
    * The timestamp on which the object was first spotted

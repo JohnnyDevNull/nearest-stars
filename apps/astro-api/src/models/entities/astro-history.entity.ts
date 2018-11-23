@@ -14,7 +14,7 @@ export const AstroHistoryEntity = new EntitySchema<AstroHistoryModel>({
   },
   relations: {
     identifier: {
-      target: 'AstroObjects',
+      target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'history',
       joinColumn: true,

@@ -1,8 +1,8 @@
-import { AstroIdentifierModel } from './astro-identifier.model';
+import { AstroObjectModel } from './astro-object.model';
 
-export interface AstroVectorsModel {
+export interface AstroVectorModel {
 
-  identifier: AstroIdentifierModel;
+  identifier: AstroObjectModel;
 
   pmRa: number;
   pmRaErrplus: number;

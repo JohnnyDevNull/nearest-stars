@@ -1,8 +1,8 @@
-import { AstroIdentifierModel } from './astro-identifier.model';
+import { AstroObjectModel } from './astro-object.model';
 
-export interface AstroCatalogsModel {
+export interface AstroCatalogModel {
 
-  identifier: AstroIdentifierModel;
+  identifier: AstroObjectModel;
 
   properName?: string;
   bayerId?: string;

@@ -1,8 +1,8 @@
-import { AstroMagnitudesModel } from '@nearest-stars/data-models';
+import { AstroMagnitudeModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const AstroMagnitudesEntity = new EntitySchema<AstroMagnitudesModel>({
-  name: 'AstroMagnitudes',
+export const AstroMagnitudeEntity = new EntitySchema<AstroMagnitudeModel>({
+  name: 'AstroMagnitude',
   columns: {
     fuvMag: {
       type: Number,
@@ -77,7 +77,7 @@ export const AstroMagnitudesEntity = new EntitySchema<AstroMagnitudesModel>({
   },
   relations: {
     identifier: {
-      target: 'AstroObjects',
+      target: 'AstroObject',
       type: 'one-to-one',
       inverseSide: 'magnitudes',
       joinColumn: true,
