@@ -1,7 +1,7 @@
-import { HistoryModel } from '@nearest-stars/data-models';
+import { AstroHistoryModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const HistoryEntity = new EntitySchema<HistoryModel>({
+export const HistoryEntity = new EntitySchema<AstroHistoryModel>({
   name: 'History',
   columns: {
     discAt: {

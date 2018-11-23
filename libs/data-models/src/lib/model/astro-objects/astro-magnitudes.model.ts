@@ -1,7 +1,7 @@
-import { IdentifierModel } from './identifier.model';
+import { AstroIdentifierModel } from './astro-identifier.model';
 
-export interface MagnitudesModel {
-  identifier: IdentifierModel;
+export interface AstroMagnitudesModel {
+  identifier: AstroIdentifierModel;
   fuvMag: number;
   nuvMag: number;
   sdssuMag: number;

@@ -1,7 +1,7 @@
-import { SystemModel } from '@nearest-stars/data-models';
+import { AstroSystemModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const SystemEntity = new EntitySchema<SystemModel>({
+export const SystemEntity = new EntitySchema<AstroSystemModel>({
   name: 'System',
   columns: {
     diskFlag: {

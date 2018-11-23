@@ -1,7 +1,7 @@
-import { VectorsModel } from '@nearest-stars/data-models';
+import { AstroVectorsModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const VectorsEntity = new EntitySchema<VectorsModel>({
+export const VectorsEntity = new EntitySchema<AstroVectorsModel>({
   name: 'Vectors',
   columns: {
     pmRa: {

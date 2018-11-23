@@ -1,7 +1,7 @@
-import { CatalogsModel } from '@nearest-stars/data-models';
+import { AstroCatalogsModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const CatalogsEntity = new EntitySchema<CatalogsModel>({
+export const CatalogsEntity = new EntitySchema<AstroCatalogsModel>({
   name: 'Catalogs',
   columns: {
     properName: {

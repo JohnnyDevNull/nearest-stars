@@ -1,8 +1,8 @@
-import { IdentifierModel } from './identifier.model';
+import { AstroIdentifierModel } from './astro-identifier.model';
 
-export interface OrbitsModel {
+export interface AstroOrbitsModel {
 
-  identifier: IdentifierModel;
+  identifier: AstroIdentifierModel;
 
   comp1?: string;
   comp2?: string;

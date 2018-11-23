@@ -1,7 +1,7 @@
-import { OrbitsModel } from '@nearest-stars/data-models';
+import { AstroOrbitsModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const OrbitsEntity = new EntitySchema<OrbitsModel>({
+export const OrbitsEntity = new EntitySchema<AstroOrbitsModel>({
   name: 'Orbits',
   columns: {
     comp1: {

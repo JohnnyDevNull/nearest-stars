@@ -1,8 +1,8 @@
-import { IdentifierModel } from './identifier.model';
+import { AstroIdentifierModel } from './astro-identifier.model';
 
-export interface SystemModel {
+export interface AstroSystemModel {
 
-  identifier: IdentifierModel;
+  identifier: AstroIdentifierModel;
 
   /**
    * Star system the object belongs to.

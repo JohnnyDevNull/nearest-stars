@@ -1,7 +1,7 @@
-import { IdentifierModel } from '@nearest-stars/data-models';
+import { AstroIdentifierModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const IdentifierEntity = new EntitySchema<IdentifierModel>({
+export const IdentifierEntity = new EntitySchema<AstroIdentifierModel>({
   name: 'Identifier',
   columns: {
     id: {

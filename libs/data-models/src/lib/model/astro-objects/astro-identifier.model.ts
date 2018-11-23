@@ -1,13 +1,13 @@
-import { CatalogsModel } from './catalogs.model';
-import { CoordinatesModel } from './coordinates.model';
-import { HistoryModel } from './history.model';
-import { MagnitudesModel } from './magnitudes.model';
-import { OrbitsModel } from './orbits.model';
-import { PhysicalInfoModel } from './physical-info.model';
-import { SystemModel } from './system.model';
-import { VectorsModel } from './vectors.model';
+import { AstroCatalogsModel } from './astro-catalogs.model';
+import { AstroCoordinatesModel } from './astro-coordinates.model';
+import { AstroHistoryModel } from './astro-history.model';
+import { AstroMagnitudesModel } from './astro-magnitudes.model';
+import { AstroOrbitsModel } from './astro-orbits.model';
+import { AstroPhysicalInfoModel } from './astro-physical-info.model';
+import { AstroSystemModel } from './astro-system.model';
+import { AstroVectorsModel } from './astro-vectors.model';
 
-export interface IdentifierModel {
+export interface AstroIdentifierModel {
 
   /**
    * The database internal identifier
@@ -46,13 +46,13 @@ export interface IdentifierModel {
    */
   updatedAt: Date;
 
-  catalogs: CatalogsModel;
-  coordinates: CoordinatesModel;
-  history: HistoryModel;
-  magnitudes: MagnitudesModel;
-  orbits: OrbitsModel;
-  physicalInfo: PhysicalInfoModel;
-  system: SystemModel;
-  vectors: VectorsModel;
+  catalogs: AstroCatalogsModel;
+  coordinates: AstroCoordinatesModel;
+  history: AstroHistoryModel;
+  magnitudes: AstroMagnitudesModel;
+  orbits: AstroOrbitsModel;
+  physicalInfo: AstroPhysicalInfoModel;
+  system: AstroSystemModel;
+  vectors: AstroVectorsModel;
 }
 

@@ -1,8 +1,8 @@
-import { IdentifierModel } from './identifier.model';
+import { AstroIdentifierModel } from './astro-identifier.model';
 
-export interface CoordinatesModel {
+export interface AstroCoordinatesModel {
 
-  identifier: IdentifierModel;
+  identifier: AstroIdentifierModel;
 
   /**
    * equatorial coordinates of the star

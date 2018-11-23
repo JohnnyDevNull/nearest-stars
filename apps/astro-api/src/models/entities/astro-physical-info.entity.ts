@@ -1,7 +1,7 @@
-import { PhysicalInfoModel } from '@nearest-stars/data-models';
+import { AstroPhysicalInfoModel } from '@nearest-stars/data-models';
 import { EntitySchema } from 'typeorm';
 
-export const PhysicalInfoEntity = new EntitySchema<PhysicalInfoModel>({
+export const PhysicalInfoEntity = new EntitySchema<AstroPhysicalInfoModel>({
   name: 'PhysicalInfo',
   columns: {
     specType: {
