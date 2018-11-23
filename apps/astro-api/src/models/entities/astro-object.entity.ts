@@ -11,10 +11,6 @@ export const AstroObjectEntity = new EntitySchema<AstroObjectModel>({
       primary: true,
       generated: true
     },
-    objectType: {
-      type: String,
-      length: 10,
-    },
     name: {
       type: String,
       length: 40,
@@ -25,6 +21,11 @@ export const AstroObjectEntity = new EntitySchema<AstroObjectModel>({
     }
   },
   relations: {
+    objectType: {
+      target: 'AstroObjectType',
+      type: 'many-to-one',
+      inverseSide: 'objects'
+    },
     catalogs: {
       target: 'AstroCatalog',
       type: 'one-to-one',

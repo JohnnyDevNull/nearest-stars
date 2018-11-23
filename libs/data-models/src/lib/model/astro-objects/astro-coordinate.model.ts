@@ -2,7 +2,7 @@ import { AstroObjectModel } from './astro-object.model';
 
 export interface AstroCoordinateModel {
 
-  identifier: AstroObjectModel;
+  object?: AstroObjectModel;
 
   /**
    * equatorial coordinates of the star

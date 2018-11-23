@@ -2,7 +2,7 @@ import { AstroObjectModel } from './astro-object.model';
 
 export interface AstroCatalogModel {
 
-  identifier: AstroObjectModel;
+  object?: AstroObjectModel;
 
   properName?: string;
   bayerId?: string;

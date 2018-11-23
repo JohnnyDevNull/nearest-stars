@@ -2,7 +2,7 @@ import { AstroObjectModel } from './astro-object.model';
 
 export interface AstroOrbitModel {
 
-  identifier: AstroObjectModel;
+  object?: AstroObjectModel;
 
   comp1?: string;
   comp2?: string;

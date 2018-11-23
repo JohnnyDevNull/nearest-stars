@@ -2,8 +2,9 @@ export { BaseRestModel } from './lib/base-rest.model';
 export { AstroCatalogModel } from './lib/model/astro-objects/astro-catalog.model';
 export { AstroCoordinateModel } from './lib/model/astro-objects/astro-coordinate.model';
 export { AstroHistoryModel } from './lib/model/astro-objects/astro-history.model';
-export { AstroObjectModel } from './lib/model/astro-objects/astro-object.model';
 export { AstroMagnitudeModel } from './lib/model/astro-objects/astro-magnitude.model';
+export { AstroObjectTypeModel } from './lib/model/astro-objects/astro-object-type.model';
+export { AstroObjectModel } from './lib/model/astro-objects/astro-object.model';
 export { AstroOrbitModel } from './lib/model/astro-objects/astro-orbit.model';
 export { AstroPhysicalInfoModel } from './lib/model/astro-objects/astro-physical-info.model';
 export { AstroSystemModel } from './lib/model/astro-objects/astro-system.model';
@@ -19,3 +20,4 @@ export { UserProfileModel } from './lib/model/user/user-profile.model';
 export { UserTokenModel } from './lib/model/user/user-token.model';
 export { UserModel } from './lib/model/user/user.model';
 export { TokenResponseModel } from './lib/token-response.model';
+

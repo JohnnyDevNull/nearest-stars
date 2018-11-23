@@ -2,7 +2,7 @@ import { AstroObjectModel } from './astro-object.model';
 
 export interface AstroSystemModel {
 
-  identifier: AstroObjectModel;
+  object?: AstroObjectModel;
 
   /**
    * Star system the object belongs to.
@@ -10,12 +10,12 @@ export interface AstroSystemModel {
    */
   system?: string;
 
-  diskFlag: boolean;
-  planetsFlag: boolean;
-  nDisks: number;
-  nPlanetsConfirmed: number;
-  nPlanetsUnconfirmed: number;
-  nPlanetsDubious: number;
-  nPlanetsPlausible: number;
-  nPlanetsDisproven: number;
+  diskFlag?: boolean;
+  planetsFlag?: boolean;
+  nDisks?: number;
+  nPlanetsConfirmed?: number;
+  nPlanetsUnconfirmed?: number;
+  nPlanetsDubious?: number;
+  nPlanetsPlausible?: number;
+  nPlanetsDisproven?: number;
 }

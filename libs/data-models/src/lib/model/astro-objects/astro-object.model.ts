@@ -2,6 +2,7 @@ import { AstroCatalogModel } from './astro-catalog.model';
 import { AstroCoordinateModel } from './astro-coordinate.model';
 import { AstroHistoryModel } from './astro-history.model';
 import { AstroMagnitudeModel } from './astro-magnitude.model';
+import { AstroObjectTypeModel } from './astro-object-type.model';
 import { AstroOrbitModel } from './astro-orbit.model';
 import { AstroPhysicalInfoModel } from './astro-physical-info.model';
 import { AstroSystemModel } from './astro-system.model';
@@ -13,12 +14,6 @@ export interface AstroObjectModel {
    * The database internal identifier
    */
   id?: number;
-
-  /**
-   * Identifies the objects type itself.
-   * Like the class of the star, planet or black whole.
-   */
-  objectType?: string;
 
   /**
    * The named identifier of the object.
@@ -39,19 +34,20 @@ export interface AstroObjectModel {
   /**
    * The timestamp on which the object was created in the database
    */
-  createdAt: Date;
+  createdAt?: Date;
 
   /**
    * The timestamp on which the object was updated the last time in the database
    */
-  updatedAt: Date;
+  updatedAt?: Date;
 
-  catalogs: AstroCatalogModel;
-  coordinates: AstroCoordinateModel;
-  history: AstroHistoryModel;
-  magnitudes: AstroMagnitudeModel;
-  orbits: AstroOrbitModel;
-  physicalInfo: AstroPhysicalInfoModel;
-  system: AstroSystemModel;
-  vectors: AstroVectorModel;
+  objectType?: AstroObjectTypeModel;
+  catalogs?: AstroCatalogModel;
+  coordinates?: AstroCoordinateModel;
+  history?: AstroHistoryModel;
+  magnitudes?: AstroMagnitudeModel;
+  orbits?: AstroOrbitModel;
+  physicalInfo?: AstroPhysicalInfoModel;
+  system?: AstroSystemModel;
+  vectors?: AstroVectorModel;
 }
