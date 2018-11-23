@@ -7,6 +7,7 @@ export { AstroObjectTypeModel } from './lib/model/astro-objects/astro-object-typ
 export { AstroObjectModel } from './lib/model/astro-objects/astro-object.model';
 export { AstroOrbitModel } from './lib/model/astro-objects/astro-orbit.model';
 export { AstroPhysicalInfoModel } from './lib/model/astro-objects/astro-physical-info.model';
+export { AstroSystemTypeModel } from './lib/model/astro-objects/astro-system-type.model';
 export { AstroSystemModel } from './lib/model/astro-objects/astro-system.model';
 export { AstroVectorModel } from './lib/model/astro-objects/astro-vector.model';
 export { CmsArticleModel } from './lib/model/cms/cms-article.model';
