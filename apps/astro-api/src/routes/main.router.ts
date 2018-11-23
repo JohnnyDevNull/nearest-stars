@@ -2,7 +2,8 @@ import { IndexController } from '../controllers/index.controller';
 import { environment } from '../environments/environment';
 import { BlogRouter } from './blog.router';
 import { TokenRouter } from './token.router';
-import { UsersRouter } from './users.router';
+import { UserRouter } from './user.router';
+import { UserGroupRouter } from './user-group.router';
 
 export class MainRouter {
 
@@ -16,8 +17,11 @@ export class MainRouter {
   private addRoutes(app) {
     app.route('/').get(this.indexCtrl.getIndex);
 
-    const usersRouter = new UsersRouter();
+    const usersRouter = new UserRouter();
           usersRouter.attach(app);
+
+    const userGroupRouter = new UserGroupRouter();
+          userGroupRouter.attach(app);
 
     const tokenRouter = new TokenRouter();
           tokenRouter.attach(app);

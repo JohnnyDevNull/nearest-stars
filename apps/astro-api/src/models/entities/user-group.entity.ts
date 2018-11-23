@@ -29,9 +29,11 @@ export const UserGroupEntity = new EntitySchema<UserGroupModel>({
     },
     activated: {
       type: Boolean,
+      default: false
     },
     activatedAt: {
-      type: Date
+      type: Date,
+      nullable: true
     }
   },
   relations: {

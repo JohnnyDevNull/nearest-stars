@@ -1,9 +1,9 @@
-import { UsersController } from '../controllers/users.controller';
+import { UserController } from '../controllers/user.controller';
 import { Application } from 'express';
 
-export class UsersRouter {
+export class UserRouter {
 
-  public usersCtrl: UsersController = new UsersController();
+  public usersCtrl: UserController = new UserController();
 
   public attach(app: Application): void {
 

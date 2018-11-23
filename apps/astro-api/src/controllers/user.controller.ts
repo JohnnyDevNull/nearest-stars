@@ -7,7 +7,7 @@ import * as HttpStatus from 'http-status-codes';
 import { getError } from '../functions';
 import { config } from '../config';
 
-export class UsersController {
+export class UserController {
 
   public getUsers = async (req: Request, res: Response) => {
     const connection = getConnection();

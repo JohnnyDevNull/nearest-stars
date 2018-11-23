@@ -25,3 +25,36 @@ PUT http://localhost:3000/blog/1
 ### DELETE single blog by id
 
 DELETE http://localhost:3000/blog/1
+
+### GET user groups
+
+GET http://localhost:3000/usergroup
+
+### POST user groups
+
+POST http://localhost:3000/usergroup
+Content-Type: application/json
+
+{
+  "name": "test",
+  "type": "test"
+}
+
+### GET user group by id
+
+GET http://localhost:3000/usergroup/2
+
+### PUT user group by id
+
+PUT http://localhost:3000/usergroup/1
+Content-Type: application/json
+
+{
+  "name": "test",
+  "type": "test",
+  "activated": true
+}
+
+### DELETE user group by id
+
+DELETE http://localhost:3000/usergroup/4
