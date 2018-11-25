@@ -2,10 +2,10 @@ import { BaseRestModel, UserModel } from '@nearest-stars/data-models';
 import * as bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { NextFunction } from 'express-serve-static-core';
-import { getConnection } from 'typeorm';
 import * as HttpStatus from 'http-status-codes';
-import { getError } from '../functions';
+import { DeleteResult, getConnection } from 'typeorm';
 import { config } from '../config';
+import { getError } from '../functions';
 
 export class UserController {
 
@@ -29,10 +29,7 @@ export class UserController {
 
     try {
       const {username, email, password} = req.body;
-
-      const saltRounds = config.saltRounds;
-      const salt = await bcrypt.genSalt(saltRounds);
-      const passwordHash = await bcrypt.hash(password, salt);
+      const passwordHash = await this.genPassword(password);
 
       user = {
         username: username,
@@ -78,33 +75,113 @@ export class UserController {
     res.json(result);
   }
 
-  public getUserById = (req: Request, res: Response) => {
+  public getUserById = async (req: Request, res: Response, next: NextFunction) => {
+    let user: UserModel = {};
+
+    try {
+      const userId = +req.params.userId;
+      if (!userId || typeof userId !== 'number') {
+        throw new Error('Invalid userId given');
+      }
+      const userRepo = getConnection().getRepository<UserModel>('User');
+      user = await userRepo.findOne({id: userId});
+    } catch (error) {
+      next(error);
+      return;
+    }
+
     const result: BaseRestModel<any> = {
       meta: {
         code: 0,
         message: 'getUserById success!'
-      }
+      },
+      data: user
     };
     res.json(result);
   }
 
-  public updateUserById = (req: Request, res: Response) => {
+  public updateUserById = async (req: Request, res: Response, next: NextFunction) => {
+    let user: UserModel = {};
+    let resSave: UserModel = {};
+
+    try {
+      const {userId, username, password, email, activated, locked} = req.body;
+
+      if (!userId) {
+        throw new Error('missing field userId in request body');
+      }
+
+      const userRepo = getConnection().getRepository<UserModel>('User');
+      user = await userRepo.findOne({id: userId});
+
+      if (!user) {
+        throw new Error('Unknown user');
+      }
+
+      user.username = username;
+      user.password = password;
+      user.email = email;
+
+      if (+activated >= 0) {
+        user.activated = +activated === 0 ? false : true;
+      }
+
+      if (user.activated && user.activatedAt === null) {
+        user.activatedAt = new Date();
+      }
+
+      if (+locked >= 0) {
+        user.locked = +locked === 0 ? false : true;
+      }
+
+      if (user.locked) {
+        user.lockedAt = new Date();
+      }
+
+      resSave = await userRepo.save(user);
+    } catch (error) {
+      next(error);
+      return;
+    }
+
     const result: BaseRestModel<any> = {
       meta: {
         code: 0,
         message: 'updateUserById success!'
+      },
+      data: resSave
+    };
+    res.json(result);
+  }
+
+  public deleteUserById = async (req: Request, res: Response, next: NextFunction) => {
+    const userId = req.params.userId;
+    let resDel: DeleteResult;
+
+    try {
+      const userRepo = getConnection().getRepository<UserModel>('User');
+      resDel = await userRepo.delete({id: userId});
+    } catch (error) {
+      next(error);
+      return;
+    }
+
+    const result: BaseRestModel<any> = {
+      meta: {
+        code: 0,
+        message: 'deleteUserById success!'
+      },
+      data: {
+        count: +resDel.raw.affectedRows
       }
     };
     res.json(result);
   }
 
-  public deleteUserById = (req: Request, res: Response) => {
-    const result: BaseRestModel<any> = {
-      meta: {
-        code: 0,
-        message: 'deleteUserById success!'
-      }
-    };
-    res.json(result);
+  private async genPassword(password: string): Promise<string> {
+    const saltRounds = config.saltRounds;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const passwordHash = await bcrypt.hash(password, salt);
+    return passwordHash;
   }
 }

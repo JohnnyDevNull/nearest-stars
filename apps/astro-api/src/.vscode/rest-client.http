@@ -42,7 +42,7 @@ Content-Type: application/json
 
 ### GET user group by id
 
-GET http://localhost:3000/usergroup/2
+GET http://localhost:3000/usergroup/5
 
 ### PUT user group by id
 
@@ -58,3 +58,25 @@ Content-Type: application/json
 ### DELETE user group by id
 
 DELETE http://localhost:3000/usergroup/4
+
+### GET user
+
+GET http://localhost:3000/user
+
+### GET user
+
+GET http://localhost:3000/user/1
+
+### GET user
+
+PUT http://localhost:3000/user/1
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "email": "test.test@test.de",
+  "username": "TestTest",
+  "activated": 1,
+  "locked": 1
+}
+

@@ -110,7 +110,7 @@ export class UserGroupController {
         userGroup.type = type;
       }
 
-      if (typeof activated === 'number') {
+      if (+activated >= 0) {
         userGroup.activated = +activated === 0 ? false : true;
       } else if (typeof activated === 'boolean') {
         userGroup.activated = activated;
