@@ -62,6 +62,8 @@ export class StateService {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('username');
         if (token !== null && username !== null) {
+          this.token = token;
+          this.username = username;
           const tokenExpire = localStorage.getItem('tokenExpire');
           this.tokenExpire = new Date(tokenExpire);
           const userIsActivated = localStorage.getItem('userIsActivated') === '1' ? true : false;
