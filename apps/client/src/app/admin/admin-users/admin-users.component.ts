@@ -1,4 +1,6 @@
+import { UserModel, BaseRestModel } from '@nearest-stars/data-models';
 import { Component, OnInit } from '@angular/core';
+import { AdminUsersService } from './admin-users.service';
 
 @Component({
   selector: 'nearest-stars-admin-users',
@@ -6,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUsersComponent implements OnInit {
 
-  constructor() { }
+  public users: UserModel[] = [];
+
+  constructor(
+    private admServ: AdminUsersService
+  ) {
+  }
 
   ngOnInit() {
+    this.admServ.getUserList().subscribe((res) => {
+      this.users = res.data;
+    });
   }
 
 }

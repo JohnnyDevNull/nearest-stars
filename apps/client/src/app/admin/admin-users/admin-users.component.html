@@ -2,4 +2,25 @@
 <div class="button-bar mb-2">
   <a class="btn btn-success btn-sm" routerLink="/admin/users/item/new">New</a>
 </div>
-<p>Coming soon...</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Created</th>
+      <th>Updated</th>
+      <th>Activated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.createdAt }}</td>
+      <td>{{ user.updatedAt }}</td>
+      <td>{{ user.activatedAt }}</td>
+    </tr>
+  </tbody>
+</table>
