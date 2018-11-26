@@ -1,0 +1,7 @@
+.header-offset {
+  @extend .mt-lg-4, .mt-3, .mb-3;
+}
+
+.page-header {
+  @extend .header-offset;
+}
