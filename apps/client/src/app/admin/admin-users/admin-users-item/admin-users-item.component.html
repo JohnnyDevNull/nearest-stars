@@ -3,4 +3,54 @@
   <span class="badge badge-secondary">mode: {{ mode }}</span>
   <span class="badge badge-secondary ml-1">id: {{ id }}</span>
 </p>
-<p>Coming soon...</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group">
+    <label for="emailInput">
+      Email
+    </label>
+    <input type="email"
+           class="form-control"
+           id="emailInput"
+           name="email"
+           placeholder="Email"
+           ngModel
+           required
+           email>
+  </div>
+  <div class="form-group">
+    <label for="passwordInput">
+      Password
+    </label>
+    <input type="password"
+           class="form-control"
+           id="passwordInput"
+           name="password"
+           placeholder="Password"
+           ngModel
+           required>
+  </div>
+  <div class="form-group">
+    <label for="usernameInput">
+      Username
+    </label>
+    <input type="text"
+           class="form-control"
+           id="usernameInput"
+           name="username"
+           placeholder="Username"
+           ngModel
+           required>
+  </div>
+  <div class="actions">
+    <button type="submit"
+            class="btn btn-success mr-2"
+            [disabled]="!f.valid">
+      Create
+    </button>
+    <button type="reset"
+            class="btn btn-danger"
+            [disabled]="!f.touched">
+      Discard
+    </button>
+  </div>
+</form>

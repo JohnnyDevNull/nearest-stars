@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'nearest-stars-admin-users-item',
@@ -34,5 +35,13 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.forEach(sub => sub.unsubscribe());
+  }
+
+  onSubmit(f: NgForm) {
+    if (!f.valid) {
+      return;
+    }
+
+    console.log(f.value);
   }
 }
