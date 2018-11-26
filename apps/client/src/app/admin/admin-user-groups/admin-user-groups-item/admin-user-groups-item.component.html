@@ -3,4 +3,35 @@
   <span class="badge badge-secondary">mode: {{ mode }}</span>
   <span class="badge badge-secondary ml-1">id: {{ id }}</span>
 </p>
-<p>Coming soon...</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group">
+    <label for="nameInput">Name</label>
+    <input type="text"
+           class="form-control"
+           id="nameInput"
+           name="name"
+           ngModel
+           required>
+  </div>
+  <div class="form-group">
+    <label for="typeInput">Type</label>
+    <input type="text"
+           class="form-control"
+           id="typeInput"
+           name="type"
+           ngModel
+           required>
+  </div>
+  <div class="actions">
+    <button type="submit"
+            class="btn btn-success mr-2"
+            [disabled]="!f.valid">
+      Create
+    </button>
+    <button type="reset"
+            class="btn btn-danger"
+            [disabled]="!f.touched">
+      Discard
+    </button>
+  </div>
+</form>
