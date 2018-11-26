@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { UserModel } from '@nearest-stars/data-models';
+import { Subscription } from 'rxjs';
+import { AdminUsersService } from './../admin-users.service';
 
 @Component({
   selector: 'nearest-stars-admin-users-item',
@@ -12,10 +14,13 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
   private subs: Subscription[] = [];
 
   public mode: string;
-  public id: number;
+  public id: number | null = null;
+
+  public item: UserModel | null = null;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private admServ: AdminUsersService
   ) {
   }
 
@@ -23,13 +28,15 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     this.mode = this.route.snapshot.params['mode'];
     this.id = this.route.snapshot.params['id'] !== undefined
             ? +this.route.snapshot.params['id']
-            : 0;
+            : null;
+    this.fetchItem();
 
     this.subs.push(this.route.params.subscribe((params: Params) => {
       this.mode = params['mode'];
       this.id = this.route.snapshot.params['id'] !== undefined
               ? +this.route.snapshot.params['id']
               : 0;
+      this.fetchItem();
     }));
   }
 
@@ -43,5 +50,19 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     }
 
     console.log(f.value);
+  }
+
+  fetchItem() {
+    this.item = {
+      username: '',
+      password: '',
+      email: ''
+    }
+    if (this.mode === 'edit' && this.id !== null) {
+      const item = this.admServ.getUserByIndex(this.id);
+      if (item !== null) {
+        this.item = item;
+      }
+    }
   }
 }

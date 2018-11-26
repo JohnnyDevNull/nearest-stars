@@ -1,5 +1,5 @@
-import { UserModel, BaseRestModel } from '@nearest-stars/data-models';
 import { Component, OnInit } from '@angular/core';
+import { UserModel } from '@nearest-stars/data-models';
 import { AdminUsersService } from './admin-users.service';
 
 @Component({
@@ -16,9 +16,13 @@ export class AdminUsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.admServ.getUserList().subscribe((res) => {
-      this.users = res.data;
+    this.admServ.fetchUserList().subscribe(() => {
+      this.users = this.admServ.getUserList();
     });
+  }
+
+  onDeleteRow(index: number) {
+    console.log('onDeleteRow ' + index);
   }
 
 }

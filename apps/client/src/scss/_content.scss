@@ -5,3 +5,17 @@
 .page-header {
   @extend .header-offset;
 }
+
+.btn-icon {
+  .b-ico {
+    width: 20px;
+    display: inline-block;
+  }
+  .b-txt {
+    @extend .ml-2;
+  }
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
