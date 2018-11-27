@@ -29,7 +29,7 @@ export class AdminUsersService {
 
   public getUserByIndex(i: number): UserModel | null {
     if (this.users.length > 0) {
-      return this.users.slice(i, 1)[0];
+      return this.users.slice(i, i+1)[0];
     } else {
       return null;
     }
@@ -41,5 +41,9 @@ export class AdminUsersService {
 
   public createUser(user: UserModel) {
     return this.restServ.doPost<UserModel>('api/user', user, true);
+  }
+
+  public deleteUser(userId: number) {
+    return this.restServ.doDelete<any>('api/user/' + userId, true);
   }
 }

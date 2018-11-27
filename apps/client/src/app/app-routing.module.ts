@@ -38,7 +38,7 @@ const routes: Routes = [
       { path: 'dashboard', component: AdminDasboardComponent},
       { path: 'users', component: AdminUsersComponent },
       { path: 'users/item/:mode', component: AdminUsersItemComponent },
-      { path: 'users/item/:mode/:id', component: AdminUsersItemComponent },
+      { path: 'users/item/:mode/:index', component: AdminUsersItemComponent },
       { path: 'groups', component: AdminUserGroupsComponent },
       { path: 'groups/item/:mode', component: AdminUserGroupsItemComponent },
       { path: 'groups/item/:mode/:id', component: AdminUserGroupsItemComponent },

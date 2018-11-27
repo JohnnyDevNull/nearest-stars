@@ -14,7 +14,7 @@
       <th>Created</th>
       <th>Updated</th>
       <th>Activated</th>
-      <th>#</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -22,9 +22,9 @@
       <td>{{ user.id }}</td>
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.createdAt }}</td>
-      <td>{{ user.updatedAt }}</td>
-      <td>{{ user.activatedAt }}</td>
+      <td>{{ user.createdAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+      <td>{{ user.updatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+      <td>{{ user.activatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
       <td>
         <div ngbDropdown class="d-inline-block" placement="left">
           <button class="btn btn-secondary btn-sm" id="dropdownBasic1" ngbDropdownToggle>
@@ -37,7 +37,7 @@
               </span>
               <span class="b-txt">Edit</span>
             </a>
-            <button class="dropdown-item btn-icon" (click)="onDeleteRow(i)">
+            <button class="dropdown-item btn-icon" (click)="onDeleteRow(user.id)">
               <span class="b-ico">
                 <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
               </span>

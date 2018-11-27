@@ -19,8 +19,11 @@ export class AdminUsersComponent implements OnInit {
     this.load();
   }
 
-  public onDeleteRow(index: number) {
-    console.log('onDeleteRow ' + index);
+  public onDeleteRow(userId: number) {
+    this.admServ.deleteUser(userId).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
   }
 
   public onSync(): void {
