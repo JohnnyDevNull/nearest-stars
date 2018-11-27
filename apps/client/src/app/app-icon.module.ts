@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library, Library } from '@fortawesome/fontawesome-svg-core';
-import { faCog, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEdit, faSyncAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   imports: [
@@ -21,7 +21,7 @@ export class AppIconModule {
   }
 
   protected registerIcons(): void {
-    this.library.add(faCog, faEdit, faTrashAlt);
+    this.library.add(faCog, faEdit, faTrashAlt, faSyncAlt);
   }
 
 }

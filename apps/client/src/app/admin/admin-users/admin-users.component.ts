@@ -10,19 +10,27 @@ export class AdminUsersComponent implements OnInit {
 
   public users: UserModel[] = [];
 
-  constructor(
+  public constructor (
     private admServ: AdminUsersService
   ) {
   }
 
-  ngOnInit() {
-    this.admServ.fetchUserList().subscribe(() => {
-      this.users = this.admServ.getUserList();
-    });
+  public ngOnInit(): void {
+    this.load();
   }
 
-  onDeleteRow(index: number) {
+  public onDeleteRow(index: number) {
     console.log('onDeleteRow ' + index);
   }
 
+  public onSync(): void {
+    this.load();
+  }
+
+  private load(): void {
+    const subs = this.admServ.fetchUserList().subscribe(() => {
+      this.users = this.admServ.getUserList();
+      subs.unsubscribe();
+    });
+  }
 }
