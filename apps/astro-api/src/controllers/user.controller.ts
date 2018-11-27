@@ -40,7 +40,7 @@ export class UserController {
     let user: UserModel;
 
     try {
-      const {username, email, password} = req.body;
+      const {username, email, password, activated, locked} = req.body;
       const passwordHash = await this.genPassword(password);
 
       user = {
@@ -48,6 +48,20 @@ export class UserController {
         email: email,
         password: passwordHash
       };
+
+      if (activated !== undefined) {
+        user.activated = activated;
+        if (+user.activated) {
+          user.activatedAt = new Date();
+        }
+      }
+
+      if (locked !== undefined) {
+        user.locked = locked;
+        if (+user.locked) {
+          user.lockedAt = new Date();
+        }
+      }
     } catch ( error ) {
       const err = new Error('Missing user field data');
       (<any>err).status = '400';
