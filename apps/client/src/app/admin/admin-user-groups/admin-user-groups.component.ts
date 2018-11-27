@@ -1,4 +1,6 @@
+import { AdminUserGroupsService } from './admin-user-groups.service';
 import { Component, OnInit } from '@angular/core';
+import { UserGroupModel } from '@nearest-stars/data-models';
 
 @Component({
   selector: 'nearest-stars-admin-user-groups',
@@ -6,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUserGroupsComponent implements OnInit {
 
-  constructor() { }
+  public userGroups: UserGroupModel[] = [];
 
-  ngOnInit() {
+  public constructor (
+    private admServ: AdminUserGroupsService
+  ) {
   }
 
+  public ngOnInit(): void {
+    this.load();
+  }
+
+  public onDeleteRow(userGroupId: number): void {
+    this.admServ.deleteUserGroup(userGroupId).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+
+  public onSync(): void {
+    this.load();
+  }
+
+  private load(): void {
+    const subs = this.admServ.fetchUserGroupList().subscribe(() => {
+      this.userGroups = this.admServ.getUserGroupList();
+      subs.unsubscribe();
+    });
+  }
 }

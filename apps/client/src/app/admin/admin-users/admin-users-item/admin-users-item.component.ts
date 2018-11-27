@@ -52,7 +52,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
 
     const user: UserModel = {};
     const {username, password, email, activated, locked} = f.value;
-    user.id = this.item.id;
+
     user.username = username;
     user.email = email;
 
@@ -69,6 +69,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     }
 
     if (this.mode === 'edit' && this.item.id !== null) {
+      user.id = this.item.id;
       this.admServ.updateUser(user).subscribe(
         (res) => console.log(res),
         (err) => console.error(err)

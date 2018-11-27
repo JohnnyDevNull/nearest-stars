@@ -1,7 +1,7 @@
 <h2 class="page-header">Admin / Users / Item</h2>
 <p>
   <span class="badge" [ngClass]="mode === 'new' ? 'badge-success' : 'badge-warning'">mode: {{ mode }}</span>
-  <span class="badge badge-secondary ml-1">index: {{ index }}</span>
+  <span class="badge badge-secondary ml-1" *ngIf="mode === 'edit'">index: {{ index }}</span>
   <span class="badge badge-info ml-1" *ngIf="item.id !== null">id: {{ item.id }}</span>
 </p>
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">

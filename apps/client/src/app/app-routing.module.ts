@@ -41,7 +41,7 @@ const routes: Routes = [
       { path: 'users/item/:mode/:index', component: AdminUsersItemComponent },
       { path: 'groups', component: AdminUserGroupsComponent },
       { path: 'groups/item/:mode', component: AdminUserGroupsItemComponent },
-      { path: 'groups/item/:mode/:id', component: AdminUserGroupsItemComponent },
+      { path: 'groups/item/:mode/:index', component: AdminUserGroupsItemComponent },
       { path: 'import', component: AdminImportComponent },
       { path: 'export', component: AdminExportComponent },
       { path: 'blogs', component: AdminBlogsComponent },
