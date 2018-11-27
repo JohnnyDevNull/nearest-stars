@@ -132,27 +132,27 @@ export class UserController {
     let resSave: UserModel = {};
 
     try {
-      const {userId, username, password, email, activated, locked} = req.body;
+      const {id, username, password, email, activated, locked} = req.body;
 
-      if (!userId) {
+      if (!id) {
         throw new Error('missing field userId in request body');
       }
 
       const userRepo = getConnection().getRepository<UserModel>('User');
-      user = await userRepo.findOne({id: userId});
+      user = await userRepo.findOne({id: id});
 
       if (!user) {
         throw new Error('Unknown user');
       }
 
-      if (password !== null && password.length > 0) {
+      if (password !== undefined && password.length > 0) {
         user.password = await this.genPassword(password);
       }
 
       user.username = username;
       user.email = email;
 
-      if (activated !== null && +activated !== +user.activated) {
+      if (activated !== undefined && +activated !== +user.activated) {
         user.activated = +activated === 0 ? false : true;
         if (user.activated && user.activatedAt === null) {
           user.activatedAt = new Date();
@@ -161,7 +161,7 @@ export class UserController {
         }
       }
 
-      if (locked !== null && +locked !== +user.locked) {
+      if (locked !== undefined && +locked !== +user.locked) {
         user.locked = +locked === 0 ? false : true;
         if (user.locked) {
           user.lockedAt = new Date();

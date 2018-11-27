@@ -73,7 +73,7 @@ PUT http://localhost:3000/user/1
 Content-Type: application/json
 
 {
-  "userId": 1,
+  "id": 1,
   "email": "test.test@test.de",
   "username": "TestTest",
   "activated": 1,
