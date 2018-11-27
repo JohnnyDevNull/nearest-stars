@@ -77,6 +77,6 @@ Content-Type: application/json
   "email": "test.test@test.de",
   "username": "TestTest",
   "activated": 1,
-  "locked": 1
+  "locked": 1,
+  "password": "123456"
 }
-

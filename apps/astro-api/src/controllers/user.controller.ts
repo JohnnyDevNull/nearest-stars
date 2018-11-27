@@ -12,7 +12,19 @@ export class UserController {
   public getUsers = async (req: Request, res: Response) => {
     const connection = getConnection();
     const userRepo = connection.getRepository<UserModel>('User');
-    const users = await userRepo.find();
+    const users = await userRepo.find({
+      select: [
+        'id',
+        'username',
+        'email',
+        'activated',
+        'activatedAt',
+        'createdAt',
+        'updatedAt',
+        'locked',
+        'lockedAt'
+      ]
+    });
     const result: BaseRestModel<UserModel[]> = {
       meta: {
         code: 0,
@@ -84,7 +96,22 @@ export class UserController {
         throw new Error('Invalid userId given');
       }
       const userRepo = getConnection().getRepository<UserModel>('User');
-      user = await userRepo.findOne({id: userId});
+      user = await userRepo.findOne({
+        select: [
+          'id',
+          'username',
+          'email',
+          'activated',
+          'activatedAt',
+          'createdAt',
+          'updatedAt',
+          'locked',
+          'lockedAt'
+        ],
+        where: {
+          id: userId
+        }
+      });
     } catch (error) {
       next(error);
       return;
@@ -118,27 +145,31 @@ export class UserController {
         throw new Error('Unknown user');
       }
 
+      if (password !== null && password.length > 0) {
+        user.password = await this.genPassword(password);
+      }
+
       user.username = username;
-      user.password = password;
       user.email = email;
 
-      if (+activated >= 0) {
+      if (activated !== null && +activated !== +user.activated) {
         user.activated = +activated === 0 ? false : true;
+        if (user.activated && user.activatedAt === null) {
+          user.activatedAt = new Date();
+        } else {
+          user.activatedAt = null;
+        }
       }
 
-      if (user.activated && user.activatedAt === null) {
-        user.activatedAt = new Date();
-      }
-
-      if (+locked >= 0) {
+      if (locked !== null && +locked !== +user.locked) {
         user.locked = +locked === 0 ? false : true;
-      }
-
-      if (user.locked) {
-        user.lockedAt = new Date();
+        if (user.locked) {
+          user.lockedAt = new Date();
+        }
       }
 
       resSave = await userRepo.save(user);
+      delete resSave.password;
     } catch (error) {
       next(error);
       return;
