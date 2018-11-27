@@ -49,11 +49,36 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
       return;
     }
 
-    console.log(f.value);
+    const user: UserModel = {};
+    const {username, password, email} = f.value;
+    user.id = this.item.id;
+    user.username = username;
+    user.email = email;
+
+    if (password !== undefined && password.length > 0) {
+      user.password = password;
+    }
+
+    if (this.mode === 'edit' && this.item.id !== null) {
+      this.admServ.updateUser(user).subscribe((res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.error(err);
+      });
+    } else if (this.mode === 'new' && this.item.id === null) {
+      this.admServ.createUser(user).subscribe((res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.error(err);
+      });
+    }
   }
 
   fetchItem() {
     this.item = {
+      id: null,
       username: '',
       password: '',
       email: ''
