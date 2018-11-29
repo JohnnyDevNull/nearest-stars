@@ -1,0 +1,7 @@
+<div id="msgline">
+  <div class="container">
+    <div class="msgline-item" *ngFor="let msg of messages">
+      <ngb-alert [type]="msg.type" (close)="doClose(msg)">{{ msg.text }}</ngb-alert>
+    </div>
+  </div>
+</div>

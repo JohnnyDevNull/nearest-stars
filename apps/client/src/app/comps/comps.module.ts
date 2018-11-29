@@ -7,6 +7,7 @@ import { AppIconModule } from '../app-icon.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
+import { MsglineComponent } from './msgline/msgline.component';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SearchComponent } from './search/search.component';
     FooterComponent,
     MainComponent,
     SearchComponent,
+    MsglineComponent,
   ],
   exports: [
   ],
