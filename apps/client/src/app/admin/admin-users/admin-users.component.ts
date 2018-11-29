@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '@nearest-stars/data-models';
+import { MsglineService } from './../../comps/msgline/msgline.service';
 import { AdminUsersService } from './admin-users.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class AdminUsersComponent implements OnInit {
   public users: UserModel[] = [];
 
   public constructor (
-    private admServ: AdminUsersService
+    private admServ: AdminUsersService,
+    private msgServ: MsglineService
   ) {
   }
 
@@ -21,8 +23,8 @@ export class AdminUsersComponent implements OnInit {
 
   public onDeleteRow(userId: number) {
     this.admServ.deleteUser(userId).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
+      (res) => this.msgServ.showMessageByResult(res),
+      (err) => this.msgServ.showMessageByResult(err)
     );
   }
 
@@ -34,6 +36,7 @@ export class AdminUsersComponent implements OnInit {
     const subs = this.admServ.fetchUserList().subscribe(() => {
       this.users = this.admServ.getUserList();
       subs.unsubscribe();
-    });
+    },
+    (err) => this.msgServ.showMessageByResult(err));
   }
 }

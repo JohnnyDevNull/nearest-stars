@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { UserModel } from '@nearest-stars/data-models';
+import { UserModel, BaseRestModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
 import { AdminUsersService } from './../admin-users.service';
+import { MsglineService } from '../../../comps/msgline/msgline.service';
+import { MsglineTypeEnum } from '../../../comps/msgline/msgline-type.enum';
 
 @Component({
   selector: 'nearest-stars-admin-users-item',
@@ -21,7 +23,8 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
   public constructor (
     private route: ActivatedRoute,
     private router: Router,
-    private admServ: AdminUsersService
+    private admServ: AdminUsersService,
+    private msgServ: MsglineService
   ) {
   }
 
@@ -54,7 +57,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     const {username, password, email, activated, locked} = f.value;
 
     user.username = username;
-    user.email = email;
+    // user.email = email;
 
     if (activated !== undefined) {
       user.activated = activated;
@@ -71,21 +74,21 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     if (this.mode === 'edit' && this.item.id !== null) {
       user.id = this.item.id;
       this.admServ.updateUser(user).subscribe(
-        (res) => console.log(res),
-        (err) => console.error(err)
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
       );
     } else if (this.mode === 'new' && this.item.id === null) {
       this.admServ.createUser(user).subscribe(
-        (res) => console.log(res),
-        (err) => console.error(err)
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
       );
     }
   }
 
   public onDelete(userId: number): void {
     this.admServ.deleteUser(userId).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
+      (res) => this.msgServ.showMessageByResult(res),
+      (err) => this.msgServ.showMessageByResult(err)
     );
   }
 
