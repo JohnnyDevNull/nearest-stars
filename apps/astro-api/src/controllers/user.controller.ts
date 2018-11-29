@@ -43,6 +43,16 @@ export class UserController {
       const {username, email, password, activated, locked} = req.body;
       const passwordHash = await this.genPassword(password);
 
+      if (!username) {
+        throw new Error('Field username cannot be empty');
+      }
+      if (!email) {
+        throw new Error('Field email cannot be empty');
+      }
+      if (!password) {
+        throw new Error('Field password cannot be empty');
+      }
+
       user = {
         username: username,
         email: email,
@@ -63,9 +73,8 @@ export class UserController {
         }
       }
     } catch ( error ) {
-      const err = new Error('Missing user field data');
-      (<any>err).status = '400';
-      next(err);
+      error.status = 400;
+      next(error);
       return;
     }
 
