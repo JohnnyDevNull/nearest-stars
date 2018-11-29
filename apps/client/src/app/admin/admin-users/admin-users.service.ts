@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from '@nearest-stars/data-models';
+import { BaseRestModel, UserModel } from '@nearest-stars/data-models';
 import { tap } from 'rxjs/operators';
 import { RestService } from '../../services/rest/rest.service';
 
@@ -36,14 +36,14 @@ export class AdminUsersService {
   }
 
   public updateUser(user: UserModel) {
-    return this.restServ.doPut<UserModel>('api/user/' + user.id, user, true);
+    return this.restServ.doPut<BaseRestModel<UserModel>>('api/user/' + user.id, user, true);
   }
 
   public createUser(user: UserModel) {
-    return this.restServ.doPost<UserModel>('api/user', user, true);
+    return this.restServ.doPost<BaseRestModel<UserModel>>('api/user', user, true);
   }
 
   public deleteUser(userId: number) {
-    return this.restServ.doDelete<any>('api/user/' + userId, true);
+    return this.restServ.doDelete<BaseRestModel<any>>('api/user/' + userId, true);
   }
 }
