@@ -33,7 +33,6 @@ export class MsglineService {
   }
 
   public showMessageByResult(result: any): void {
-    console.log(result);
     let text: string;
     let type: string;
 
