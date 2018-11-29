@@ -57,7 +57,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     const {username, password, email, activated, locked} = f.value;
 
     user.username = username;
-    // user.email = email;
+    user.email = email;
 
     if (activated !== undefined) {
       user.activated = activated;
