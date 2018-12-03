@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { CmsBlogModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
+import { MsglineService } from '../../../comps/msgline/msgline.service';
+import { AdminBlogsService } from '../admin-blogs.service';
 
 @Component({
   selector: 'nearest-stars-admin-blogs-item',
@@ -11,29 +15,92 @@ export class AdminBlogsItemComponent implements OnInit, OnDestroy {
   private subs: Subscription[] = [];
 
   public mode: string;
-  public id: number;
+  public index: number | null = null;
 
-  constructor(
-    private route: ActivatedRoute
+  public item: CmsBlogModel | null = null;
+
+  public constructor (
+    private route: ActivatedRoute,
+    private router: Router,
+    private admServ: AdminBlogsService,
+    private msgServ: MsglineService
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.mode = this.route.snapshot.params['mode'];
-    this.id = this.route.snapshot.params['id'] !== undefined
-            ? +this.route.snapshot.params['id']
-            : 0;
+    this.index = this.route.snapshot.params['index'] !== undefined
+            ? +this.route.snapshot.params['index']
+            : null;
+    this.fetchItem();
 
     this.subs.push(this.route.params.subscribe((params: Params) => {
       this.mode = params['mode'];
-      this.id = this.route.snapshot.params['id'] !== undefined
-              ? +this.route.snapshot.params['id']
+      this.index = this.route.snapshot.params['index'] !== undefined
+              ? +this.route.snapshot.params['index']
               : 0;
+      this.fetchItem();
     }));
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
+  public onSubmit(f: NgForm): void {
+    if (!f.valid) {
+      return;
+    }
+
+    const blog: CmsBlogModel = {};
+    const {title, subtitle, alias, text, published, locked} = f.value;
+
+    blog.title = title;
+    blog.subtitle = subtitle;
+    blog.alias = alias;
+    blog.text = text;
+    blog.published = published;
+    blog.locked = locked;
+
+    if (this.mode === 'edit' && this.item.id !== null) {
+      blog.id = this.item.id;
+      this.admServ.updateBlog(blog).subscribe(
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
+      );
+    } else if (this.mode === 'new' && this.item.id === null) {
+      this.admServ.createBlog(blog).subscribe(
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
+      );
+    }
+  }
+
+  public onDelete(blogId: number): void {
+    this.admServ.deleteBlog(blogId).subscribe(
+      (res) => this.msgServ.showMessageByResult(res),
+      (err) => this.msgServ.showMessageByResult(err)
+    );
+  }
+
+  private fetchItem(): void {
+    this.item = {
+      id: null,
+      title: '',
+      subtitle: '',
+      alias: '',
+      published: false,
+      locked: false
+    };
+
+    if (this.mode === 'edit' && this.index !== null) {
+      const item = this.admServ.getBlogByIndex(this.index);
+
+      if (item !== null) {
+        this.item = item;
+      } else {
+        this.router.navigate(['/admin/blogs']);
+      }
+    }
+  }
 }
