@@ -53,10 +53,10 @@
     <div class="form-check">
       <input type="checkbox"
              class="form-check-input"
-             id="activatedInput"
-             name="activated"
+             id="publishedInput"
+             name="published"
              [ngModel]="item.published">
-      <label class="form-check-label" for="activatedInput">
+      <label class="form-check-label" for="publishedInput">
         Published
       </label>
       <small class="ml-2" *ngIf="item.publishedAt">({{ item.publishedAt | date:'dd.MM.yyyy' }})</small>
