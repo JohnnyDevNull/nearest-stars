@@ -1,0 +1,23 @@
+### GET blog list
+
+GET http://localhost:3000/blog
+
+### CREATE blog
+
+POST http://localhost:3000/blog
+
+### GET single blog by id
+
+GET http://localhost:3000/blog/1
+
+### CREATE single blog entry by blog id
+
+POST http://localhost:3000/blog/1
+
+### UPDATE single blog by id
+
+PUT http://localhost:3000/blog/1
+
+### DELETE single blog by id
+
+DELETE http://localhost:3000/blog/1

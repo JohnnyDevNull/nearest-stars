@@ -1,0 +1,49 @@
+### GET user list
+
+GET http://localhost:3000/user
+
+### POST create user
+
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "activated": true,
+  "email": "test2@test2.de",
+  "id": null,
+  "locked": true,
+  "password": "test2",
+  "username": "test2"
+}
+
+### GET user by id
+
+GET http://localhost:3000/user/15
+
+### PUT update user by id
+
+PUT http://localhost:3000/user/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "test.test@test.de",
+  "username": "TestTest",
+  "activated": 1,
+  "locked": 1,
+  "password": "123456"
+}
+
+### PUT update user by id
+
+PUT http://localhost:3000/user/2
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "test.test@test.de",
+  "username": "TestTest",
+  "activated": 1,
+  "locked": 1,
+  "password": "123456"
+}
