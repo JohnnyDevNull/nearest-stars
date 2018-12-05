@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { CmsCategoryModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
+import { MsglineService } from '../../../comps/msgline/msgline.service';
+import { AdminCategoriesService } from '../admin-categories.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'nearest-stars-admin-categories-item',
@@ -11,29 +15,92 @@ export class AdminCategoriesItemComponent implements OnInit, OnDestroy {
   private subs: Subscription[] = [];
 
   public mode: string;
-  public id: number;
+  public index: number | null = null;
 
-  constructor(
-    private route: ActivatedRoute
+  public item: CmsCategoryModel | null = null;
+
+  public constructor (
+    private route: ActivatedRoute,
+    private router: Router,
+    private admServ: AdminCategoriesService,
+    private msgServ: MsglineService
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.mode = this.route.snapshot.params['mode'];
-    this.id = this.route.snapshot.params['id'] !== undefined
-            ? +this.route.snapshot.params['id']
-            : 0;
+    this.index = this.route.snapshot.params['index'] !== undefined
+            ? +this.route.snapshot.params['index']
+            : null;
+    this.fetchItem();
 
     this.subs.push(this.route.params.subscribe((params: Params) => {
       this.mode = params['mode'];
-      this.id = this.route.snapshot.params['id'] !== undefined
-              ? +this.route.snapshot.params['id']
+      this.index = this.route.snapshot.params['index'] !== undefined
+              ? +this.route.snapshot.params['index']
               : 0;
+      this.fetchItem();
     }));
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
+  public onSubmit(f: NgForm): void {
+    if (!f.valid) {
+      return;
+    }
+
+    const cat: CmsCategoryModel = {};
+    const {title, subtitle, alias, text, published, locked} = f.value;
+
+    cat.title = title;
+    cat.subtitle = subtitle;
+    cat.alias = alias;
+    cat.text = text;
+    cat.published = published;
+    cat.locked = locked;
+
+    if (this.mode === 'edit' && this.item.id !== null) {
+      cat.id = this.item.id;
+      this.admServ.updateCat(cat).subscribe(
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
+      );
+    } else if (this.mode === 'new' && this.item.id === null) {
+      this.admServ.createCat(cat).subscribe(
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
+      );
+    }
+  }
+
+  public onDelete(catId: number): void {
+    this.admServ.deleteCat(catId).subscribe(
+      (res) => this.msgServ.showMessageByResult(res),
+      (err) => this.msgServ.showMessageByResult(err)
+    );
+  }
+
+  private fetchItem(): void {
+    this.item = {
+      id: null,
+      title: '',
+      subtitle: '',
+      alias: '',
+      published: false,
+      locked: false
+    };
+
+    if (this.mode === 'edit' && this.index !== null) {
+      const item = this.admServ.getCatByIndex(this.index);
+
+      if (item !== null) {
+        this.item = item;
+      } else {
+        this.router.navigate(['/admin/cats']);
+      }
+    }
+  }
 }
