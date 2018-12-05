@@ -99,7 +99,7 @@ export class AdminCategoriesItemComponent implements OnInit, OnDestroy {
       if (item !== null) {
         this.item = item;
       } else {
-        this.router.navigate(['/admin/cats']);
+        this.router.navigate(['/admin/categories']);
       }
     }
   }
