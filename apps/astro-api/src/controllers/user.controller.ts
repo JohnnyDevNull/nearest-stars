@@ -155,10 +155,19 @@ export class UserController {
     let resSave: UserModel = {};
 
     try {
+      const userId = +req.params.userId;
+      if (!userId || typeof userId !== 'number') {
+        throw new Error('Invalid userId given');
+      }
+
       const {id, username, password, email, activated, locked} = req.body;
 
       if (!id) {
         throw new Error('missing field userId in request body');
+      }
+
+      if (+id !== +userId) {
+        throw new Error('request user id and body missmatch');
       }
 
       const userRepo = getConnection().getRepository<UserModel>('User');
@@ -223,7 +232,7 @@ export class UserController {
     const result: BaseRestModel<any> = {
       meta: {
         code: 0,
-        message: 'deleteUserById success!'
+        message: 'User with id ' + userId + ' successful deleted'
       },
       data: {
         count: +resDel.raw.affectedRows
