@@ -123,16 +123,66 @@ export class BlogController {
     res.json(result);
   }
 
-  public updateBlogById = (req: Request, res: Response) => {
-    const blogId = req.params.blogId;
+  public updateBlogById = async (req: Request, res: Response, next: NextFunction) => {
+    let blog: CmsBlogModel = {};
+    let resSave: CmsBlogModel = {};
+
+    try {
+      const blogId = +req.params.blogId;
+      if (!blogId || typeof blogId !== 'number') {
+        throw new Error('Invalid blogId given');
+      }
+
+      const {id, title, subtitle, alias, text, published, locked} = req.body;
+
+      if (!id) {
+        throw new Error('missing field blogId in request body');
+      }
+
+      if (+id !== +blogId) {
+        throw new Error('request blog id and body missmatch');
+      }
+
+      const blogRepo = getConnection().getRepository<CmsBlogModel>('CmsBlog');
+      blog = await blogRepo.findOne({id: id});
+
+      if (!blog) {
+        throw new Error('Unknown blog');
+      }
+
+      blog.title = title;
+      blog.subtitle = subtitle;
+      blog.alias = alias;
+      blog.text = text;
+
+      if (published !== undefined && +published !== +blog.published) {
+        blog.published = +published === 0 ? false : true;
+        if (blog.published) {
+          blog.publishedAt = new Date();
+        } else {
+          blog.publishedAt = null;
+        }
+      }
+
+      if (locked !== undefined && +locked !== +blog.locked) {
+        blog.locked = +locked === 0 ? false : true;
+        if (blog.locked) {
+          blog.lockedAt = new Date();
+        }
+      }
+
+      resSave = await blogRepo.save(blog);
+    } catch (error) {
+      next(error);
+      return;
+    }
+
     const result: BaseRestModel<any> = {
       meta: {
         code: 0,
-        message: 'updateBlogById success!'
+        message: 'Success'
       },
-      data: {
-        blogId: blogId
-      }
+      data: resSave
     };
     res.statusCode = HttpStatus.OK;
     res.json(result);
