@@ -24,7 +24,8 @@ export const CmsBlogEntity = new EntitySchema<CmsBlogModel>({
     },
     text: {
       type: String,
-      length: 20000
+      length: 20000,
+      nullable: true
     },
     published: {
       type: Boolean,
