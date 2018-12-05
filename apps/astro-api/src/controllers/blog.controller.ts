@@ -2,7 +2,7 @@ import { BaseRestModel, CmsBlogModel } from '@nearest-stars/data-models';
 import { NextFunction } from 'connect';
 import { Request, Response } from 'express';
 import * as HttpStatus from 'http-status-codes';
-import { getConnection } from 'typeorm';
+import { DeleteResult, getConnection } from 'typeorm';
 
 export class BlogController {
 
@@ -81,16 +81,28 @@ export class BlogController {
     res.json(result);
   }
 
-  public getBlogById = (req: Request, res: Response) => {
-    const blogId = req.params.blogId
+  public getBlogById = async (req: Request, res: Response, next: NextFunction) => {
+    let blog: CmsBlogModel = {};
+
+    try {
+      const blogId = +req.params.blogId
+      if (!blogId || typeof blogId !== 'number') {
+        throw new Error('Invalid blogId given');
+      }
+
+      const blogRepo = getConnection().getRepository<CmsBlogModel>('CmsBlog');
+      blog = await blogRepo.findOne({where: { id: blogId }});
+    } catch (error) {
+      next(error);
+      return;
+    }
+
     const result: BaseRestModel<any> = {
       meta: {
         code: 0,
         message: 'getBlogById success!'
       },
-      data: {
-        blogId: blogId
-      }
+      data: blog
     };
     res.statusCode = HttpStatus.OK;
     res.json(result);
@@ -126,15 +138,25 @@ export class BlogController {
     res.json(result);
   }
 
-  public deleteBlogByID = (req: Request, res: Response) => {
+  public deleteBlogByID = async (req: Request, res: Response, next: NextFunction) => {
     const blogId = req.params.blogId;
+    let resDel: DeleteResult;
+
+    try {
+      const userRepo = getConnection().getRepository<CmsBlogModel>('CmsBlog');
+      resDel = await userRepo.delete({id: blogId});
+    } catch (error) {
+      next(error);
+      return;
+    }
+
     const result: BaseRestModel<any> = {
       meta: {
         code: 0,
-        message: 'deleteBlogByID success!'
+        message: 'Blog with id ' + blogId + ' successful deleted'
       },
       data: {
-        blogId: blogId
+        count: +resDel.raw.affectedRows
       }
     };
     res.statusCode = HttpStatus.OK;
