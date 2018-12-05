@@ -21,8 +21,8 @@ export class AdminBlogsComponent implements OnInit {
     this.load();
   }
 
-  public onDeleteRow(userId: number) {
-    this.admServ.deleteBlog(userId).subscribe(
+  public onDeleteRow(blogId: number) {
+    this.admServ.deleteBlog(blogId).subscribe(
       (res) => this.msgServ.showMessageByResult(res),
       (err) => this.msgServ.showMessageByResult(err)
     );
