@@ -1,5 +1,6 @@
 import { IndexController } from '../controllers/index.controller';
 import { environment } from '../environments/environment';
+import { ArticleRouter } from './article.router';
 import { BlogRouter } from './blog.router';
 import { CategoryRouter } from './category.router';
 import { TokenRouter } from './token.router';
@@ -32,6 +33,9 @@ export class MainRouter {
 
     const catRouter = new CategoryRouter();
           catRouter.attach(app);
+
+    const artRouter = new ArticleRouter();
+          artRouter.attach(app);
   }
 
   private addErrorHandler(app) {

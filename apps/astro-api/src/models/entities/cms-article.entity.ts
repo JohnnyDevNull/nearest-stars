@@ -24,14 +24,17 @@ export const CmsArticleEntity = new EntitySchema<CmsArticleModel>({
     },
     text: {
       type: String,
-      length: 20000
+      length: 20000,
+      nullable: true
     },
     published: {
       type: Boolean,
-      width: 1
+      width: 1,
+      default: false
     },
     publishedAt: {
-      type: Date
+      type: Date,
+      nullable: true
     },
     createdAt: {
       type: Date,
@@ -43,17 +46,21 @@ export const CmsArticleEntity = new EntitySchema<CmsArticleModel>({
     },
     locked: {
       type: Boolean,
-      width: 1
+      width: 1,
+      default: false
     },
     lockedAt: {
-      type: Date
+      type: Date,
+      nullable: true
     },
     deleted: {
       type: Boolean,
-      width: 1
+      width: 1,
+      default: false
     },
     deletedAt: {
-      type: Date
+      type: Date,
+      nullable: true
     }
   },
   relations: {
