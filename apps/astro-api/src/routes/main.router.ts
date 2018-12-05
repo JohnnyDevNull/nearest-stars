@@ -1,9 +1,10 @@
 import { IndexController } from '../controllers/index.controller';
 import { environment } from '../environments/environment';
 import { BlogRouter } from './blog.router';
+import { CategoryRouter } from './category.router';
 import { TokenRouter } from './token.router';
-import { UserRouter } from './user.router';
 import { UserGroupRouter } from './user-group.router';
+import { UserRouter } from './user.router';
 
 export class MainRouter {
 
@@ -28,6 +29,9 @@ export class MainRouter {
 
     const blogRouter = new BlogRouter();
           blogRouter.attach(app);
+
+    const catRouter = new CategoryRouter();
+          catRouter.attach(app);
   }
 
   private addErrorHandler(app) {
