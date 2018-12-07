@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserModel } from '@nearest-stars/data-models';
+import { ProfileService } from './profile.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'nearest-stars-profile',
@@ -6,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  public user: UserModel | null = {
+    username: '',
+    email: ''
+  };
 
-  ngOnInit() {
+  public constructor(
+    private compServ: ProfileService
+  ) {
   }
 
+  public ngOnInit(): void {
+    this.compServ.load().subscribe((res) => {
+      console.log(res);
+      this.user = res.data;
+    })
+  }
+
+  public onSubmit(f: NgForm): void {
+    console.log(f);
+  }
 }
