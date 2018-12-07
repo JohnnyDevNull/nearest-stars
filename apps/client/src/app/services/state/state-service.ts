@@ -9,6 +9,7 @@ export class StateService {
   private token: string | null = null;
   private isLoggedIn = false;
   private tokenExpire: Date | null = null;
+  private userId: number | null = null;
   private username: string | null;
   private userIsActivated = false;
   private userIsLocked = false;
@@ -44,6 +45,10 @@ export class StateService {
     return this.tokenExpire;
   }
 
+  public getUserId(): number | null {
+    return this.userId;
+  }
+
   public getUsername(): string | null {
     return this.username;
   }
@@ -60,9 +65,11 @@ export class StateService {
     if (data === null) {
       if (useLocalStorage) {
         const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('userId');
         const username = localStorage.getItem('username');
-        if (token !== null && username !== null) {
+        if (token !== null && username !== null && userId !== null) {
           this.token = token;
+          this.userId = +userId;
           this.username = username;
           const tokenExpire = localStorage.getItem('tokenExpire');
           this.tokenExpire = new Date(tokenExpire);
@@ -76,11 +83,13 @@ export class StateService {
         this.token = null;
         this.isLoggedIn = false;
         this.tokenExpire = null;
+        this.userId = null;
         this.username = null;
         this.userIsActivated = false;
         this.userIsLocked = false;
         localStorage.removeItem('token');
         localStorage.removeItem('tokenExpire');
+        localStorage.removeItem('userId');
         localStorage.removeItem('username');
         localStorage.removeItem('userIsActivated');
         localStorage.removeItem('userIsLocked');
@@ -91,6 +100,7 @@ export class StateService {
     ) {
       this.token = data.token;
       this.tokenExpire = new Date(data.expiresAt);
+      this.userId = data.userId;
       this.username = data.username;
       this.userIsActivated = data.activated;
       this.userIsLocked = data.locked;
@@ -98,6 +108,7 @@ export class StateService {
       if (useLocalStorage) {
         localStorage.setItem('token', this.token);
         localStorage.setItem('tokenExpire', data.expiresAt);
+        localStorage.setItem('userId', data.userId);
         localStorage.setItem('username', data.username);
         localStorage.setItem('userIsActivated', data.activated ? '1' : '0');
         localStorage.setItem('userIsLocked', data.locked ? '1' : '0');

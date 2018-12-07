@@ -69,6 +69,7 @@ export class TokenController {
       data: {
         token: token,
         expiresAt: (<any>payload).exp,
+        userId: user.id,
         username: user.username,
         activated: user.activated,
         locked: user.locked
