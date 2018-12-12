@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CmsCategoryModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
-import { MsglineService } from '../../../comps/msgline/msgline.service';
+import { NotifyService } from '../../../services/notify/notify.service';
 import { AdminCategoriesService } from '../admin-categories.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'nearest-stars-admin-categories-item',
@@ -23,7 +23,7 @@ export class AdminCategoriesItemComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private admServ: AdminCategoriesService,
-    private msgServ: MsglineService
+    private msgServ: NotifyService
   ) {
   }
 

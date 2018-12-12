@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
+import { NotifyService } from '../../services/notify/notify.service';
 import { SignupService } from './signup.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'nearest-stars-signup',
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   public constructor(
     private signupServ: SignupService,
-    private router: Router,
+    private msgServ: NotifyService
   ) {
   }
 
@@ -39,22 +39,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     };
 
     this.subs.push(this.signupServ.doSignup(user).subscribe(
-      (res) => {
-        if (res.meta !== undefined && res.meta.error === true) {
-          this.error = res.meta.message;
-        } else {
-          this.router.navigate(['/signin']);
-        }
-      },
-      (err) => {
-        if (err.error !== undefined && err.error.meta !== undefined) {
-          this.error = err.error.meta.message;
-        } else if (err.message !== undefined) {
-          this.error = err.message;
-        } else {
-          this.error = 'Unknown error';
-        }
-      }
+      (res) => this.msgServ.showMessageByResult(res),
+      (err) => this.msgServ.showMessageByResult(err)
     ));
   }
 }

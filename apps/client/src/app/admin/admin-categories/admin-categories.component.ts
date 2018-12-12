@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CmsCategoryModel } from '@nearest-stars/data-models';
-import { MsglineService } from '../../comps/msgline/msgline.service';
+import { NotifyService } from '../../services/notify/notify.service';
 import { AdminCategoriesService } from './admin-categories.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class AdminCategoriesComponent implements OnInit {
 
   constructor(
     private admServ: AdminCategoriesService,
-    private msgServ: MsglineService
+    private msgServ: NotifyService
   ) {
   }
 

@@ -1,4 +1,4 @@
-export interface MsglineModel {
+export interface NotifyModel {
   text?: string;
   type?: string;
 }

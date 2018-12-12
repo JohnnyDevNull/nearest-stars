@@ -7,16 +7,15 @@ import { AppIconModule } from '../app-icon.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
-import { MsglineComponent } from './msgline/msgline.component';
 import { SearchComponent } from './search/search.component';
+import { DxMenuModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    SearchComponent,
-    MsglineComponent,
+    SearchComponent
   ],
   exports: [
   ],

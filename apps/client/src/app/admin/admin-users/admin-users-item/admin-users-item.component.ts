@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { UserModel, BaseRestModel } from '@nearest-stars/data-models';
+import { UserModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
+import { NotifyService } from '../../../services/notify/notify.service';
 import { AdminUsersService } from './../admin-users.service';
-import { MsglineService } from '../../../comps/msgline/msgline.service';
-import { MsglineTypeEnum } from '../../../comps/msgline/msgline-type.enum';
 
 @Component({
   selector: 'nearest-stars-admin-users-item',
@@ -24,7 +23,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private admServ: AdminUsersService,
-    private msgServ: MsglineService
+    private msgServ: NotifyService
   ) {
   }
 

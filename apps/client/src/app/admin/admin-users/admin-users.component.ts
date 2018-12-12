@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '@nearest-stars/data-models';
-import { MsglineService } from './../../comps/msgline/msgline.service';
+import { NotifyService } from '../../services/notify/notify.service';
 import { AdminUsersService } from './admin-users.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class AdminUsersComponent implements OnInit {
 
   public constructor (
     private admServ: AdminUsersService,
-    private msgServ: MsglineService
+    private msgServ: NotifyService
   ) {
   }
 

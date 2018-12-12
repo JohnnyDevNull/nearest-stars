@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseRestModel, UserModel, UserProfileModel } from '@nearest-stars/data-models';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { MsglineService } from '../../comps/msgline/msgline.service';
+import { NotifyService } from '../../services/notify/notify.service';
 import { RestService } from '../../services/rest/rest.service';
 import { StateService } from '../../services/state/state-service';
 
@@ -16,7 +16,7 @@ export class ProfileService {
   public constructor(
     private rest: RestService,
     private state: StateService,
-    private msgline: MsglineService
+    private msgline: NotifyService
   ) {
   }
 

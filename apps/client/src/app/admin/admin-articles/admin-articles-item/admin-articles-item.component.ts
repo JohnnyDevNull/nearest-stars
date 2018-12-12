@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CmsArticleModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
-import { MsglineService } from '../../../comps/msgline/msgline.service';
+import { NotifyService } from '../../../services/notify/notify.service';
 import { AdminArticlesService } from '../admin-articles.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private admServ: AdminArticlesService,
-    private msgServ: MsglineService
+    private msgServ: NotifyService
   ) {
   }
 

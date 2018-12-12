@@ -23,6 +23,9 @@
       ],
       "@nearest-stars/ui-core": [
         "libs/ui-core/src/index.ts"
+      ],
+      "jszip": [
+        "node_modules/jszip/dist/jszip.min.js"
       ]
     }
   },
