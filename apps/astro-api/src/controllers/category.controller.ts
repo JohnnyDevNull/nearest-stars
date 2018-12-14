@@ -13,8 +13,8 @@ export class CategoryController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getCats success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: cats
     };
@@ -72,12 +72,12 @@ export class CategoryController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Success'
+        code: HttpStatus.CREATED,
+        message: 'The category was created successfully!'
       },
       data: resSave.id
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.CREATED;
     res.json(result);
   }
 
@@ -99,8 +99,8 @@ export class CategoryController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getCatById success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: cat
     };
@@ -164,12 +164,12 @@ export class CategoryController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Success'
+        code: HttpStatus.ACCEPTED,
+        message: 'The category has been updated successfully!'
       },
       data: resSave
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 
@@ -187,14 +187,14 @@ export class CategoryController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Cat with id ' + catId + ' successful deleted'
+        code: HttpStatus.ACCEPTED,
+        message: 'The category was deleted successfully!'
       },
       data: {
         count: +resDel.raw.affectedRows
       }
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 }

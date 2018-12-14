@@ -27,11 +27,12 @@ export class UserController {
     });
     const result: BaseRestModel<UserModel[]> = {
       meta: {
-        code: 0,
-        message: 'getUsers success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: users
     };
+    res.statusCode = HttpStatus.OK;
     res.json(result);
   }
 
@@ -101,12 +102,14 @@ export class UserController {
 
     const result: BaseRestModel<{userId: number}> = {
       meta: {
-        code: 0
+        code: HttpStatus.CREATED,
+        message: 'The user was created successfully!'
       },
       data: {
         userId: resSave.id
       }
     };
+    res.statusCode = HttpStatus.CREATED;
     res.json(result);
   }
 
@@ -142,11 +145,12 @@ export class UserController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getUserById success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: user
     };
+    res.statusCode = HttpStatus.OK;
     res.json(result);
   }
 
@@ -209,11 +213,12 @@ export class UserController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'updateUserById success!'
+        code: HttpStatus.ACCEPTED,
+        message: 'The user has been updated successfully!'
       },
       data: resSave
     };
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 
@@ -231,13 +236,14 @@ export class UserController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'User with id ' + userId + ' successful deleted'
+        code: HttpStatus.ACCEPTED,
+        message: 'The user was deleted successfully!'
       },
       data: {
         count: +resDel.raw.affectedRows
       }
     };
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 

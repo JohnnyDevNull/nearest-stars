@@ -13,8 +13,8 @@ export class ArticleController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getArts success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: arts
     };
@@ -72,12 +72,12 @@ export class ArticleController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Success'
+        code: HttpStatus.CREATED,
+        message: 'The article was created successfully!'
       },
       data: resSave.id
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.CREATED;
     res.json(result);
   }
 
@@ -99,8 +99,8 @@ export class ArticleController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getArtById success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: art
     };
@@ -164,12 +164,12 @@ export class ArticleController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Success'
+        code: HttpStatus.ACCEPTED,
+        message: 'The article has been updated successfully!'
       },
       data: resSave
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 
@@ -187,14 +187,14 @@ export class ArticleController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Article with id ' + artId + ' successful deleted'
+        code: HttpStatus.ACCEPTED,
+        message: 'The article was deleted successfully!'
       },
       data: {
         count: +resDel.raw.affectedRows
       }
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 }

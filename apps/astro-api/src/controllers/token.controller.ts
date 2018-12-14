@@ -12,8 +12,8 @@ export class TokenController {
   public getTokenInfo = (req: Request, res: Response) => {
     const result: BaseRestModel<{user: UserModel}> = {
       meta: {
-        code: 0,
-        message: 'getTokenInfo success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: {
         user: (<any>req).user
@@ -45,8 +45,6 @@ export class TokenController {
       return next(getError(HttpStatus.OK, 'Unknown user or wrong password!'));
     }
 
-    console.log(user);
-
     delete user.password;
     delete user.createdAt;
     delete user.updatedAt;
@@ -65,7 +63,10 @@ export class TokenController {
     const payload = jwt.decode(token, { json: true });
 
     const result: BaseRestModel<TokenResponseModel> = {
-      meta: { code: HttpStatus.CREATED },
+      meta: {
+        code: HttpStatus.CREATED,
+        message: 'The token was created successfully!'
+      },
       data: {
         token: token,
         expiresAt: (<any>payload).exp,
@@ -83,8 +84,8 @@ export class TokenController {
   public updateToken = (req: Request, res: Response) => {
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'updateToken success!'
+        code: HttpStatus.ACCEPTED,
+        message: 'The token has been updated successfully!'
       },
       data: {}
     };
@@ -95,8 +96,8 @@ export class TokenController {
   public deleteToken = (req: Request, res: Response) => {
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'deleteToken success!'
+        code: HttpStatus.ACCEPTED,
+        message: 'The token was deleted successfully!'
       }
     };
     res.statusCode = HttpStatus.ACCEPTED;

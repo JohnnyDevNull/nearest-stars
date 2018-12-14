@@ -13,8 +13,8 @@ export class BlogController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getBlogs success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: blogs
     };
@@ -72,12 +72,12 @@ export class BlogController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Success'
+        code: HttpStatus.CREATED,
+        message: 'The blog was created successfully!'
       },
       data: resSave.id
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.CREATED;
     res.json(result);
   }
 
@@ -99,25 +99,10 @@ export class BlogController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getBlogById success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: blog
-    };
-    res.statusCode = HttpStatus.OK;
-    res.json(result);
-  }
-
-  public createBlogEntryById = (req: Request, res: Response) => {
-    const blogId = req.params.blogId
-    const result: BaseRestModel<any> = {
-      meta: {
-        code: 0,
-        message: 'createBlogEntryById success!'
-      },
-      data: {
-        blogId: blogId
-      }
     };
     res.statusCode = HttpStatus.OK;
     res.json(result);
@@ -179,12 +164,12 @@ export class BlogController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Success'
+        code: HttpStatus.ACCEPTED,
+        message: 'The blog has been updated successfully!'
       },
       data: resSave
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 
@@ -202,14 +187,14 @@ export class BlogController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'Blog with id ' + blogId + ' successful deleted'
+        code: HttpStatus.ACCEPTED,
+        message: 'The blog was deleted successfully!'
       },
       data: {
         count: +resDel.raw.affectedRows
       }
     };
-    res.statusCode = HttpStatus.OK;
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 }

@@ -13,11 +13,12 @@ export class UserGroupController {
     const groups = await userGrupRepo.find();
     const result: BaseRestModel<UserModel[]> = {
       meta: {
-        code: 0,
-        message: 'getUserGroups success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: groups
     };
+    res.statusCode = HttpStatus.OK;
     res.json(result);
   }
 
@@ -56,11 +57,12 @@ export class UserGroupController {
 
     const result: BaseRestModel<UserGroupModel> = {
       meta: {
-        code: 0,
-        message: 'createUserGroup success'
+        code: HttpStatus.CREATED,
+        message: 'The user group was created successfully!'
       },
       data: resSave
     };
+    res.statusCode = HttpStatus.CREATED;
     res.json(result);
   }
 
@@ -78,11 +80,12 @@ export class UserGroupController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'getUserGroupById success!'
+        code: HttpStatus.OK,
+        message: ''
       },
       data: userGroup
     };
+    res.statusCode = HttpStatus.OK;
     res.json(result);
   }
 
@@ -129,11 +132,12 @@ export class UserGroupController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'updateUserGroupById success!'
+        code: HttpStatus.ACCEPTED,
+        message: 'The user group has been updated successfully!'
       },
       data: resSave
     };
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 
@@ -151,13 +155,14 @@ export class UserGroupController {
 
     const result: BaseRestModel<any> = {
       meta: {
-        code: 0,
-        message: 'deleteUserGroupById success!'
+        code: HttpStatus.ACCEPTED,
+        message: 'The user group was deleted successfull!'
       },
       data: {
         count: +resDel.raw.affectedRows
       }
     };
+    res.statusCode = HttpStatus.ACCEPTED;
     res.json(result);
   }
 }
