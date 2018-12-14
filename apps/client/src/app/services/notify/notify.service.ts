@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import notify from 'devextreme/ui/notify';
+import * as HttpStatus from 'http-status-codes';
 import { Subject } from 'rxjs';
 import { NotifyTypeEnum } from './notify-type.enum';
 import { NotifyModel } from './notify.model';
@@ -33,12 +34,19 @@ export class NotifyService {
     this.updSubj.next(1);
   }
 
-  public showMessageByResult(result: any): void {
+  public showMessageByResult(result: any, timeout = 3000): void {
     let text: string;
     let type: string;
 
     if (result !== undefined && result.meta !== undefined) {
-      if (result.meta.code === 0) {
+      if (
+        (
+          result.meta.code === HttpStatus.OK
+          || result.meta.code === HttpStatus.CREATED
+          || result.meta.code === HttpStatus.ACCEPTED
+        )
+        && !result.meta.error
+      ) {
         type = NotifyTypeEnum.SUCCESS;
       } else if (result.meta.error) {
         type = NotifyTypeEnum.ERROR;
@@ -58,6 +66,6 @@ export class NotifyService {
       text = result.message;
     }
 
-    notify(text, type, 3000);
+    notify(text, type, timeout);
   }
 }
