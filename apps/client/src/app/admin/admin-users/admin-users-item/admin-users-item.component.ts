@@ -4,7 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
 import { NotifyService } from '../../../services/notify/notify.service';
-import { AdminUsersService } from './../admin-users.service';
+import { AdminUserGroupsService } from '../../admin-user-groups/admin-user-groups.service';
+import { AdminUsersService } from '../admin-users.service';
 
 @Component({
   selector: 'nearest-stars-admin-users-item',
@@ -18,11 +19,13 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
   public index: number | null = null;
 
   public item: UserModel | null = null;
+  public userGroups = [];
 
   public constructor (
     private route: ActivatedRoute,
     private router: Router,
     private admServ: AdminUsersService,
+    private groupsServ: AdminUserGroupsService,
     private msgServ: NotifyService
   ) {
   }
@@ -33,6 +36,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
             ? +this.route.snapshot.params['index']
             : null;
     this.fetchItem();
+    this.fetchGroups();
 
     this.subs.push(this.route.params.subscribe((params: Params) => {
       this.mode = params['mode'];
@@ -110,5 +114,14 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
         this.router.navigate(['/admin/users']);
       }
     }
+  }
+
+  public fetchGroups(): void {
+    this.subs.push(this.groupsServ.fetchUserGroupList().subscribe(
+      () => {
+        this.userGroups = this.groupsServ.getUserGroupList();
+      },
+      (err) => console.log(err))
+    );
   }
 }

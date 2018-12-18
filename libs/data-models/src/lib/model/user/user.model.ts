@@ -15,6 +15,8 @@ export interface UserModel {
   createdAt?: Date;
   updatedAt?: Date;
 
+  groupIdArr?: number[];
+
   groups?: UserGroupModel[];
   profile?: UserProfileModel;
   token?: UserTokenModel;
