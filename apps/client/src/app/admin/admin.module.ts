@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DxHtmlEditorModule } from 'devextreme-angular';
+import { DxButtonModule, DxFormModule, DxHtmlEditorModule, DxListModule } from 'devextreme-angular';
 import { AppIconModule } from './../app-icon.module';
 import { AppRoutingModule } from './../app-routing.module';
 import { AdminArticlesItemComponent } from './admin-articles/admin-articles-item/admin-articles-item.component';
@@ -45,7 +45,10 @@ import { AdminComponent } from './admin.component';
     FormsModule,
     NgbModule,
     AppIconModule,
-    DxHtmlEditorModule
+    DxHtmlEditorModule,
+    DxFormModule,
+    DxButtonModule,
+    DxListModule
   ],
   providers: [
   ],

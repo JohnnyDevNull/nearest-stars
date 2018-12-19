@@ -4,90 +4,31 @@
   <span class="badge badge-secondary ml-1" *ngIf="mode === 'edit'">index: {{ index }}</span>
   <span class="badge badge-info ml-1" *ngIf="item.id !== null">id: {{ item.id }}</span>
 </p>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="form-group">
-    <label for="emailInput">
-      Email
-    </label>
-    <input type="email"
-           class="form-control"
-           id="emailInput"
-           name="email"
-           placeholder="Email"
-           [ngModel]="item.email"
-           required
-           email>
-  </div>
-  <div class="form-group">
-    <label for="passwordInput">
-      Password
-    </label>
-    <input type="password"
-           class="form-control"
-           id="passwordInput"
-           name="password"
-           placeholder="Password"
-           [ngModel]="item.password">
-  </div>
-  <div class="form-group">
-    <label for="usernameInput">
-      Username
-    </label>
-    <input type="text"
-           class="form-control"
-           id="usernameInput"
-           name="username"
-           placeholder="Username"
-           [ngModel]="item.username"
-           required>
-  </div>
-  <div class="form-group">
-    <label for="">Groups</label>
-    <div class="custom-control custom-checkbox" *ngFor="let group of userGroups; let i = index">
-      <input type="checkbox"
-             class="custom-control-input"
-             [id]="'group-' + group.id"
-             [name]="'group-' + group.id"
-             ngModel>
-      <label class="custom-control-label" [for]="'group-' + group.id">{{ group.name }}</label>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox"
-             class="custom-control-input"
-             id="activatedInput"
-             name="activated"
-             [ngModel]="item.activated">
-      <label class="custom-control-label" for="activatedInput">Activated</label>
-      <small class="ml-2" *ngIf="item.activatedAt">({{ item.activatedAt | date:'dd.MM.yyyy' }})</small>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox"
-             class="custom-control-input"
-             id="lockedInput"
-             name="locked"
-             [ngModel]="item.locked">
-      <label class="custom-control-label" for="lockedInput">Locked</label>
-      <small class="ml-2" *ngIf="item.lockedAt">({{ item.lockedAt | date:'dd.MM.yyyy' }})</small>
-    </div>
-  </div>
-  <div class="actions">
-    <button type="submit"
-            class="btn btn-success mr-2"
-            [disabled]="!f.valid">
-      {{ mode === 'new' ? 'Create' : 'Save' }}
-    </button>
-    <button type="reset"
-            class="btn btn-danger mr-2"
-            [disabled]="!f.touched">
-      Discard
-    </button>
-    <button type="button"
-            class="btn btn-danger"
-            *ngIf="mode === 'edit' && item.id !== null"
-            (click)="onDelete(item.id)">
-      Delete
-    </button>
-  </div>
+
+<form (submit)="onDxSubmit(dxForm)">
+  <dx-form id="form" labelLocation="top" [(formData)]="item" #dxForm>
+    <dxi-item dataField="email" [validationRules]="[{type: 'required', message: 'The Email is required'}]"></dxi-item>
+    <dxi-item dataField="username" [validationRules]="[{type: 'required', message: 'Username cannot be empty'}]"></dxi-item>
+    <dxi-item dataField="password" [editorOptions]="{mode: 'password'}"></dxi-item>
+    <dxi-item dataField="passwordRepeat" [editorOptions]="{mode: 'password'}"></dxi-item>
+    <dxi-item>
+      <dx-list [items]="userGroups" keyExpr="id" selectionMode="multiple" [showSelectionControls]="true" [(selectedItems)]="selectedGroups">
+        <div *dxTemplate="let item of 'item'">
+          {{ item.name }}
+        </div>
+      </dx-list>
+    </dxi-item>
+    <dxi-item dataField="activated" editorType="dxCheckBox" [editorOptions]="{ text: item.activatedAt }">
+      <dxo-label location="left" alignment="left"></dxo-label>
+    </dxi-item>
+    <dxi-item dataField="locked" editorType="dxCheckBox" [editorOptions]="{ text: item.lockedAt }">
+      <dxo-label location="left" alignment="left"></dxo-label>
+    </dxi-item>
+    <dxi-item horizontalAlignment="left">
+      <div *dxTemplate>
+        <dx-button text="Subimt" type="success" [useSubmitBehavior]="true" class="mr-1"></dx-button>
+        <dx-button text="Reset" type="danger" (onClick)="dxForm.instance.resetValues(); selectedGroups = [];"></dx-button>
+      </div>
+    </dxi-item>
+  </dx-form>
 </form>

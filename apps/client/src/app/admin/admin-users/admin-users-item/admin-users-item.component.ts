@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserModel } from '@nearest-stars/data-models';
+import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
 import { NotifyService } from '../../../services/notify/notify.service';
 import { AdminUserGroupsService } from '../../admin-user-groups/admin-user-groups.service';
@@ -20,6 +20,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
 
   public item: UserModel | null = null;
   public userGroups = [];
+  public selectedGroups = [];
 
   public constructor (
     private route: ActivatedRoute,
@@ -51,13 +52,13 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
-  public onSubmit(f: NgForm): void {
-    if (!f.valid) {
+  public onDxSubmit(f: DxFormComponent): void {
+    if (!f.instance.validate().isValid) {
       return;
     }
 
     const user: UserModel = {};
-    const {username, password, email, activated, locked} = f.value;
+    const {username, password, email, activated, locked} = f.formData;
 
     user.username = username;
     user.email = email;

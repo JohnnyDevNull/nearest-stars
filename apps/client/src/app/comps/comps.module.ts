@@ -8,7 +8,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { SearchComponent } from './search/search.component';
-import { DxMenuModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
