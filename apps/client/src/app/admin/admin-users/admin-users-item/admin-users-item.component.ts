@@ -93,8 +93,8 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     }
   }
 
-  public onDelete(userId: number): void {
-    this.admServ.deleteUser(userId).subscribe(
+  public onDelete(): void {
+    this.admServ.deleteUser(this.item.id).subscribe(
       (res) => this.msgServ.showMessageByResult(res),
       (err) => this.msgServ.showMessageByResult(err)
     );

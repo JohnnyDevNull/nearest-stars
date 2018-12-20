@@ -1,9 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserGroupModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
 import { AdminUserGroupsService } from './../admin-user-groups.service';
+import { DxFormComponent } from 'devextreme-angular';
+import { NotifyService } from '../../../services/notify/notify.service';
 
 @Component({
   selector: 'nearest-stars-admin-user-groups-item',
@@ -16,12 +18,17 @@ export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
   public mode: string;
   public index: number;
 
+  public origItem: UserGroupModel | null = null;
   public item: UserGroupModel | null = null;
+
+  @ViewChild('dxForm')
+  public dxForm: DxFormComponent;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private admServ: AdminUserGroupsService
+    private admServ: AdminUserGroupsService,
+    private msgServ: NotifyService
   ) {
   }
 
@@ -45,13 +52,13 @@ export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
-  public onSubmit(f: NgForm): void {
-    if (!f.valid) {
+  public onDxSubmit(): void {
+    if (!this.dxForm.instance.validate().isValid) {
       return;
     }
 
     const group: UserGroupModel = {};
-    const {name, type, activated} = f.value;
+    const {name, type, activated} = this.dxForm.formData;
     group.name = name;
     group.type = type;
 
@@ -62,22 +69,30 @@ export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
     if (this.mode === 'edit' && this.item.id !== null) {
       group.id = this.item.id;
       this.admServ.updateUserGroup(group).subscribe(
-        (res) => console.log(res),
-        (err) => console.error(err)
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
       );
     } else if (this.mode === 'new' && this.item.id === null) {
       this.admServ.createUserGroup(group).subscribe(
-        (res) => console.log(res),
-        (err) => console.error(err)
+        (res) => this.msgServ.showMessageByResult(res),
+        (err) => this.msgServ.showMessageByResult(err)
       );
     }
   }
 
-  public onDelete(userGroupId: number): void {
-    this.admServ.deleteUserGroup(userGroupId).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
+  public onDelete(): void {
+    this.admServ.deleteUserGroup(this.item.id).subscribe(
+      (res) => this.msgServ.showMessageByResult(res),
+      (err) => this.msgServ.showMessageByResult(err)
     );
+  }
+
+  public onDiscard(): void {
+    if (this.origItem) {
+      this.item = Object.create(this.origItem);
+    } else {
+      this.dxForm.instance.resetValues();
+    }
   }
 
   private fetchItem(): void {
@@ -92,7 +107,8 @@ export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
       const item = this.admServ.getUserGroupByIndex(this.index);
 
       if (item !== null) {
-        this.item = item;
+        this.item = Object.create(item);
+        this.origItem = Object.create(item);
       } else {
         this.router.navigate(['/admin/groups']);
       }
