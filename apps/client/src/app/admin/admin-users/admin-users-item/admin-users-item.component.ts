@@ -37,10 +37,6 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.mode = this.route.snapshot.params['mode'];
-    this.index = this.route.snapshot.params['index'] !== undefined
-            ? +this.route.snapshot.params['index']
-            : null;
-    this.fetchItem();
     this.fetchGroups();
 
     this.subs.push(this.route.params.subscribe((params: Params) => {
@@ -66,6 +62,10 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
 
     user.username = username;
     user.email = email;
+
+    if (this.selectedGroups.length > 0) {
+      user.groups = this.selectedGroups.slice(0);
+    }
 
     if (activated !== undefined) {
       user.activated = activated;
@@ -101,9 +101,11 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
   }
 
   public onDiscard(): void {
-    console.log(this.origItem);
     if (this.origItem) {
       this.item = Object.create(this.origItem);
+      if (this.item.groups !== undefined && this.item.groups instanceof Array) {
+        this.selectedGroups = this.item.groups.slice(0);
+      }
     } else {
       this.dxForm.instance.resetValues();
       this.selectedGroups = [];
@@ -127,6 +129,10 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
       if (item !== null) {
         this.item = Object.create(item);
         this.origItem = Object.create(item);
+
+        if (this.item.groups !== undefined && this.item.groups instanceof Array) {
+          this.selectedGroups = this.item.groups.slice(0);
+        }
       } else {
         this.router.navigate(['/admin/users']);
       }
