@@ -23,6 +23,9 @@ export class UserController {
         'updatedAt',
         'locked',
         'lockedAt'
+      ],
+      relations: [
+        'groups'
       ]
     });
     const result: BaseRestModel<UserModel[]> = {
@@ -134,6 +137,9 @@ export class UserController {
           'locked',
           'lockedAt'
         ],
+        relations: [
+          'groups'
+        ],
         where: {
           id: userId
         }
@@ -164,7 +170,7 @@ export class UserController {
         throw new Error('Invalid userId given');
       }
 
-      const {id, username, password, email, activated, locked} = req.body;
+      const {id, username, password, email, activated, locked, groups} = req.body;
 
       if (!id) {
         throw new Error('missing field userId in request body');
@@ -187,6 +193,10 @@ export class UserController {
 
       user.username = username;
       user.email = email;
+
+      if (groups !== undefined && groups instanceof Array ) {
+        user.groups = groups;
+      }
 
       if (activated !== undefined && +activated !== +user.activated) {
         user.activated = +activated === 0 ? false : true;
