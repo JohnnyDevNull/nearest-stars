@@ -5,8 +5,8 @@
   <span class="badge badge-info ml-1" *ngIf="item.id !== null">id: {{ item.id }}</span>
 </p>
 
-<form (submit)="onDxSubmit(dxForm)">
-  <dx-form id="form" labelLocation="top" [(formData)]="item" #dxForm>
+<form (submit)="onDxSubmit()">
+  <dx-form id="form" labelLocation="top" [(formData)]="item" [showValidationSummary]="true" #dxForm>
     <dxi-item dataField="email" [validationRules]="[{type: 'required', message: 'The Email is required'}]"></dxi-item>
     <dxi-item dataField="username" [validationRules]="[{type: 'required', message: 'Username cannot be empty'}]"></dxi-item>
     <dxi-item dataField="password" [editorOptions]="{mode: 'password'}"></dxi-item>
@@ -24,11 +24,10 @@
     <dxi-item dataField="locked" editorType="dxCheckBox" [editorOptions]="{ text: item.lockedAt }">
       <dxo-label location="left" alignment="left"></dxo-label>
     </dxi-item>
-    <dxi-item horizontalAlignment="left">
-      <div *dxTemplate>
-        <dx-button text="Subimt" type="success" [useSubmitBehavior]="true" class="mr-1"></dx-button>
-        <dx-button text="Reset" type="danger" (onClick)="dxForm.instance.resetValues(); selectedGroups = [];"></dx-button>
-      </div>
-    </dxi-item>
   </dx-form>
+  <div class="mt-2">
+    <dx-button text="Subimt" type="success" [useSubmitBehavior]="true" class="mr-1"></dx-button>
+    <dx-button text="Discard" type="default" class="mr-1" (onClick)="onDiscard()"></dx-button>
+    <dx-button text="Delete" type="danger" (onClick)="onDelete()"></dx-button>
+  </div>
 </form>
