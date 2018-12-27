@@ -45,7 +45,6 @@ export class UserController {
 
     try {
       const {username, email, password, activated, locked} = req.body;
-      const passwordHash = await this.genPassword(password);
 
       if (!username) {
         throw new Error('Field username cannot be empty');
@@ -56,6 +55,8 @@ export class UserController {
       if (!password) {
         throw new Error('Field password cannot be empty');
       }
+
+      const passwordHash = await this.genPassword(password);
 
       user = {
         username: username,
