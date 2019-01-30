@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NotifyService } from '@client-services/notify/notify.service';
 import { UserGroupModel } from '@nearest-stars/data-models';
-import { Subscription } from 'rxjs';
-import { AdminUserGroupsService } from './../admin-user-groups.service';
 import { DxFormComponent } from 'devextreme-angular';
-import { NotifyService } from '../../../services/notify/notify.service';
+import { Subscription } from 'rxjs';
+import { AdminUserGroupsService } from '../admin-user-groups.service';
 
 @Component({
   selector: 'nearest-stars-admin-user-groups-item',

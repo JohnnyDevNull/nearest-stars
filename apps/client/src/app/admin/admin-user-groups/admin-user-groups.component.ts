@@ -1,6 +1,6 @@
-import { AdminUserGroupsService } from './admin-user-groups.service';
 import { Component, OnInit } from '@angular/core';
 import { UserGroupModel } from '@nearest-stars/data-models';
+import { AdminUserGroupsService } from './admin-user-groups.service';
 
 @Component({
   selector: 'nearest-stars-admin-user-groups',

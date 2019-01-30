@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { NotifyService } from '@client-services/notify/notify.service';
+import { RestService } from '@client-services/rest/rest.service';
+import { StateService } from '@client-services/state/state-service';
 import { BaseRestModel, UserModel, UserProfileModel } from '@nearest-stars/data-models';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { NotifyService } from '../../services/notify/notify.service';
-import { RestService } from '../../services/rest/rest.service';
-import { StateService } from '../../services/state/state-service';
 
 @Injectable({
   providedIn: 'root'

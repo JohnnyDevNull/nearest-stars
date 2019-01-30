@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AdminUserGroupsService } from '@client-admin/admin-user-groups/admin-user-groups.service';
+import { NotifyService } from '@client-services/notify/notify.service';
 import { UserModel } from '@nearest-stars/data-models';
 import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
-import { NotifyService } from '../../../services/notify/notify.service';
-import { AdminUserGroupsService } from '../../admin-user-groups/admin-user-groups.service';
 import { AdminUsersService } from '../admin-users.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserModel } from '@nearest-stars/data-models';
 import { Subscription } from 'rxjs';
-import { NotifyService } from '../../services/notify/notify.service';
+import { NotifyService } from '@client-services/notify/notify.service';
 import { SignupService } from './signup.service';
 
 @Component({

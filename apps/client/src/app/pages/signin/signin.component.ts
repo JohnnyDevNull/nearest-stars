@@ -1,11 +1,11 @@
-import * as HttpStatus from 'http-status-codes';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserModel } from '@nearest-stars/data-models';
-import { NotifyService } from '../../services/notify/notify.service';
-import { SigninService } from './signin.service';
-import { StateService } from '../../services/state/state-service';
 import { Router } from '@angular/router';
+import { NotifyService } from '@client-services/notify/notify.service';
+import { StateService } from '@client-services/state/state-service';
+import { UserModel } from '@nearest-stars/data-models';
+import * as HttpStatus from 'http-status-codes';
+import { SigninService } from './signin.service';
 
 @Component({
   selector: 'nearest-stars-signin',

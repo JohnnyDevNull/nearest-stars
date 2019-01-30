@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotifyService } from '@client-services/notify/notify.service';
 import { UserModel } from '@nearest-stars/data-models';
-import { NotifyService } from '../../services/notify/notify.service';
 import { AdminUsersService } from './admin-users.service';
 
 @Component({
