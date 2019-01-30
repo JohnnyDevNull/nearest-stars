@@ -5,3 +5,7 @@
 @import './content';
 @import './auth';
 @import './msgline';
+
+.us-none {
+  user-select: none;
+}
