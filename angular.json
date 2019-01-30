@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/client",
+            "outputPath": "dist/apps/client/dev",
             "index": "apps/client/src/index.html",
             "main": "apps/client/src/main.ts",
             "polyfills": "apps/client/src/polyfills.ts",
@@ -31,10 +31,16 @@
               "node_modules/devextreme/dist/css/dx.light.css",
               "apps/client/src/scss/main.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./apps/client/src/scss"
+              ]
+            }
           },
           "configurations": {
             "production": {
+              "outputPath": "dist/apps/client/prod",
               "fileReplacements": [
                 {
                   "replace": "apps/client/src/environments/environment.ts",
@@ -48,7 +54,7 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
