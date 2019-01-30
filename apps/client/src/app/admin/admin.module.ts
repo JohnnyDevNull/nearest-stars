@@ -1,10 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DxButtonModule, DxFormModule, DxHtmlEditorModule, DxListModule } from 'devextreme-angular';
 import { AppIconModule } from './../app-icon.module';
-import { AppRoutingModule } from './../app-routing.module';
 import { AdminArticlesItemComponent } from './admin-articles/admin-articles-item/admin-articles-item.component';
 import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
 import { AdminBlogsItemComponent } from './admin-blogs/admin-blogs-item/admin-blogs-item.component';
@@ -14,6 +13,7 @@ import { AdminCategoriesComponent } from './admin-categories/admin-categories.co
 import { AdminDasboardComponent } from './admin-dasboard/admin-dasboard.component';
 import { AdminExportComponent } from './admin-export/admin-export.component';
 import { AdminImportComponent } from './admin-import/admin-import.component';
+import { AdminRoutingModule } from './admin-routing.module';
 import { AdminUserGroupsItemComponent } from './admin-user-groups/admin-user-groups-item/admin-user-groups-item.component';
 import { AdminUserGroupsComponent } from './admin-user-groups/admin-user-groups.component';
 import { AdminUsersItemComponent } from './admin-users/admin-users-item/admin-users-item.component';
@@ -40,8 +40,8 @@ import { AdminComponent } from './admin.component';
   exports: [
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    CommonModule,
+    AdminRoutingModule,
     FormsModule,
     NgbModule,
     AppIconModule,
