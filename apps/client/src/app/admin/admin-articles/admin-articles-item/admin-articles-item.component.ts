@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
 import { CmsArticleModel } from '@nearest-stars/data-models';
+import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
 import { AdminArticlesService } from '../admin-articles.service';
 
@@ -17,7 +18,17 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
   public mode: string;
   public index: number | null = null;
 
+  public origItem: CmsArticleModel | null = null;
   public item: CmsArticleModel | null = null;
+
+  public categories = [];
+  public blogs = [];
+
+  public selectedCategories = [];
+  public selectedBlogs = [];
+
+  @ViewChild('dxForm')
+  public dxForm: DxFormComponent;
 
   public constructor (
     private route: ActivatedRoute,
@@ -47,13 +58,15 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
+  public onDxSubmit(): void {}
+
   public onSubmit(f: NgForm): void {
-    if (!f.valid) {
+    if (!this.dxForm.instance.validate().isValid) {
       return;
     }
 
     const art: CmsArticleModel = {};
-    const {title, subtitle, alias, text, published, locked} = f.value;
+    const {title, subtitle, alias, text, published, locked} = this.dxForm.formData;
 
     art.title = title;
     art.subtitle = subtitle;
@@ -83,6 +96,14 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
     );
   }
 
+  public onDiscard(): void {
+    if (this.origItem) {
+      this.item = Object.create(this.origItem);
+    } else {
+      this.dxForm.instance.resetValues();
+    }
+  }
+
   private fetchItem(): void {
     this.item = {
       id: null,
@@ -97,7 +118,8 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
       const item = this.admServ.getArtByIndex(this.index);
 
       if (item !== null) {
-        this.item = item;
+        this.item = Object.create(item);
+        this.origItem = Object.create(item);
       } else {
         this.router.navigate(['/admin/articles']);
       }
