@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 
 @Component({
   selector: 'nearest-stars-main',
@@ -6,9 +6,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  public activatedSelector: string;
+
+  constructor (
+    private resolver: ComponentFactoryResolver
+  ) {
+  }
 
   ngOnInit() {
   }
 
+  onRouterOutletActivate(component) {
+    this.activatedSelector = this.resolver.resolveComponentFactory(component.constructor).selector;
+  }
 }
