@@ -9,47 +9,23 @@
     "experimentalDecorators": true,
     "strictNullChecks": false,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@nearest-stars/data-models": [
-        "libs/data-models/src/index.ts"
-      ],
-      "@nearest-stars/ui-core": [
-        "libs/ui-core/src/index.ts"
-      ],
-      "@client-env/*": [
-        "apps/client/src/environments/*"
-      ],
-      "@client-layout/*": [
-        "apps/client/src/app/layout/*"
-      ],
-      "@client-admin/*": [
-        "apps/client/src/app/admin/*"
-      ],
-      "@client-cms/*": [
-        "apps/client/src/app/cms/*"
-      ],
-      "@client-pages/*": [
-        "apps/client/src/app/pages/*"
-      ],
-      "@client-services/*": [
-        "apps/client/src/app/services/*"
-      ],
-      "jszip": [
-        "node_modules/jszip/dist/jszip.min.js"
-      ]
+      "@nearest-stars/schema": ["libs/schema/src/index.ts"],
+      "@nearest-stars/ui-core": ["libs/ui-core/src/index.ts"],
+      "@nearest-stars/ep-core": ["libs/ep-core/src/index.ts"],
+      "@client-env/*": ["apps/client/src/environments/*"],
+      "@client-layout/*": ["apps/client/src/app/layout/*"],
+      "@client-admin/*": ["apps/client/src/app/admin/*"],
+      "@client-cms/*": ["apps/client/src/app/cms/*"],
+      "@client-pages/*": ["apps/client/src/app/pages/*"],
+      "@client-services/*": ["apps/client/src/app/services/*"],
+      "jszip": ["node_modules/jszip/dist/jszip.min.js"],
+      "@nearest-stars/config": ["libs/config/src/index.ts"]
     },
     "module": "es2015"
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

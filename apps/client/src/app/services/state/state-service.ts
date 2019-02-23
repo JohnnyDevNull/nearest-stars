@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TokenResponseModel } from '@nearest-stars/data-models';
+import { TokenResponseModel } from '@nearest-stars/schema';
 import { Subject } from 'rxjs';
 
 @Injectable({

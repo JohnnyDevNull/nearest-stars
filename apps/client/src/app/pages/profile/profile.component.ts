@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '@nearest-stars/data-models';
+import { UserModel } from '@nearest-stars/schema';
 import { ProfileService } from './profile.service';
 import { NgForm } from '@angular/forms';
 

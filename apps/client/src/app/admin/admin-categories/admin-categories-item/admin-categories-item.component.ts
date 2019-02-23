@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
-import { CmsCategoryModel } from '@nearest-stars/data-models';
+import { CmsCategoryModel } from '@nearest-stars/schema';
 import { Subscription } from 'rxjs';
 import { AdminCategoriesService } from '../admin-categories.service';
 

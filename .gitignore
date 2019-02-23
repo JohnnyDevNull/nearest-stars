@@ -41,6 +41,8 @@ Thumbs.db
 # Docker db folder
 /db
 
-# api env files
-apps/astro-api/src/config.ts
-apps/socket-api/src/config.ts
+# api config files
+libs/config/src/api-auth.config.ts
+libs/config/src/api-objects.config.ts
+libs/config/src/api-portal.config.ts
+libs/config/src/api-socket.config.ts

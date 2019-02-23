@@ -9,32 +9,34 @@
   },
   "projects": {
     "client": {
-      "tags": [
-        "client"
-      ]
+      "tags": ["client"]
     },
     "client-e2e": {
       "tags": []
     },
-    "astro-api": {
-      "tags": [
-        "astro api backend"
-      ]
+    "api-objects": {
+      "tags": ["astro api backend"]
     },
-    "socket-api": {
-      "tags": [
-        "api socket backend"
-      ]
+    "api-socket": {
+      "tags": ["api socket backend"]
     },
-    "data-models": {
-      "tags": [
-        "api backend client socket"
-      ]
+    "schema": {
+      "tags": ["api backend client socket"]
     },
     "ui-core": {
-      "tags": [
-        "client"
-      ]
+      "tags": ["client"]
+    },
+    "api-auth": {
+      "tags": []
+    },
+    "ep-core": {
+      "tags": []
+    },
+    "api-portal": {
+      "tags": []
+    },
+    "config": {
+      "tags": []
     }
   }
 }

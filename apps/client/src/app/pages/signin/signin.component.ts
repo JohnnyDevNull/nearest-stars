@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
 import { StateService } from '@client-services/state/state-service';
-import { UserModel } from '@nearest-stars/data-models';
+import { UserModel } from '@nearest-stars/schema';
 import * as HttpStatus from 'http-status-codes';
 import { SigninService } from './signin.service';
 

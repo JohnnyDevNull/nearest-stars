@@ -1,4 +1,4 @@
-import { BaseRestModel } from '@nearest-stars/data-models';
+import { BaseRestModel } from '@nearest-stars/schema';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StateService } from '../state/state-service';

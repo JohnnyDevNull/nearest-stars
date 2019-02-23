@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseRestModel, CmsBlogModel } from '@nearest-stars/data-models';
+import { BaseRestModel, CmsBlogModel } from '@nearest-stars/schema';
 import { tap } from 'rxjs/operators';
 import { RestService } from '../../services/rest/rest.service';
 

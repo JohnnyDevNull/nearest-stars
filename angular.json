@@ -22,10 +22,7 @@
             "main": "apps/client/src/main.ts",
             "polyfills": "apps/client/src/polyfills.ts",
             "tsConfig": "apps/client/tsconfig.app.json",
-            "assets": [
-              "apps/client/src/favicon.ico",
-              "apps/client/src/assets"
-            ],
+            "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"],
             "styles": [
               "node_modules/devextreme/dist/css/dx.common.css",
               "node_modules/devextreme/dist/css/dx.light.css",
@@ -33,9 +30,7 @@
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "./apps/client/src/scss"
-              ]
+              "includePaths": ["./apps/client/src/scss"]
             }
           },
           "configurations": {
@@ -91,14 +86,9 @@
             "polyfills": "apps/client/src/polyfills.ts",
             "tsConfig": "apps/client/tsconfig.spec.json",
             "karmaConfig": "apps/client/karma.conf.js",
-            "styles": [
-              "apps/client/src/scss/main.scss"
-            ],
+            "styles": ["apps/client/src/scss/main.scss"],
             "scripts": [],
-            "assets": [
-              "apps/client/src/favicon.ico",
-              "apps/client/src/assets"
-            ]
+            "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"]
           }
         },
         "lint": {
@@ -108,9 +98,7 @@
               "apps/client/tsconfig.app.json",
               "apps/client/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -136,26 +124,24 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/client-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
     },
-    "astro-api": {
-      "root": "apps/astro-api",
-      "sourceRoot": "apps/astro-api/src",
+    "api-objects": {
+      "root": "apps/api-objects",
+      "sourceRoot": "apps/api-objects/src",
       "projectType": "application",
-      "prefix": "astro-api",
+      "prefix": "api-objects",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@nrwl/builders:node-build",
           "options": {
-            "outputPath": "dist/apps/astro-api",
-            "main": "apps/astro-api/src/main.ts",
-            "tsConfig": "apps/astro-api/tsconfig.app.json"
+            "outputPath": "dist/apps/api-objects",
+            "main": "apps/api-objects/src/main.ts",
+            "tsConfig": "apps/api-objects/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -163,8 +149,8 @@
               "extractLicenses": true,
               "fileReplacements": [
                 {
-                  "replace": "apps/astro-api/src/environments/environment.ts",
-                  "with": "apps/astro-api/src/environments/environment.prod.ts"
+                  "replace": "apps/api-objects/src/environments/environment.ts",
+                  "with": "apps/api-objects/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -173,43 +159,41 @@
         "serve": {
           "builder": "@nrwl/builders:node-execute",
           "options": {
-            "buildTarget": "astro-api:build"
+            "buildTarget": "api-objects:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/astro-api/tsconfig.app.json",
-              "apps/astro-api/tsconfig.spec.json"
+              "apps/api-objects/tsconfig.app.json",
+              "apps/api-objects/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "apps/astro-api/jest.config.js",
-            "tsConfig": "apps/astro-api/tsconfig.spec.json"
+            "jestConfig": "apps/api-objects/jest.config.js",
+            "tsConfig": "apps/api-objects/tsconfig.spec.json"
           }
         }
       }
     },
-    "socket-api": {
-      "root": "apps/socket-api",
-      "sourceRoot": "apps/socket-api/src",
+    "api-socket": {
+      "root": "apps/api-socket",
+      "sourceRoot": "apps/api-socket/src",
       "projectType": "application",
-      "prefix": "socket-api",
+      "prefix": "api-socket",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@nrwl/builders:node-build",
           "options": {
-            "outputPath": "dist/apps/socket-api",
-            "main": "apps/socket-api/src/main.ts",
-            "tsConfig": "apps/socket-api/tsconfig.app.json"
+            "outputPath": "dist/apps/api-socket",
+            "main": "apps/api-socket/src/main.ts",
+            "tsConfig": "apps/api-socket/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -217,8 +201,8 @@
               "extractLicenses": true,
               "fileReplacements": [
                 {
-                  "replace": "apps/socket-api/src/environments/environment.ts",
-                  "with": "apps/socket-api/src/environments/environment.prod.ts"
+                  "replace": "apps/api-socket/src/environments/environment.ts",
+                  "with": "apps/api-socket/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -227,33 +211,31 @@
         "serve": {
           "builder": "@nrwl/builders:node-execute",
           "options": {
-            "buildTarget": "socket-api:build"
+            "buildTarget": "api-socket:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/socket-api/tsconfig.app.json",
-              "apps/socket-api/tsconfig.spec.json"
+              "apps/api-socket/tsconfig.app.json",
+              "apps/api-socket/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "apps/socket-api/jest.config.js",
-            "tsConfig": "apps/socket-api/tsconfig.spec.json"
+            "jestConfig": "apps/api-socket/jest.config.js",
+            "tsConfig": "apps/api-socket/tsconfig.spec.json"
           }
         }
       }
     },
-    "data-models": {
-      "root": "libs/data-models",
-      "sourceRoot": "libs/data-models/src",
+    "schema": {
+      "root": "libs/schema",
+      "sourceRoot": "libs/schema/src",
       "projectType": "library",
       "prefix": "nearest-stars",
       "architect": {
@@ -261,19 +243,17 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/data-models/tsconfig.lib.json",
-              "libs/data-models/tsconfig.spec.json"
+              "libs/schema/tsconfig.lib.json",
+              "libs/schema/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "libs/data-models/jest.config.js",
-            "tsConfig": "libs/data-models/tsconfig.spec.json"
+            "jestConfig": "libs/schema/jest.config.js",
+            "tsConfig": "libs/schema/tsconfig.spec.json"
           }
         }
       }
@@ -299,10 +279,174 @@
               "libs/ui-core/tsconfig.lib.json",
               "libs/ui-core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
+        }
+      }
+    },
+    "api-auth": {
+      "root": "apps/api-auth",
+      "sourceRoot": "apps/api-auth/src",
+      "projectType": "application",
+      "prefix": "api-auth",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/api-auth",
+            "main": "apps/api-auth/src/main.ts",
+            "tsConfig": "apps/api-auth/tsconfig.app.json"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api-auth/src/environments/environment.ts",
+                  "with": "apps/api-auth/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "api-auth:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/api-auth/tsconfig.app.json",
+              "apps/api-auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/api-auth/jest.config.js",
+            "tsConfig": "apps/api-auth/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "ep-core": {
+      "root": "libs/ep-core",
+      "sourceRoot": "libs/ep-core/src",
+      "projectType": "library",
+      "prefix": "nearest-stars",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ep-core/tsconfig.lib.json",
+              "libs/ep-core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ep-core/jest.config.js",
+            "tsConfig": "libs/ep-core/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "api-portal": {
+      "root": "apps/api-portal",
+      "sourceRoot": "apps/api-portal/src",
+      "projectType": "application",
+      "prefix": "api-portal",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/api-portal",
+            "main": "apps/api-portal/src/main.ts",
+            "tsConfig": "apps/api-portal/tsconfig.app.json"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api-portal/src/environments/environment.ts",
+                  "with": "apps/api-portal/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "api-portal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/api-portal/tsconfig.app.json",
+              "apps/api-portal/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/api-portal/jest.config.js",
+            "tsConfig": "apps/api-portal/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "config": {
+      "root": "libs/config",
+      "sourceRoot": "libs/config/src",
+      "projectType": "library",
+      "prefix": "nearest-stars",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/config/tsconfig.lib.json",
+              "libs/config/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/config/jest.config.js",
+            "tsConfig": "libs/config/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
         }
       }
     }

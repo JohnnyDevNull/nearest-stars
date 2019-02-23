@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseRestModel, UserModel } from '@nearest-stars/data-models';
+import { BaseRestModel, UserModel } from '@nearest-stars/schema';
 import { Observable } from 'rxjs';
 
 @Injectable()

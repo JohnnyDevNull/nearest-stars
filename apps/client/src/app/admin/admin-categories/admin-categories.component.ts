@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotifyService } from '@client-services/notify/notify.service';
-import { CmsCategoryModel } from '@nearest-stars/data-models';
+import { CmsCategoryModel } from '@nearest-stars/schema';
 import { AdminCategoriesService } from './admin-categories.service';
 
 @Component({

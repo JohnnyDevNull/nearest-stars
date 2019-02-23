@@ -18,19 +18,19 @@ services:
     ports:
       - 80:80
     depends_on:
-      - ns-astro-api
-      - ns-socket-api
+      - ns-api-objects
+      - ns-api-socket
     command: ng serve client
 
-  ns-astro-api:
-    container_name: ns-astro-api
+  ns-api-objects:
+    container_name: ns-api-objects
     networks:
       - corp
-    image: ns-astro-api
+    image: ns-api-objects
     build: ./apps
     restart: always
     volumes:
-      - ./apps/astro-api:/usr/src/apps/astro-api
+      - ./apps/api-objects:/usr/src/apps/api-objects
     environment:
       NODE_ENV: development
       PORT: 3000
@@ -38,17 +38,17 @@ services:
       - 3000:3000
     depends_on:
       - ns-mariadb
-    command: ng serve astro-api
+    command: ng serve api-objects
 
-  ns-socket-api:
-    container_name: ns-socket-api
+  ns-api-socket:
+    container_name: ns-api-socket
     networks:
       - corp
-    image: ns-socket-api
+    image: ns-api-socket
     build: ./apps
     restart: always
     volumes:
-      - ./apps/socket-api:/usr/src/apps/socket-api
+      - ./apps/api-socket:/usr/src/apps/api-socket
     environment:
       NODE_ENV: development
       PORT: 3010
@@ -56,7 +56,7 @@ services:
       - 3010:3010
     depends_on:
       - ns-mariadb
-    command: ng serve socket-api
+    command: ng serve api-socket
 
   ns-mariadb:
     container_name: ns-mariadb

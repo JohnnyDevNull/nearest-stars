@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
-import { UserGroupModel } from '@nearest-stars/data-models';
+import { UserGroupModel } from '@nearest-stars/schema';
 import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
 import { AdminUserGroupsService } from '../admin-user-groups.service';

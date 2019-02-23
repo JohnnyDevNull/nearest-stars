@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserModel } from '@nearest-stars/data-models';
+import { UserModel } from '@nearest-stars/schema';
 import { Subscription } from 'rxjs';
 import { NotifyService } from '@client-services/notify/notify.service';
 import { SignupService } from './signup.service';

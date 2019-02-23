@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
-import { CmsArticleModel } from '@nearest-stars/data-models';
+import { CmsArticleModel } from '@nearest-stars/schema';
 import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
 import { AdminArticlesService } from '../admin-articles.service';

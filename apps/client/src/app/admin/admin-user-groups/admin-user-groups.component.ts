@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserGroupModel } from '@nearest-stars/data-models';
+import { UserGroupModel } from '@nearest-stars/schema';
 import { AdminUserGroupsService } from './admin-user-groups.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
-import { CmsBlogModel } from '@nearest-stars/data-models';
+import { CmsBlogModel } from '@nearest-stars/schema';
 import { Subscription } from 'rxjs';
 import { AdminBlogsService } from '../admin-blogs.service';
 
