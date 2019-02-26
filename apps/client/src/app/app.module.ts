@@ -4,7 +4,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NxModule } from '@nrwl/nx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BabylonModule } from './babylon/babylon.module';
 import { CmsModule } from './cms/cms.module';
 import { CompsModule } from './comps/comps.module';
 import { DocsModule } from './docs/docs.module';
@@ -19,7 +18,6 @@ import { PagesModule } from './pages/pages.module';
     NxModule.forRoot(),
     AppRoutingModule,
     CmsModule,
-    BabylonModule,
     CompsModule,
     DocsModule,
     PagesModule,

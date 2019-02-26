@@ -258,32 +258,6 @@
         }
       }
     },
-    "ui-core": {
-      "root": "libs/ui-core",
-      "sourceRoot": "libs/ui-core/src",
-      "projectType": "library",
-      "prefix": "nearest-stars",
-      "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/ui-core/src/test.ts",
-            "tsConfig": "libs/ui-core/tsconfig.spec.json",
-            "karmaConfig": "libs/ui-core/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ui-core/tsconfig.lib.json",
-              "libs/ui-core/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
     "api-auth": {
       "root": "apps/api-auth",
       "sourceRoot": "apps/api-auth/src",
@@ -463,6 +437,16 @@
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"
+    },
+    "@nrwl/schematics:library": {
+      "unitTestRunner": "karma"
+    },
+    "@nrwl/schematics:application": {
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
+    },
+    "@nrwl/schematics:node-application": {
+      "framework": "express"
     }
   }
 }

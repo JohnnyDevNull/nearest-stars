@@ -23,9 +23,6 @@
     "schema": {
       "tags": ["api backend client socket"]
     },
-    "ui-core": {
-      "tags": ["client"]
-    },
     "api-auth": {
       "tags": []
     },
