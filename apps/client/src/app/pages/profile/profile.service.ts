@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NotifyService } from '@client-services/notify/notify.service';
-import { RestService } from '@client-services/rest/rest.service';
-import { StateService } from '@client-services/state/state-service';
+import { NotifyService, RestService, StateService } from '@client-services/index';
 import { BaseRestModel, UserModel, UserProfileModel } from '@nearest-stars/schema';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';

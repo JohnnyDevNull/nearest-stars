@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { LayoutModule } from '@client-layout/index';
+import { CmsModule, SearchModule } from '@client-modules/index';
+import { PagesModule } from '@client-pages/index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NxModule } from '@nrwl/nx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CmsModule } from './cms/cms.module';
-import { CompsModule } from './comps/comps.module';
-import { DocsModule } from './docs/docs.module';
-import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +17,9 @@ import { PagesModule } from './pages/pages.module';
     NxModule.forRoot(),
     AppRoutingModule,
     CmsModule,
-    CompsModule,
-    DocsModule,
+    LayoutModule,
     PagesModule,
+    SearchModule,
     NgbModule
   ],
   providers: [

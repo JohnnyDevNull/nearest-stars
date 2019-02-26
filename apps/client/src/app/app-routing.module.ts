@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CmsBlogComponent } from './cms/cms-blog/cms-blog.component';
-import { MainComponent } from './comps/main/main.component';
-import { SearchComponent } from './comps/search/search.component';
-import { DocsComponent } from './docs/docs.component';
+import { MainComponent } from '@client-layout/main/main.component';
+import { CmsBlogComponent } from '@client-modules/cms/cms-blog/cms-blog.component';
+import { SearchComponent } from '@client-modules/search/search.component';
+import { DocsComponent } from '@client-pages/docs/docs.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';

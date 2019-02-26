@@ -17,6 +17,7 @@
       "@nearest-stars/ep-core": ["libs/ep-core/src/index.ts"],
       "@client-env/*": ["apps/client/src/environments/*"],
       "@client-layout/*": ["apps/client/src/app/layout/*"],
+      "@client-modules/*": ["apps/client/src/app/modules/*"],
       "@client-admin/*": ["apps/client/src/app/admin/*"],
       "@client-cms/*": ["apps/client/src/app/cms/*"],
       "@client-pages/*": ["apps/client/src/app/pages/*"],

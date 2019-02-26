@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AppIconModule } from '@client-modules/index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DxButtonModule, DxFormModule, DxHtmlEditorModule, DxListModule } from 'devextreme-angular';
-import { AppIconModule } from './../app-icon.module';
 import { AdminArticlesItemComponent } from './admin-articles/admin-articles-item/admin-articles-item.component';
 import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
 import { AdminBlogsItemComponent } from './admin-blogs/admin-blogs-item/admin-blogs-item.component';

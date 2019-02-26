@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { StateService } from '../../services/state/state-service';
-import { SearchService } from '../search/search.service';
+import { SearchService } from '@client-modules/index';
+import { StateService } from '@client-services/index';
 
 @Component({
   selector: 'nearest-stars-header',

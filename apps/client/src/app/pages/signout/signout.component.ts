@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StateService } from '../../services/state/state-service';
 import { Router } from '@angular/router';
+import { StateService } from '@client-services/index';
 
 @Component({
   selector: 'nearest-stars-signout',
