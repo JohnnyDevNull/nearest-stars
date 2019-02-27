@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppIconModule } from '@client-modules/icon/app-icon.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from '@client-modules/index';
 import { DocsComponent } from './docs/docs.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -28,7 +28,7 @@ import { SignupService } from './signup/signup.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule,
+    MaterialModule,
     AppIconModule
   ],
   providers: [

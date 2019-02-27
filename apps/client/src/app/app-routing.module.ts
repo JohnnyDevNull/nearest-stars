@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from '@client-layout/main/main.component';
 import { CmsBlogComponent } from '@client-modules/cms/cms-blog/cms-blog.component';
+import { MainComponent } from '@client-modules/main/main.component';
 import { SearchComponent } from '@client-modules/search/search.component';
 import { DocsComponent } from '@client-pages/docs/docs.component';
 import { HomeComponent } from './pages/home/home.component';

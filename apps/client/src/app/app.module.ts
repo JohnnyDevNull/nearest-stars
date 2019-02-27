@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LayoutModule } from '@client-layout/index';
-import { CmsModule, SearchModule } from '@client-modules/index';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CmsModule, MainModule, MaterialModule, SearchModule } from '@client-modules/index';
 import { PagesModule } from '@client-pages/index';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NxModule } from '@nrwl/nx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     NxModule.forRoot(),
+    MainModule,
     AppRoutingModule,
+    MaterialModule,
     CmsModule,
-    LayoutModule,
     PagesModule,
-    SearchModule,
-    NgbModule
+    SearchModule
   ],
   providers: [
   ],

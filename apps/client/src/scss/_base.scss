@@ -1,0 +1,28 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+#page-wrapper {
+  overflow: hidden;
+
+  #page-header {
+
+  }
+
+  #page-content {
+    overflow: auto;
+    .content-inner {
+      padding: 20px;
+    }
+  }
+
+  #page-footer {
+    .mat-toolbar-single-row {
+      height: 48px;
+    }
+  }
+}

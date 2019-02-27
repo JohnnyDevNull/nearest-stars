@@ -1,53 +1,47 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <form class="ns-signup m-auto" #f="ngForm" (ngSubmit)="onSignUp(f)">
-        <h2 class="page-header">Sign Up</h2>
-        <div class="form-group">
-          <label for="emailInput">Email address</label>
-          <input type="email"
-                 class="form-control"
-                 id="emailInput"
-                 aria-describedby="emailHelp"
-                 placeholder="Enter email"
-                 name="email"
-                 ngModel
-                 required>
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="passwordInput">Password</label>
-          <input type="text"
-                 class="form-control"
-                 id="passwordInput"
-                 placeholder="Password"
-                 name="password"
-                 ngModel
-                 required>
-        </div>
-        <hr>
-        <div class="form-group">
-          <label for="usernameInput">Username</label>
-          <input type="text"
-                 class="form-control"
-                 id="usernameInput"
-                 placeholder="Username"
-                 name="username"
-                 ngModel
-                 required>
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox"
-                 class="form-check-input"
-                 id="policyCheck"
-                 name="policyCheck"
-                 ngModel
-                 required>
-          <label class="form-check-label" for="policyCheck">Yes, i've read the policies! Bla, bla...
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
+<form class="ns-signup m-auto" #f="ngForm" (ngSubmit)="onSignUp(f)">
+  <h2 class="page-header">Sign Up</h2>
+  <div class="form-group">
+    <label for="emailInput">Email address</label>
+    <input type="email"
+           class="form-control"
+           id="emailInput"
+           aria-describedby="emailHelp"
+           placeholder="Enter email"
+           name="email"
+           ngModel
+           required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
-</div>
+  <div class="form-group">
+    <label for="passwordInput">Password</label>
+    <input type="text"
+           class="form-control"
+           id="passwordInput"
+           placeholder="Password"
+           name="password"
+           ngModel
+           required>
+  </div>
+  <hr>
+  <div class="form-group">
+    <label for="usernameInput">Username</label>
+    <input type="text"
+           class="form-control"
+           id="usernameInput"
+           placeholder="Username"
+           name="username"
+           ngModel
+           required>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox"
+           class="form-check-input"
+           id="policyCheck"
+           name="policyCheck"
+           ngModel
+           required>
+    <label class="form-check-label" for="policyCheck">Yes, i've read the policies! Bla, bla...
+    </label>
+  </div>
+  <button mat-raised-button type="submit" color="primary">Submit</button>
+</form>

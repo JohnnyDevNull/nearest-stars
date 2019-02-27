@@ -1,40 +1,34 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <form class="ns-signin m-auto" #f="ngForm" (ngSubmit)="onSignin(f)">
-        <h2 class="page-header">Sign In</h2>
-        <div class="form-group">
-          <input type="email"
-                 class="form-control"
-                 id="emailInput"
-                 placeholder="Email"
-                 name="email"
-                 ngModel
-                 required
-                 email>
-        </div>
-        <div class="form-group">
-          <input type="password"
-                 class="form-control"
-                 id="passwordInput"
-                 placeholder="Password"
-                 name="password"
-                 ngModel
-                 required>
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox"
-                 class="form-check-input"
-                 id="rememberCheck"
-                 name="remember"
-                 ngModel>
-          <label class="form-check-label"
-                 for="rememberCheck">
-            Keep me signed in.
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.valid">Sign In</button>
-      </form>
-    </div>
+<form class="ns-signin m-auto" #f="ngForm" (ngSubmit)="onSignin(f)">
+  <h2 class="page-header">Sign In</h2>
+  <div class="form-group">
+    <input type="email"
+           class="form-control"
+           id="emailInput"
+           placeholder="Email"
+           name="email"
+           ngModel
+           required
+           email>
   </div>
-</div>
+  <div class="form-group">
+    <input type="password"
+           class="form-control"
+           id="passwordInput"
+           placeholder="Password"
+           name="password"
+           ngModel
+           required>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox"
+           class="form-check-input"
+           id="rememberCheck"
+           name="remember"
+           ngModel>
+    <label class="form-check-label"
+           for="rememberCheck">
+      Keep me signed in.
+    </label>
+  </div>
+  <button type="submit" mat-raised-button [disabled]="!f.valid">Sign In</button>
+</form>
