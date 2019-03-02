@@ -1,4 +1,12 @@
 @import 'variables';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/utilities';
+@import 'reset';
+
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
