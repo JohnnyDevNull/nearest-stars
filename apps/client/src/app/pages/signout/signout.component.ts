@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StateService } from '@client-services/index';
+import { AppStateService } from '@client-services/index';
 
 @Component({
   selector: 'nearest-stars-signout',
@@ -9,7 +9,7 @@ import { StateService } from '@client-services/index';
 export class SignoutComponent implements OnInit {
 
   constructor(
-    private stateServ: StateService,
+    private stateServ: AppStateService,
     private router: Router
   ) {
   }
@@ -18,7 +18,9 @@ export class SignoutComponent implements OnInit {
   }
 
   onSignOut() {
-    this.stateServ.logoutSubj.next(1);
+    this.stateServ.resetAuthData();
+    this.stateServ.propagation.next('user-auth');
+
     this.router.navigate(['/signin']);
   }
 }

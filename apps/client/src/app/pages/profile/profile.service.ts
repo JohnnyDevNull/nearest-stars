@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NotifyService, RestService, StateService } from '@client-services/index';
+import { NotifyService, RestService, AppStateService } from '@client-services/index';
 import { BaseRestModel, UserModel, UserProfileModel } from '@nearest-stars/schema';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -13,7 +13,7 @@ export class ProfileService {
 
   public constructor(
     private rest: RestService,
-    private state: StateService,
+    private state: AppStateService,
     private msgline: NotifyService
   ) {
   }

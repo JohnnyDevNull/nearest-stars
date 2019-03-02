@@ -1,7 +1,7 @@
-import { BaseRestModel } from '@nearest-stars/schema';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { StateService } from '../state/state-service';
+import { BaseRestModel } from '@nearest-stars/schema';
+import { AppStateService } from '../state/state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class RestService {
 
   public constructor(
     private http: HttpClient,
-    private state: StateService
+    private state: AppStateService
   ) {
   }
 

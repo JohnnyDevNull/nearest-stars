@@ -11,7 +11,6 @@ import { NotifyModel } from './notify.model';
 export class NotifyService {
 
   private messages: NotifyModel[] = [];
-  public updSubj = new Subject<any>();
 
   public constructor() {
   }
@@ -22,7 +21,6 @@ export class NotifyService {
 
   public showMessage(text: string, type: NotifyTypeEnum): void {
     this.messages.push({text, type});
-    this.updSubj.next(1);
   }
 
   public reset(): void {
@@ -31,7 +29,6 @@ export class NotifyService {
 
   public removeMessage(msg: NotifyModel): void {
     this.messages.splice(this.messages.indexOf(msg), 1);
-    this.updSubj.next(1);
   }
 
   public showMessageByResult(result: any, timeout = 3000): void {

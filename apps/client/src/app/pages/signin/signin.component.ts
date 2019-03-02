@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NotifyService, StateService } from '@client-services/index';
+import { AppStateService, NotifyService } from '@client-services/index';
 import { UserModel } from '@nearest-stars/schema';
 import * as HttpStatus from 'http-status-codes';
 import { SigninService } from './signin.service';
@@ -15,7 +15,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private signinServ: SigninService,
     private msgServ: NotifyService,
-    private stateServ: StateService,
+    private stateServ: AppStateService,
     private router: Router
   ) {
   }
@@ -37,8 +37,8 @@ export class SigninComponent implements OnInit {
     this.signinServ.doSignin(user).subscribe(
       (res) => {
         if (res.meta.code === HttpStatus.CREATED && !res.meta.error) {
-          res.data.useLocalStorage = f.value.remember ? true : false;
-          this.stateServ.loginSubj.next(res.data);
+          this.stateServ.setAuthData(res.data, f.value.remember ? true : false);
+          this.stateServ.propagation.next('user-auth');
           this.router.navigate(['/profile']);
         } else {
           this.msgServ.showMessageByResult(res)

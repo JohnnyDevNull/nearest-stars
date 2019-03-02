@@ -5,5 +5,4 @@ export interface TokenResponseModel {
   username: string;
   activated: boolean;
   locked: boolean;
-  useLocalStorage?: boolean;
 }
