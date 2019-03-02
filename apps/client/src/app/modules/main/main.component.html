@@ -1,20 +1,22 @@
 <div id="page-wrapper" class="d-flex flex-column h-100">
   <div id="page-header">
     <mat-toolbar color="primary">
-      <a mat-button routerLink="/home">My Application</a>
-      <a mat-button routerLink="/home">Home</a>
+      <a mat-button routerLink="/home">Nearest Stars</a>
       <a mat-button routerLink="/blog">Blog</a>
       <a mat-button routerLink="/docs">Docs</a>
       <span class="menu-spacer"></span>
-      <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>perm_identity</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <a mat-menu-item routerLink="/signin">Login</a>
-        <a mat-menu-item routerLink="/signup">Register</a>
-        <a mat-menu-item routerLink="/profile">Profile</a>
-        <a mat-menu-item routerLink="/signout">Logout</a>
-      </mat-menu>
+      <a mat-button routerLink="/signin">Signin</a>
+      <span class="mat-small">or</span>
+      <a mat-button routerLink="/signup">Signup</a>
+      <ng-container *ngIf="isLoggedIn">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>perm_identity</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item routerLink="/profile">Profile</a>
+          <a mat-menu-item routerLink="/signout">Logout</a>
+        </mat-menu>
+      </ng-container>
     </mat-toolbar>
   </div>
   <div id="page-content" class="flex-fill flex-grow-1">
