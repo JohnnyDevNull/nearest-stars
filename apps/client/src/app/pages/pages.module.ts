@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppIconModule } from '@client-modules/icon/app-icon.module';
 import { MaterialModule } from '@client-modules/index';
@@ -27,6 +27,7 @@ import { SignupService } from './signup/signup.service';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
     AppIconModule

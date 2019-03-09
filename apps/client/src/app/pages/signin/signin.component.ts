@@ -8,11 +8,12 @@ import { SigninService } from './signin.service';
 
 @Component({
   selector: 'nearest-stars-signin',
-  templateUrl: './signin.component.html'
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
 
-  constructor(
+  public constructor(
     private signinServ: SigninService,
     private msgServ: NotifyService,
     private stateServ: AppStateService,
@@ -20,10 +21,10 @@ export class SigninComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
-  onSignin(f: NgForm) {
+  public onSignin(f: NgForm): void {
 
     if (!f.valid) {
       return;
@@ -37,7 +38,7 @@ export class SigninComponent implements OnInit {
     this.signinServ.doSignin(user).subscribe(
       (res) => {
         if (res.meta.code === HttpStatus.CREATED && !res.meta.error) {
-          this.stateServ.setAuthData(res.data, f.value.remember ? true : false);
+          this.stateServ.setAuthData(res.data, !!f.value.remember);
           this.stateServ.propagation.next('user-auth');
           this.router.navigate(['/profile']);
         } else {
