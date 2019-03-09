@@ -34,13 +34,13 @@ export class CategoryController {
       let cats = await catRepo.findOne({where: { title: title }});
 
       if (cats) {
-        throw new Error('Entitiy already exists with title "' + title + '"');
+        throw new Error('Entity already exists with title "' + title + '"');
       }
 
       cats = await catRepo.findOne({where: { alias: alias }});
 
       if (cats) {
-        throw new Error('Entitiy already exists with alias "' + alias + '"');
+        throw new Error('Entity already exists with alias "' + alias + '"');
       }
 
       const cat: CmsCategoryModel = {};
@@ -141,7 +141,7 @@ export class CategoryController {
       cat.text = text;
 
       if (published !== undefined && +published !== +cat.published) {
-        cat.published = +published === 0 ? false : true;
+        cat.published = +published !== 0;
         if (cat.published) {
           cat.publishedAt = new Date();
         } else {
@@ -150,7 +150,7 @@ export class CategoryController {
       }
 
       if (locked !== undefined && +locked !== +cat.locked) {
-        cat.locked = +locked === 0 ? false : true;
+        cat.locked = +locked !== 0;
         if (cat.locked) {
           cat.lockedAt = new Date();
         }

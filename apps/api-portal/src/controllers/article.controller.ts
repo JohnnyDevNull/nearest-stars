@@ -34,13 +34,13 @@ export class ArticleController {
       let arts = await artRepo.findOne({where: { title: title }});
 
       if (arts) {
-        throw new Error('Entitiy already exists with title "' + title + '"');
+        throw new Error('Entity already exists with title "' + title + '"');
       }
 
       arts = await artRepo.findOne({where: { alias: alias }});
 
       if (arts) {
-        throw new Error('Entitiy already exists with alias "' + alias + '"');
+        throw new Error('Entity already exists with alias "' + alias + '"');
       }
 
       const art: CmsArticleModel = {};
@@ -141,7 +141,7 @@ export class ArticleController {
       art.text = text;
 
       if (published !== undefined && +published !== +art.published) {
-        art.published = +published === 0 ? false : true;
+        art.published = +published !== 0;
         if (art.published) {
           art.publishedAt = new Date();
         } else {
@@ -150,7 +150,7 @@ export class ArticleController {
       }
 
       if (locked !== undefined && +locked !== +art.locked) {
-        art.locked = +locked === 0 ? false : true;
+        art.locked = +locked !== 0;
         if (art.locked) {
           art.lockedAt = new Date();
         }

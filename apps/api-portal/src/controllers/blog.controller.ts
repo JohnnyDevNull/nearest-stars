@@ -34,13 +34,13 @@ export class BlogController {
       let blogs = await blogRepo.findOne({where: { title: title }});
 
       if (blogs) {
-        throw new Error('Entitiy already exists with title "' + title + '"');
+        throw new Error('Entity already exists with title "' + title + '"');
       }
 
       blogs = await blogRepo.findOne({where: { alias: alias }});
 
       if (blogs) {
-        throw new Error('Entitiy already exists with alias "' + alias + '"');
+        throw new Error('Entity already exists with alias "' + alias + '"');
       }
 
       const blog: CmsBlogModel = {};
@@ -141,7 +141,7 @@ export class BlogController {
       blog.text = text;
 
       if (published !== undefined && +published !== +blog.published) {
-        blog.published = +published === 0 ? false : true;
+        blog.published = +published !== 0;
         if (blog.published) {
           blog.publishedAt = new Date();
         } else {
@@ -150,7 +150,7 @@ export class BlogController {
       }
 
       if (locked !== undefined && +locked !== +blog.locked) {
-        blog.locked = +locked === 0 ? false : true;
+        blog.locked = +locked !== 0;
         if (blog.locked) {
           blog.lockedAt = new Date();
         }
