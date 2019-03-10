@@ -7,7 +7,8 @@ import { SignupService } from './signup.service';
 
 @Component({
   selector: 'nearest-stars-signup',
-  templateUrl: './signup.component.html'
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit, OnDestroy {
 
