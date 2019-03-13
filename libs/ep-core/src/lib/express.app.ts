@@ -4,6 +4,25 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import { MainRouter } from './routes/index';
 import { createConnection, ConnectionOptions } from 'typeorm';
+import {
+  CmsArticleEntity,
+  CmsBlogEntity,
+  CmsCategoryEntity,
+  CmsCategoryTypeEntity,
+  CmsTagEntity,
+  CmsWeblinkEntity,
+  ObjectCatalogEntity,
+  ObjectCoordinateEntity,
+  ObjectEntity,
+  ObjectHistoryEntity,
+  ObjectMagnitudeEntity, ObjectOrbitEntity, ObjectPhysicalInfoEntity,
+  ObjectSystemEntity,
+  ObjectSystemTypeEntity, ObjectTypeEntity, ObjectVectorEntity,
+  UserEntity,
+  UserGroupEntity,
+  UserProfileEntity,
+  UserTokenEntity
+} from '@nearest-stars/schema';
 
 export class ExpressApp {
 
@@ -52,7 +71,32 @@ export class ExpressApp {
   public listen() {
     const PORT = process.env.PORT || this.config.PORT || 3000;
 
-    createConnection((<ConnectionOptions>this.config.DBConf))
+    const conf = this.config.DBConf;
+    conf.entities = [
+      UserEntity,
+      UserGroupEntity,
+      UserProfileEntity,
+      UserTokenEntity,
+      CmsArticleEntity,
+      CmsBlogEntity,
+      CmsCategoryEntity,
+      CmsCategoryTypeEntity,
+      CmsTagEntity,
+      CmsWeblinkEntity,
+      ObjectSystemEntity,
+      ObjectSystemTypeEntity,
+      ObjectEntity,
+      ObjectCatalogEntity,
+      ObjectCoordinateEntity,
+      ObjectHistoryEntity,
+      ObjectMagnitudeEntity,
+      ObjectOrbitEntity,
+      ObjectPhysicalInfoEntity,
+      ObjectTypeEntity,
+      ObjectVectorEntity
+    ];
+
+    createConnection((<ConnectionOptions>conf))
     .then(async connection => {
       this.app.listen(PORT, err => {
         if (err) {

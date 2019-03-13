@@ -28,7 +28,7 @@ export const ObjectEntity = new EntitySchema<ObjectModel>({
       inverseSide: 'objects'
     },
     system: {
-      target: 'AstroSystem',
+      target: 'ObjectSystem',
       type: 'many-to-one',
       joinColumn: true,
       inverseSide: 'object'
