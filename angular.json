@@ -159,7 +159,9 @@
         "serve": {
           "builder": "@nrwl/builders:node-execute",
           "options": {
-            "buildTarget": "api-objects:build"
+            "buildTarget": "api-objects:build",
+            "inspect": true,
+            "port": 7003
           }
         },
         "lint": {
@@ -211,7 +213,9 @@
         "serve": {
           "builder": "@nrwl/builders:node-execute",
           "options": {
-            "buildTarget": "api-socket:build"
+            "buildTarget": "api-socket:build",
+            "inspect": true,
+            "port": 7002
           }
         },
         "lint": {
@@ -289,7 +293,9 @@
         "serve": {
           "builder": "@nrwl/builders:node-execute",
           "options": {
-            "buildTarget": "api-auth:build"
+            "buildTarget": "api-auth:build",
+            "inspect": true,
+            "port": 7000
           }
         },
         "lint": {
@@ -372,7 +378,9 @@
         "serve": {
           "builder": "@nrwl/builders:node-execute",
           "options": {
-            "buildTarget": "api-portal:build"
+            "buildTarget": "api-portal:build",
+            "inspect": true,
+            "port": 7001
           }
         },
         "lint": {
