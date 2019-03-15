@@ -1,5 +1,10 @@
 .ns-signup {
   max-width: 500px;
+
+  mat-card-title {
+    margin-bottom: 20px;
+  }
+
   mat-form-field {
     width: 100%;
   }
