@@ -16,7 +16,7 @@ export class AdminBlogsService {
   }
 
   public fetchBlogsList() {
-    return this.restServ.doGet<CmsBlogModel[]>('api/blog', true).pipe(
+    return this.restServ.doGet<CmsBlogModel[]>('api/portal/blog', true).pipe(
       tap((res) => {
         this.blogs = res.data;
       })
@@ -36,14 +36,14 @@ export class AdminBlogsService {
   }
 
   public updateBlog(blog: CmsBlogModel) {
-    return this.restServ.doPut<BaseRestModel<CmsBlogModel>>('api/blog/' + blog.id, blog, true);
+    return this.restServ.doPut<BaseRestModel<CmsBlogModel>>('api/portal/blog/' + blog.id, blog, true);
   }
 
   public createBlog(blog: CmsBlogModel) {
-    return this.restServ.doPost<BaseRestModel<CmsBlogModel>>('api/blog', blog, true);
+    return this.restServ.doPost<BaseRestModel<CmsBlogModel>>('api/portal/blog', blog, true);
   }
 
   public deleteBlog(blogId: number) {
-    return this.restServ.doDelete<BaseRestModel<any>>('api/blog/' + blogId, true);
+    return this.restServ.doDelete<BaseRestModel<any>>('api/portal/blog/' + blogId, true);
   }
 }

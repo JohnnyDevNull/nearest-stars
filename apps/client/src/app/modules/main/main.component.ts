@@ -24,4 +24,7 @@ export class MainComponent implements OnInit {
     });
   }
 
+  public toggleLeftSideNav(): void {
+
+  }
 }

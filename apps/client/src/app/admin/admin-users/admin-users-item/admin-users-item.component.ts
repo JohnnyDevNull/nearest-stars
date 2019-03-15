@@ -9,7 +9,8 @@ import { AdminUsersService } from '../admin-users.service';
 
 @Component({
   selector: 'nearest-stars-admin-users-item',
-  templateUrl: './admin-users-item.component.html'
+  templateUrl: './admin-users-item.component.html',
+  styleUrls: ['./admin-users-item.component.scss']
 })
 export class AdminUsersItemComponent implements OnInit, OnDestroy {
 

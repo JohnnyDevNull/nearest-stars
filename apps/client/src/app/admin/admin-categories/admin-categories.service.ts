@@ -16,7 +16,7 @@ export class AdminCategoriesService {
   }
 
   public fetchCatsList() {
-    return this.restServ.doGet<CmsCategoryModel[]>('api/category', true).pipe(
+    return this.restServ.doGet<CmsCategoryModel[]>('api/portal/category', true).pipe(
       tap((res) => {
         this.cats = res.data;
       })
@@ -36,14 +36,14 @@ export class AdminCategoriesService {
   }
 
   public updateCat(blog: CmsCategoryModel) {
-    return this.restServ.doPut<BaseRestModel<CmsCategoryModel>>('api/category/' + blog.id, blog, true);
+    return this.restServ.doPut<BaseRestModel<CmsCategoryModel>>('api/portal/category/' + blog.id, blog, true);
   }
 
   public createCat(blog: CmsCategoryModel) {
-    return this.restServ.doPost<BaseRestModel<CmsCategoryModel>>('api/category', blog, true);
+    return this.restServ.doPost<BaseRestModel<CmsCategoryModel>>('api/portal/category', blog, true);
   }
 
   public deleteCat(blogId: number) {
-    return this.restServ.doDelete<BaseRestModel<any>>('api/category/' + blogId, true);
+    return this.restServ.doDelete<BaseRestModel<any>>('api/portal/category/' + blogId, true);
   }
 }

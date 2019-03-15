@@ -1,51 +1,94 @@
-<h2 class="page-header">Admin / Articles</h2>
-<div class="button-bar mb-2">
-  <a class="btn btn-success btn-sm" routerLink="/admin/articles/item/new">New</a>
-  <button class="btn btn-primary btn-sm ml-2" (click)="onSync()">
-    <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>
-  </button>
-</div>
-<table class="table table-striped table-sm">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Alias</th>
-      <th>Created</th>
-      <th>Updated</th>
-      <th>Published</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cat of cats; let i = index">
-      <td>{{ cat.id }}</td>
-      <td>{{ cat.title }}</td>
-      <td>{{ cat.alias }}</td>
-      <td>{{ cat.createdAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
-      <td>{{ cat.updatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
-      <td>{{ cat.publishedAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
-      <td>
-        <div ngbDropdown class="d-inline-block" placement="left">
-          <button class="btn btn-secondary btn-sm" id="dropdownBasic1" ngbDropdownToggle>
-            <fa-icon [icon]="['fas', 'cog']"></fa-icon>
-          </button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <a class="dropdown-item btn-icon" [routerLink]="['item', 'edit', i]">
-              <span class="b-ico">
-                <fa-icon [icon]="['fas', 'edit']"></fa-icon>
-              </span>
-              <span class="b-txt">Edit</span>
-            </a>
-            <button class="dropdown-item btn-icon" (click)="onDeleteRow(cat.id)">
-              <span class="b-ico">
-                <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
-              </span>
-              <span class="b-txt">Delete</span>
-            </button>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<mat-card>
+  <mat-card-title>Admin / Articles</mat-card-title>
+  <mat-card-content>
+    <mat-toolbar [style.height]="'auto'">
+      <a mat-icon-button routerLink="/admin/articles/item/new">
+        <mat-icon>add</mat-icon>
+      </a>
+      <button mat-icon-button (click)="onSync()">
+        <mat-icon>sync</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-table [dataSource]="cats">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="alias">
+        <mat-header-cell *matHeaderCellDef>Alias</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.alias }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.createdAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="updateAt">
+        <mat-header-cell *matHeaderCellDef>Updated</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.updateAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="publishedAt">
+        <mat-header-cell *matHeaderCellDef>Published</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.publishedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['id', 'title', 'createdAt', 'updateAt', 'publishedAt']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['id', 'title', 'createdAt', 'updateAt', 'publishedAt']"></mat-row>
+    </mat-table>
+
+    <!-- <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Alias</th>
+          <th>Created</th>
+          <th>Updated</th>
+          <th>Published</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of cats; let i = index">
+          <td>{{ cat.id }}</td>
+          <td>{{ cat.title }}</td>
+          <td>{{ cat.alias }}</td>
+          <td>{{ cat.createdAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+          <td>{{ cat.updatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+          <td>{{ cat.publishedAt | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+          <td>
+            <div ngbDropdown class="d-inline-block" placement="left">
+              <button class="btn btn-secondary btn-sm" id="dropdownBasic1" ngbDropdownToggle>
+                <fa-icon [icon]="['fas', 'cog']"></fa-icon>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <a class="dropdown-item btn-icon" [routerLink]="['item', 'edit', i]">
+                  <span class="b-ico">
+                    <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                  </span>
+                  <span class="b-txt">Edit</span>
+                </a>
+                <button class="dropdown-item btn-icon" (click)="onDeleteRow(cat.id)">
+                  <span class="b-ico">
+                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                  </span>
+                  <span class="b-txt">Delete</span>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+
+  </mat-card-content>
+</mat-card>

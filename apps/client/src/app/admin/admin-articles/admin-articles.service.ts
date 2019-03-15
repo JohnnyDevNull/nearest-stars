@@ -16,7 +16,7 @@ export class AdminArticlesService {
   }
 
   public fetchArtList() {
-    return this.restServ.doGet<CmsArticleModel[]>('api/article', true).pipe(
+    return this.restServ.doGet<CmsArticleModel[]>('api/portal/article', true).pipe(
       tap((res) => {
         this.arts = res.data;
       })
@@ -36,14 +36,14 @@ export class AdminArticlesService {
   }
 
   public updateArt(article: CmsArticleModel) {
-    return this.restServ.doPut<BaseRestModel<CmsArticleModel>>('api/article/' + article.id, article, true);
+    return this.restServ.doPut<BaseRestModel<CmsArticleModel>>('api/portal/article/' + article.id, article, true);
   }
 
   public createArt(article: CmsArticleModel) {
-    return this.restServ.doPost<BaseRestModel<CmsArticleModel>>('api/article', article, true);
+    return this.restServ.doPost<BaseRestModel<CmsArticleModel>>('api/portal/article', article, true);
   }
 
   public deleteArt(artId: number) {
-    return this.restServ.doDelete<BaseRestModel<any>>('api/article/' + artId, true);
+    return this.restServ.doDelete<BaseRestModel<any>>('api/portal/article/' + artId, true);
   }
 }

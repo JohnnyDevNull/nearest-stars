@@ -16,7 +16,7 @@ export class AdminUserGroupsService {
   }
 
   public fetchUserGroupList() {
-    return this.restServ.doGet<UserGroupModel[]>('api/usergroup', true).pipe(
+    return this.restServ.doGet<UserGroupModel[]>('api/auth/usergroup', true).pipe(
       tap((res) => {
         this.userGroups = res.data;
       })
@@ -36,14 +36,14 @@ export class AdminUserGroupsService {
   }
 
   public updateUserGroup(userGroup: UserGroupModel) {
-    return this.restServ.doPut<UserGroupModel>('api/usergroup/' + userGroup.id, userGroup, true);
+    return this.restServ.doPut<UserGroupModel>('api/auth/usergroup/' + userGroup.id, userGroup, true);
   }
 
   public createUserGroup(userGroup: UserGroupModel) {
-    return this.restServ.doPost<UserGroupModel>('api/usergroup', userGroup, true);
+    return this.restServ.doPost<UserGroupModel>('api/auth/usergroup', userGroup, true);
   }
 
   public deleteUserGroup(groupdId: number) {
-    return this.restServ.doDelete<any>('api/usergroup/' + groupdId, true);
+    return this.restServ.doDelete<any>('api/auth/usergroup/' + groupdId, true);
   }
 }

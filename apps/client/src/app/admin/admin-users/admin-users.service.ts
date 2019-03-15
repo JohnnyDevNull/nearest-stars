@@ -16,7 +16,7 @@ export class AdminUsersService {
   }
 
   public fetchUserList() {
-    return this.restServ.doGet<UserModel[]>('api/user', true).pipe(
+    return this.restServ.doGet<UserModel[]>('api/auth/user', true).pipe(
       tap((res) => {
         this.users = res.data;
       })
@@ -36,14 +36,14 @@ export class AdminUsersService {
   }
 
   public updateUser(user: UserModel) {
-    return this.restServ.doPut<BaseRestModel<UserModel>>('api/user/' + user.id, user, true);
+    return this.restServ.doPut<BaseRestModel<UserModel>>('api/auth/user/' + user.id, user, true);
   }
 
   public createUser(user: UserModel) {
-    return this.restServ.doPost<BaseRestModel<UserModel>>('api/user', user, true);
+    return this.restServ.doPost<BaseRestModel<UserModel>>('api/auth/user', user, true);
   }
 
   public deleteUser(userId: number) {
-    return this.restServ.doDelete<BaseRestModel<any>>('api/user/' + userId, true);
+    return this.restServ.doDelete<BaseRestModel<any>>('api/auth/user/' + userId, true);
   }
 }

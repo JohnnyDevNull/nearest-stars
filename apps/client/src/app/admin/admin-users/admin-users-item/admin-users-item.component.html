@@ -1,33 +1,57 @@
-<h2 class="page-header">Admin / Users / Item</h2>
-<p>
-  <span class="badge" [ngClass]="mode === 'new' ? 'badge-success' : 'badge-warning'">mode: {{ mode }}</span>
-  <span class="badge badge-secondary ml-1" *ngIf="mode === 'edit'">index: {{ index }}</span>
-  <span class="badge badge-info ml-1" *ngIf="item.id !== null">id: {{ item.id }}</span>
-</p>
+<mat-card>
+  <mat-card-title>Admin / Users / Item</mat-card-title>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip [color]="mode === 'new' ? 'primary' : 'warn'" selected>mode: {{ mode }}</mat-chip>
+      <mat-chip *ngIf="mode === 'edit'">index: {{ index }}</mat-chip>
+      <mat-chip *ngIf="item.id !== null">id: {{ item.id }}</mat-chip>
+    </mat-chip-list>
 
-<form (submit)="onDxSubmit()">
-  <dx-form id="form" labelLocation="top" [(formData)]="item" [showValidationSummary]="true" #dxForm>
-    <dxi-item dataField="email" [validationRules]="[{type: 'required', message: 'The Email is required'}]"></dxi-item>
-    <dxi-item dataField="username" [validationRules]="[{type: 'required', message: 'Username cannot be empty'}]"></dxi-item>
-    <dxi-item dataField="password" [editorOptions]="{mode: 'password'}"></dxi-item>
-    <dxi-item dataField="passwordRepeat" [editorOptions]="{mode: 'password'}"></dxi-item>
-    <dxi-item>
-      <dx-list [items]="userGroups" keyExpr="id" selectionMode="multiple" [showSelectionControls]="true" [(selectedItems)]="selectedGroups">
-        <div *dxTemplate="let item of 'item'">
-          {{ item.name }}
-        </div>
-      </dx-list>
-    </dxi-item>
-    <dxi-item dataField="activated" editorType="dxCheckBox" [editorOptions]="{ text: item.activatedAt }">
-      <dxo-label location="left" alignment="left"></dxo-label>
-    </dxi-item>
-    <dxi-item dataField="locked" editorType="dxCheckBox" [editorOptions]="{ text: item.lockedAt }">
-      <dxo-label location="left" alignment="left"></dxo-label>
-    </dxi-item>
-  </dx-form>
-  <div class="mt-2">
-    <dx-button text="Submit" type="success" [useSubmitBehavior]="true" class="mr-1"></dx-button>
-    <dx-button text="Discard" type="default" class="mr-1" (onClick)="onDiscard()"></dx-button>
-    <dx-button text="Delete" type="danger" (onClick)="onDelete()"></dx-button>
-  </div>
-</form>
+    <form (submit)="onDxSubmit()" id="userEditForm">
+
+      <section>
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" name="email" ngModel required email>
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Username" name="username" ngModel required>
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" name="password" ngModel>
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password Repeat" name="passwordRepeat" ngModel>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-selection-list style="width: 180px;">
+          <mat-list-option *ngFor="let group of userGroups">
+            {{ group.name }}
+          </mat-list-option>
+        </mat-selection-list>
+      </section>
+
+      <section>
+        <label for="activatedCheck-input" [style.width]="'75px'">Activated:</label>
+        <mat-checkbox id="activatedCheck">{{ item.activatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
+      </section>
+      <section>
+        <label for="lockedCheck-input" [style.width]="'75px'">Locked:</label>
+        <mat-checkbox id="lockedCheck">{{ item.lockedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
+      </section>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button type="submit" color="primary" form="userEditForm">Submit</button>
+    <button mat-raised-button type="button" color="warn" (onClick)="onDiscard()">Discard</button>
+    <button mat-raised-button type="button" color="warn" (onClick)="onDelete()">Delete</button>
+  </mat-card-actions>
+</mat-card>

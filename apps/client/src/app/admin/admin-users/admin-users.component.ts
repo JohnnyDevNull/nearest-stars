@@ -5,11 +5,17 @@ import { AdminUsersService } from './admin-users.service';
 
 @Component({
   selector: 'nearest-stars-admin-users',
-  templateUrl: './admin-users.component.html'
+  templateUrl: './admin-users.component.html',
+  styleUrls: ['./admin-users.component.scss']
 })
 export class AdminUsersComponent implements OnInit {
 
   public users: UserModel[] = [];
+  public userColumns: string[] = [
+    'id', 'username', 'email',
+    'createdAt', 'updateAt', 'activatedAt',
+    'actions'
+  ];
 
   public constructor (
     private admServ: AdminUsersService,
