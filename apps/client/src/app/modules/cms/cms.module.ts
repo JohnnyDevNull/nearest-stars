@@ -1,3 +1,4 @@
+import { MaterialModule } from './../material/material.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CmsArticleComponent } from './cms-article/cms-article.component';
@@ -13,7 +14,8 @@ import { CmsComponent } from './cms.component';
     CmsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class CmsModule { }

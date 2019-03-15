@@ -1,41 +1,43 @@
-<mat-card class="ns-signup m-auto">
-  <mat-card-title>Signup</mat-card-title>
-  <mat-card-content>
-    <form #f="ngForm" (ngSubmit)="onSignUp(f)" id="signupForm">
-      <mat-form-field>
-        <input matInput
-               type="email"
-               id="emailInput"
-               aria-describedby="emailHelp"
-               placeholder="Enter email"
-               name="email"
-               ngModel
-               required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput
-               type="password"
-               id="passwordInput"
-               placeholder="Password"
-               name="password"
-               ngModel
-               required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput
-               type="text"
-               id="usernameInput"
-               placeholder="Username"
-               name="username"
-               ngModel
-               required>
-      </mat-form-field>
-      <mat-checkbox id="policyCheck" name="policyCheck" ngModel required>
-        Yes, I have read the privacy policy!
-      </mat-checkbox>
-    </form>
-  </mat-card-content>
-  <mat-card-actions align="end">
-    <button mat-raised-button color="primary" form="signupForm" [disabled]="!f.valid">Signup</button>
-  </mat-card-actions>
-</mat-card>
+<div class="content-inner">
+  <mat-card class="ns-signup m-auto">
+    <mat-card-title>Signup</mat-card-title>
+    <mat-card-content>
+      <form #f="ngForm" (ngSubmit)="onSignUp(f)" id="signupForm">
+        <mat-form-field>
+          <input matInput
+                 type="email"
+                 id="emailInput"
+                 aria-describedby="emailHelp"
+                 placeholder="Enter email"
+                 name="email"
+                 ngModel
+                 required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 type="password"
+                 id="passwordInput"
+                 placeholder="Password"
+                 name="password"
+                 ngModel
+                 required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 type="text"
+                 id="usernameInput"
+                 placeholder="Username"
+                 name="username"
+                 ngModel
+                 required>
+        </mat-form-field>
+        <mat-checkbox id="policyCheck" name="policyCheck" ngModel required>
+          Yes, I have read the privacy policy!
+        </mat-checkbox>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" form="signupForm" [disabled]="!f.valid">Signup</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -4,7 +4,8 @@ import { AppStateService } from '@client-services/index';
 
 @Component({
   selector: 'nearest-stars-signout',
-  templateUrl: './signout.component.html'
+  templateUrl: './signout.component.html',
+  styleUrls: ['./signout.component.scss']
 })
 export class SignoutComponent implements OnInit {
 

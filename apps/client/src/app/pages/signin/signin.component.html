@@ -1,20 +1,22 @@
-<mat-card class="ns-signin m-auto">
-  <mat-card-title>Signin</mat-card-title>
-  <mat-card-content>
-    <form  #f="ngForm" (ngSubmit)="onSignin(f)" id="signinForm">
-      <mat-form-field>
-        <input matInput type="email" placeholder="Email" id="emailInput" name="email" ngModel required email>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" id="passwordInput" name="password" ngModel required>
-      </mat-form-field>
-      <div class="d-flex">
-        <div class="flex-grow-1"><mat-checkbox id="rememberInput" name="remember" ngModel>Keep me signed in.</mat-checkbox></div>
-        <div><a href="/">Forgot Password?</a></div>
-      </div>
-    </form>
-  </mat-card-content>
-  <mat-card-actions align="end">
-    <button mat-raised-button color="primary" form="signinForm" [disabled]="!f.valid">Signin</button>
-  </mat-card-actions>
-</mat-card>
+<div class="content-inner">
+  <mat-card class="ns-signin m-auto">
+    <mat-card-title>Signin</mat-card-title>
+    <mat-card-content>
+      <form  #f="ngForm" (ngSubmit)="onSignin(f)" id="signinForm">
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" id="emailInput" name="email" ngModel required email>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" id="passwordInput" name="password" ngModel required>
+        </mat-form-field>
+        <div class="d-flex">
+          <div class="flex-grow-1"><mat-checkbox id="rememberInput" name="remember" ngModel>Keep me signed in.</mat-checkbox></div>
+          <div><a href="/">Forgot Password?</a></div>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" form="signinForm" [disabled]="!f.valid">Signin</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,5 +1,9 @@
-<div class="ns-signout m-auto">
-  <h2 class="page-header">Sign Out</h2>
-  <p>Do you really want to sign out?</p>
-  <button mat-raised-button (click)="onSignOut()">Sign Out</button>
+<div class="content-inner">
+  <mat-card class="ns-signout m-auto">
+    <mat-card-title>Sign Out</mat-card-title>
+    <mat-card-content>Do you really want to sign out?</mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="onSignOut()">Sign Out</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
