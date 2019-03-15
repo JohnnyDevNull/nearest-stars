@@ -152,6 +152,12 @@ export class AppStateService {
       },
       isLoggedIn: false
     };
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('username');
+    localStorage.removeItem('tokenExpire');
+    localStorage.removeItem('userIsActivated');
+    localStorage.removeItem('userIsLocked');
     if (prop) {
       this.propagation.next('user-auth');
     }
