@@ -18,9 +18,7 @@ export class SignoutComponent implements OnInit {
   }
 
   onSignOut() {
-    this.stateServ.resetAuthData();
-    this.stateServ.propagation.next('user-auth');
-
+    this.stateServ.resetAuthData(true);
     this.router.navigate(['/signin']);
   }
 }

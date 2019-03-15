@@ -138,7 +138,7 @@ export class AppStateService {
     }
   }
 
-  public resetAuthData() {
+  public resetAuthData(prop: boolean = false) {
     this.appState.auth = {
       user: {
         userId: 0,
@@ -152,5 +152,8 @@ export class AppStateService {
       },
       isLoggedIn: false
     };
+    if (prop) {
+      this.propagation.next('user-auth');
+    }
   }
 }
