@@ -1,77 +1,52 @@
-
-<h2 class="page-header">Profile</h2>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="row">
-    <div class="col-md-6">
-      <h4>Account data</h4>
-      <div class="form-group">
-        <label for="usernameInput">Username</label>
-        <input type="text" class="form-control" id="usernameInput" name="username" [ngModel]="user.username">
-      </div>
-      <div class="form-group">
-        <label for="emailInput">Email</label>
-        <input type="text" class="form-control" id="emailInput" name="email" [ngModel]="user.email">
-      </div>
-      <div class="form-group">
-        <label for="passwordInput1">New password</label>
-        <input type="text" class="form-control" id="passwordInput1" name="password" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="passwordInput2">Repeat new password</label>
-        <input type="text" class="form-control" id="passwordInput2" name="password2" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="backupEmailInput">Backup-Email</label>
-        <input type="text" class="form-control" id="backupEmailInput" name="backupmail" ngModel>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h4>Personal data</h4>
-      <div class="form-group">
-        <label for="firstNameInput">First name</label>
-        <input type="text" class="form-control" id="firstNameInput" name="firstname" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="lastNameInput">Last name</label>
-        <input type="text" class="form-control" id="lastNameInput" name="lastname" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="birthDateInput">Birthdate</label>
-        <input type="date" class="form-control" id="birthDateInput" name="brithdate" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="addressLineInput">Address line 1</label>
-        <input type="text" class="form-control" id="addressLineInput" name="addressline1" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="addressAdditionInput">Address info</label>
-        <input type="text" class="form-control mt-1" id="addressAdditionInput" name="addressline2" ngModel>
-        <input type="text" class="form-control mt-1" name="addressline3" ngModel>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-3">
-          <label for="zipCodeInput">Postcode</label>
-          <input type="text" class="form-control" id="zipCodeInput" name="zip" ngModel>
-        </div>
-        <div class="col-sm-9">
-          <label for="cityInput">Town / City</label>
-          <input type="text" class="form-control" id="cityInput" name="city" ngModel>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="phone1Input">Phone 1</label>
-        <input type="text" class="form-control mt-1" id="phone1Input" name="phone1" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="phone2Input">Phone 2</label>
-        <input type="text" class="form-control mt-1" id="phone2Input" name="phone2" ngModel>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <button type="submit" mat-raised-button color="primary">Save</button>
-      <button type="button" mat-raised-button color="warn">Discard</button>
-    </div>
-  </div>
-</form>
+<mat-card class="ns-profile m-auto">
+  <mat-card-title>Profile</mat-card-title>
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" id="profileForm">
+      <h4 class="mt-4">Account Data</h4>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Username" name="username" [ngModel]="user.username" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email" name="email" [ngModel]="user.email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" name="password" ngModel>
+      </mat-form-field>
+      <h4 class="mt-4">Personal Data</h4>
+      <mat-form-field>
+        <input matInput type="text" placeholder="First name" name="firstname" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Last name" name="lastname" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="date" placeholder="Birthday" name="brithdate" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Address line 1" name="addressline1" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Address line 2" name="addressline2" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Address line 3" name="addressline3" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Postcode" id="zipCodeInput" name="zip" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="City" id="cityInput" name="city" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Phone 1" id="phone1Input" name="phone1" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Phone 2" id="phone2Input" name="phone2" ngModel>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="warn">Discard</button>
+    <button mat-raised-button color="primary" form="profileForm" [disabled]="!f.valid">Save</button>
+  </mat-card-actions>
+</mat-card>

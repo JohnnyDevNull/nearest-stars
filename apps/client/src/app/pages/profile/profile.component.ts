@@ -5,7 +5,8 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'nearest-stars-profile',
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
 
