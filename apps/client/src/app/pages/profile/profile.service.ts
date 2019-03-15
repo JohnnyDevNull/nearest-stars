@@ -19,7 +19,7 @@ export class ProfileService {
   }
 
   public load(): Observable<BaseRestModel<UserModel>> {
-    return this.rest.doGet<UserModel>('/api/user/' + this.state.getUserId()).pipe(tap((res) => {
+    return this.rest.doGet<UserModel>('/api/auth/user/' + this.state.getUserId()).pipe(tap((res) => {
       this.user = res.data;
     }));
   }
