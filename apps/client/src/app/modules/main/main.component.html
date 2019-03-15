@@ -5,9 +5,11 @@
       <a mat-button routerLink="/blog">Blog</a>
       <a mat-button routerLink="/docs">Docs</a>
       <span class="menu-spacer"></span>
-      <a mat-button routerLink="/signin">Signin</a>
-      <span class="mat-small">or</span>
-      <a mat-button routerLink="/signup">Signup</a>
+      <ng-container *ngIf="!isLoggedIn">
+        <a mat-button routerLink="/signin">Signin</a>
+        <span class="mat-small">or</span>
+        <a mat-button routerLink="/signup">Signup</a>
+      </ng-container>
       <ng-container *ngIf="isLoggedIn">
         <button mat-button [matMenuTriggerFor]="menu">
           <mat-icon>perm_identity</mat-icon>
