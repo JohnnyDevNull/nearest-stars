@@ -1,21 +1,37 @@
-<h2 class="page-header">Admin / Groups / Item</h2>
-<p>
-  <span class="badge" [ngClass]="mode === 'new' ? 'badge-success' : 'badge-warning'">mode: {{ mode }}</span>
-  <span class="badge badge-secondary ml-1" *ngIf="mode === 'edit'">index: {{ index }}</span>
-  <span class="badge badge-info ml-1" *ngIf="item.id !== null">id: {{ item.id }}</span>
-</p>
+<mat-card>
+  <mat-card-title>Admin / Groups / Item</mat-card-title>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip [color]="mode === 'new' ? 'primary' : 'warn'" selected>mode: {{ mode }}</mat-chip>
+      <mat-chip *ngIf="mode === 'edit'">index: {{ index }}</mat-chip>
+      <mat-chip *ngIf="item.id !== null">id: {{ item.id }}</mat-chip>
+    </mat-chip-list>
 
-<form (submit)="onDxSubmit()">
-  <dx-form id="form" labelLocation="top" [(formData)]="item" [showValidationSummary]="true" #dxForm>
-    <dxi-item dataField="name" [validationRules]="[{type: 'required', message: 'The Name is required'}]"></dxi-item>
-    <dxi-item dataField="type" [validationRules]="[{type: 'required', message: 'The Type cannot be empty'}]"></dxi-item>
-    <dxi-item dataField="activated" editorType="dxCheckBox" [editorOptions]="{ text: item.activatedAt }">
-      <dxo-label location="left" alignment="left"></dxo-label>
-    </dxi-item>
-  </dx-form>
-  <div class="mt-2">
-    <dx-button text="Subimt" type="success" [useSubmitBehavior]="true" class="mr-1"></dx-button>
-    <dx-button text="Discard" type="default" class="mr-1" (onClick)="onDiscard()"></dx-button>
-    <dx-button text="Delete" type="danger" (onClick)="onDelete()"></dx-button>
-  </div>
-</form>
+    <form (submit)="onDxSubmit()" id="userGroupEditForm">
+
+      <section>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Name" name="name" [ngModel]="item.name" required>
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Type" name="type" [ngModel]="item.type" required>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <label for="activatedCheck-input" [style.width]="'75px'">Activated:</label>
+        <mat-checkbox id="activatedCheck" name="activated" [ngModel]="item.activated">
+          {{ item.activatedAt | date:'dd.MM.yyyy HH:mm:ss' }}
+        </mat-checkbox>
+      </section>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button type="submit" color="primary" form="userGroupEditForm">Submit</button>
+      <button mat-raised-button type="button" color="warn" (onClick)="onDiscard()">Discard</button>
+      <button mat-raised-button type="button" color="warn" (onClick)="onDelete()">Delete</button>
+    </mat-card-actions>
+</mat-card>

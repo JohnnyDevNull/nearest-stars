@@ -4,11 +4,17 @@ import { AdminUserGroupsService } from './admin-user-groups.service';
 
 @Component({
   selector: 'nearest-stars-admin-user-groups',
-  templateUrl: './admin-user-groups.component.html'
+  templateUrl: './admin-user-groups.component.html',
+  styleUrls: ['./admin-user-groups.component.scss']
 })
 export class AdminUserGroupsComponent implements OnInit {
 
   public userGroups: UserGroupModel[] = [];
+  public userGroupsColumns: string[] = [
+    'id', 'name', 'type',
+    'createdAt', 'updatedAt', 'activatedAt',
+    'actions'
+  ];
 
   public constructor (
     private admServ: AdminUserGroupsService

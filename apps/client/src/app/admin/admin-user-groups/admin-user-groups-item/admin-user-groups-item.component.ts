@@ -8,7 +8,8 @@ import { AdminUserGroupsService } from '../admin-user-groups.service';
 
 @Component({
   selector: 'nearest-stars-admin-user-groups-item',
-  templateUrl: './admin-user-groups-item.component.html'
+  templateUrl: './admin-user-groups-item.component.html',
+  styleUrls: ['./admin-user-groups-item.component.scss']
 })
 export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
 
