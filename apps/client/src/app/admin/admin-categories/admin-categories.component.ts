@@ -10,6 +10,11 @@ import { AdminCategoriesService } from './admin-categories.service';
 export class AdminCategoriesComponent implements OnInit {
 
   public cats: CmsCategoryModel[] = [];
+  public catsColumns: string[] = [
+    'id', 'title', 'alias',
+    'createdAt', 'updateAt', 'publishedAt',
+    'actions'
+  ];
 
   constructor(
     private admServ: AdminCategoriesService,
