@@ -10,6 +10,11 @@ import { AdminBlogsService } from './admin-blogs.service';
 export class AdminBlogsComponent implements OnInit {
 
   public blogs: CmsBlogModel[] = [];
+  public blogsColumns: string[] = [
+    'id', 'title', 'alias',
+    'createdAt', 'updateAt', 'publishedAt',
+    'actions'
+  ];
 
   constructor(
     private admServ: AdminBlogsService,
