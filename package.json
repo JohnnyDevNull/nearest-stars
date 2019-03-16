@@ -58,6 +58,7 @@
     "@ngrx/router-store": "7.3.0",
     "@ngrx/store": "7.3.0",
     "@nrwl/nx": "7.7.1",
+    "@tinymce/tinymce-angular": "^3.0.0",
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.3.1",
