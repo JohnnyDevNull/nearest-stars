@@ -443,7 +443,8 @@
       "styleext": "scss"
     },
     "@nrwl/schematics:library": {
-      "unitTestRunner": "karma"
+      "unitTestRunner": "karma",
+      "framework": "angular"
     },
     "@nrwl/schematics:application": {
       "unitTestRunner": "karma",
