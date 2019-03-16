@@ -17,6 +17,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dev": "concurrently -k \"ng serve client\" \"ng serve api-auth\" \"ng serve api-portal\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint",
@@ -103,6 +104,7 @@
     "@types/socket.io": "^2.1.2",
     "@types/supertest": "^2.0.7",
     "codelyzer": "~4.5.0",
+    "concurrently": "^4.1.0",
     "dotenv": "6.2.0",
     "jasmine-core": "~2.99.1",
     "jasmine-marbles": "0.4.0",
