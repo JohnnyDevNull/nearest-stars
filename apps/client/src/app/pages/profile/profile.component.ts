@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '@nearest-stars/schema';
+import { UserModel, UserProfileModel } from '@nearest-stars/schema';
 import { ProfileService } from './profile.service';
 import { NgForm } from '@angular/forms';
 
@@ -15,6 +15,21 @@ export class ProfileComponent implements OnInit {
     email: ''
   };
 
+  public profile: UserProfileModel | null = {
+    firstName: '',
+    lastName: '',
+    birthDate: null,
+    addressLine1: '',
+    addressLine2: '',
+    addressLine3: '',
+    zipCode: '',
+    city: '',
+    phone1: '',
+    phone2: '',
+    country: '',
+    backupEmail: '',
+  }
+
   public constructor(
     private compServ: ProfileService
   ) {
@@ -22,12 +37,15 @@ export class ProfileComponent implements OnInit {
 
   public ngOnInit(): void {
     this.compServ.load().subscribe((res) => {
-      console.log(res);
       this.user = res.data;
     })
   }
 
   public onSubmit(f: NgForm): void {
     console.log(f);
+  }
+
+  public onDiscard(f: NgForm): void {
+    f.resetForm();
   }
 }

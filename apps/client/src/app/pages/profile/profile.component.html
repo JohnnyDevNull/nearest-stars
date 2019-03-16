@@ -13,42 +13,45 @@
         <mat-form-field>
           <input matInput type="password" placeholder="Password" name="password" ngModel>
         </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password Repeat" name="passwordRepeat" ngModel>
+        </mat-form-field>
         <h4 class="mt-4">Personal Data</h4>
         <mat-form-field>
-          <input matInput type="text" placeholder="First name" name="firstname" ngModel>
+          <input matInput type="text" placeholder="First name" name="firstname" [ngModel]="profile.firstName">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Last name" name="lastname" ngModel>
+          <input matInput type="text" placeholder="Last name" name="lastname" [ngModel]="profile.lastName">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="date" placeholder="Birthday" name="brithdate" ngModel>
+          <input matInput type="date" placeholder="Birthday" name="brithdate" [ngModel]="profile.birthDate">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Address line 1" name="addressline1" ngModel>
+          <input matInput type="text" placeholder="Address line 1" name="addressline1" [ngModel]="profile.addressLine1">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Address line 2" name="addressline2" ngModel>
+          <input matInput type="text" placeholder="Address line 2" name="addressline2" [ngModel]="profile.addressLine2">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Address line 3" name="addressline3" ngModel>
+          <input matInput type="text" placeholder="Address line 3" name="addressline3" [ngModel]="profile.addressLine3">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Postcode" id="zipCodeInput" name="zip" ngModel>
+          <input matInput type="text" placeholder="Postcode" id="zipCodeInput" name="zip" [ngModel]="profile.zipCode">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="City" id="cityInput" name="city" ngModel>
+          <input matInput type="text" placeholder="City" id="cityInput" name="city" [ngModel]="profile.city">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Phone 1" id="phone1Input" name="phone1" ngModel>
+          <input matInput type="text" placeholder="Phone 1" id="phone1Input" name="phone1" [ngModel]="profile.phone1">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Phone 2" id="phone2Input" name="phone2" ngModel>
+          <input matInput type="text" placeholder="Phone 2" id="phone2Input" name="phone2" [ngModel]="profile.phone2">
         </mat-form-field>
       </form>
     </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-raised-button color="warn">Discard</button>
+    <mat-card-actions>
       <button mat-raised-button color="primary" form="profileForm" [disabled]="!f.valid">Save</button>
+      <button mat-raised-button color="warn" (click)="onDiscard(f)" [disabled]="!f.touched">Discard</button>
     </mat-card-actions>
   </mat-card>
 </div>
