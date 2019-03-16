@@ -83,6 +83,9 @@ export class AdminBlogsItemComponent implements OnInit, OnDestroy {
     );
   }
 
+  public onDiscard(): void {
+  }
+
   private fetchItem(): void {
     this.item = {
       id: null,

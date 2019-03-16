@@ -83,6 +83,9 @@ export class AdminCategoriesItemComponent implements OnInit, OnDestroy {
     );
   }
 
+  public onDiscard() {
+  }
+
   private fetchItem(): void {
     this.item = {
       id: null,

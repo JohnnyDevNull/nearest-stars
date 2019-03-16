@@ -1,4 +1,6 @@
+import { NotifyService } from '@client-services/notify/notify.service';
 import { Component, OnInit } from '@angular/core';
+import { NotifyTypeEnum } from '@client-services/notify/notify-type.enum';
 
 @Component({
   selector: 'nearest-stars-admin-dasboard',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDasboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private notify: NotifyService
+  ) {
+  }
 
   ngOnInit() {
   }
 
+  onSnackTest() {
+    this.notify.showMessage('Test');
+  }
 }

@@ -9,7 +9,8 @@ import { AdminArticlesService } from './admin-articles.service';
 })
 export class AdminArticlesComponent implements OnInit {
 
-  public cats: CmsArticleModel[] = [];
+  public articles: CmsArticleModel[] = [];
+  public articlesColumns: string[] = ['id', 'title', 'alias', 'createdAt', 'updateAt', 'publishedAt', 'actions'];
 
   constructor(
     private admServ: AdminArticlesService,
@@ -34,7 +35,7 @@ export class AdminArticlesComponent implements OnInit {
 
   private load(): void {
     const subs = this.admServ.fetchArtList().subscribe(() => {
-      this.cats = this.admServ.getArtList();
+      this.articles = this.admServ.getArtList();
       subs.unsubscribe();
     },
     (err) => this.msgServ.showMessageByResult(err));

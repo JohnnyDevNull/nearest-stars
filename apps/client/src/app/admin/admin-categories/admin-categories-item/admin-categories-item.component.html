@@ -1,123 +1,55 @@
-<h2 class="page-header">Admin / Categories / Item</h2>
-<p>
-  <span class="badge" [ngClass]="mode === 'new' ? 'badge-success' : 'badge-warning'">mode: {{ mode }}</span>
-  <span class="badge badge-secondary ml-1" *ngIf="mode === 'edit'">index: {{ index }}</span>
-  <span class="badge badge-info ml-1" *ngIf="item.id !== null">id: {{ item.id }}</span>
-</p>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="form-group">
-    <label for="titleInput">
-      Title
-    </label>
-    <input type="text"
-           class="form-control"
-           id="titleInput"
-           name="title"
-           placeholder="Title"
-           [ngModel]="item.title"
-           required>
-  </div>
-  <div class="form-group">
-    <label for="subtitleInput">
-      Subtitle
-    </label>
-    <input type="text"
-           class="form-control"
-           id="subtitleInput"
-           name="subtitle"
-           placeholder="Subtitle"
-           [ngModel]="item.subtitle"
-           required>
-  </div>
-  <div class="form-group">
-    <label for="aliasInput">
-      Alias
-    </label>
-    <input type="text"
-           class="form-control"
-           id="aliasInput"
-           name="alias"
-           placeholder="Alias"
-           [ngModel]="item.alias"
-           required>
-  </div>
-  <div class="form-group">
-    <label for="textInput">Text</label>
-    <dx-html-editor [ngModel]="item.text" name="text">
-      <dxo-toolbar>
-        <dxi-item formatName="undo"></dxi-item>
-        <dxi-item formatName="redo"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="size" [formatValues]="['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt']"></dxi-item>
-        <dxi-item formatName="font" [formatValues]="['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana']"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="bold"></dxi-item>
-        <dxi-item formatName="italic"></dxi-item>
-        <dxi-item formatName="strike"></dxi-item>
-        <dxi-item formatName="underline"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="alignLeft"></dxi-item>
-        <dxi-item formatName="alignCenter"></dxi-item>
-        <dxi-item formatName="alignRight"></dxi-item>
-        <dxi-item formatName="alignJustify"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="header" [formatValues]="[1, 2, 3, 4, 5, false]"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="orderedList"></dxi-item>
-        <dxi-item formatName="bulletList"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="color"></dxi-item>
-        <dxi-item formatName="background"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="link"></dxi-item>
-        <dxi-item formatName="image"></dxi-item>
-        <dxi-item formatName="separator"></dxi-item>
-        <dxi-item formatName="clear"></dxi-item>
-        <dxi-item formatName="codeBlock"></dxi-item>
-        <dxi-item formatName="blockquote"></dxi-item>
-      </dxo-toolbar>
-    </dx-html-editor>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input type="checkbox"
-             class="form-check-input"
-             id="publishedInput"
-             name="published"
-             [ngModel]="item.published">
-      <label class="form-check-label" for="publishedInput">
-        Published
-      </label>
-      <small class="ml-2" *ngIf="item.publishedAt">({{ item.publishedAt | date:'dd.MM.yyyy' }})</small>
-    </div>
-    <div class="form-check">
-      <input type="checkbox"
-             class="form-check-input"
-             id="lockedInput"
-             name="locked"
-             [ngModel]="item.locked">
-      <label class="form-check-label" for="lockedInput">
-        Locked
-      </label>
-      <small class="ml-2" *ngIf="item.lockedAt">({{ item.lockedAt | date:'dd.MM.yyyy' }})</small>
-    </div>
-  </div>
-  <div class="actions">
-    <button type="submit"
-            class="btn btn-success mr-2"
-            [disabled]="!f.valid">
+<mat-card class="ns-form-card">
+  <mat-card-header>
+    <mat-card-title>Admin / Categories / Item</mat-card-title>
+    <mat-card-subtitle>
+      <span>Mode: {{ mode }}</span>&nbsp;
+      <span *ngIf="mode === 'edit'">Index: {{ index }}</span>&nbsp;
+      <span *ngIf="mode === 'edit'">Id: {{ item.id }}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" id="catsEditForm">
+      <section>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Title" name="title" [ngModel]="item.title" required>
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Subtitle" name="subtitle" [ngModel]="item.subtitle">
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Alias" name="alias" [ngModel]="item.alias" required>
+        </mat-form-field>
+      </section>
+      <section>
+        <editor name="text" [(ngModel)]="item.text"></editor>
+      </section>
+      <section>
+        <label for="publishedCheck-input" [style.width]="'75px'">Published</label>
+        <mat-checkbox id="publishedCheck" name="published" [ngModel]="item.published">
+          {{ item.publishedAt | date:'dd.MM.yyyy HH:mm:ss' }}
+        </mat-checkbox>
+      </section>
+      <section>
+        <label for="lockedCheck-input" [style.width]="'75px'">Locked</label>
+        <mat-checkbox id="lockedCheck" name="locked" [ngModel]="item.locked">
+          {{ item.lockedAt | date:'dd.MM.yyyy HH:mm:ss' }}
+        </mat-checkbox>
+      </section>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button type="submit" color="primary" form="catsEditForm" [disabled]="!f.valid">
       {{ mode === 'new' ? 'Create' : 'Save' }}
     </button>
-    <button type="reset"
-            class="btn btn-danger mr-2"
-            [disabled]="!f.touched">
+    <button mat-raised-button type="button" color="warn" (click)="onDiscard()" [disabled]="!f.touched">
       Discard
     </button>
-    <button type="button"
-            class="btn btn-danger"
-            *ngIf="mode === 'edit' && item.id !== null"
-            (click)="onDelete(item.id)">
+    <button mat-raised-button type="button" color="warn" (click)="onDelete()" *ngIf="mode === 'edit' && item.id !== null">
       Delete
     </button>
-  </div>
-</form>
+  </mat-card-actions>
+</mat-card>

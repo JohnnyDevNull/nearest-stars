@@ -26,9 +26,9 @@
         <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.createdAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-cell>
       </ng-container>
-      <ng-container matColumnDef="updateAt">
+      <ng-container matColumnDef="updatedAt">
         <mat-header-cell *matHeaderCellDef>Updated</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.updateAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.updatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="activatedAt">
         <mat-header-cell *matHeaderCellDef>Activated</mat-header-cell>

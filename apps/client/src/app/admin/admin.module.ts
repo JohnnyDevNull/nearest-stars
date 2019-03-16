@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@client-modules/index';
-import { DxButtonModule, DxFormModule, DxHtmlEditorModule, DxListModule } from 'devextreme-angular';
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { AdminArticlesItemComponent } from './admin-articles/admin-articles-item/admin-articles-item.component';
 import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
 import { AdminBlogsItemComponent } from './admin-blogs/admin-blogs-item/admin-blogs-item.component';
@@ -36,21 +36,12 @@ import { AdminComponent } from './admin.component';
     AdminArticlesItemComponent,
     AdminCategoriesItemComponent
   ],
-  exports: [
-  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     MaterialModule,
-    DxHtmlEditorModule,
-    DxFormModule,
-    DxButtonModule,
-    DxListModule
-  ],
-  providers: [
-  ],
-  bootstrap: [
+    EditorModule
   ]
 })
 export class AdminModule {}

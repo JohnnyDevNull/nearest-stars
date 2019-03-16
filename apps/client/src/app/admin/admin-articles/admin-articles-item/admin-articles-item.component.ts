@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
 import { CmsArticleModel } from '@nearest-stars/schema';
-import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
 import { AdminArticlesService } from '../admin-articles.service';
 
@@ -26,9 +25,6 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
 
   public selectedCategories = [];
   public selectedBlogs = [];
-
-  @ViewChild('dxForm')
-  public dxForm: DxFormComponent;
 
   public constructor (
     private route: ActivatedRoute,
@@ -61,12 +57,12 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
   public onDxSubmit(): void {}
 
   public onSubmit(f: NgForm): void {
-    if (!this.dxForm.instance.validate().isValid) {
+    if (!f.valid) {
       return;
     }
 
     const art: CmsArticleModel = {};
-    const {title, subtitle, alias, text, published, locked} = this.dxForm.formData;
+    const {title, subtitle, alias, text, published, locked} = f.value;
 
     art.title = title;
     art.subtitle = subtitle;
@@ -100,7 +96,7 @@ export class AdminArticlesItemComponent implements OnInit, OnDestroy {
     if (this.origItem) {
       this.item = Object.create(this.origItem);
     } else {
-      this.dxForm.instance.resetValues();
+      // @todo reset
     }
   }
 

@@ -1,15 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotifyService } from '@client-services/notify/notify.service';
 import { UserGroupModel } from '@nearest-stars/schema';
-import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
 import { AdminUserGroupsService } from '../admin-user-groups.service';
 
 @Component({
   selector: 'nearest-stars-admin-user-groups-item',
-  templateUrl: './admin-user-groups-item.component.html',
-  styleUrls: ['./admin-user-groups-item.component.scss']
+  templateUrl: './admin-user-groups-item.component.html'
 })
 export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
 
@@ -20,9 +19,6 @@ export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
 
   public origItem: UserGroupModel | null = null;
   public item: UserGroupModel | null = null;
-
-  @ViewChild('dxForm')
-  public dxForm: DxFormComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,13 +48,13 @@ export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
-  public onDxSubmit(): void {
-    if (!this.dxForm.instance.validate().isValid) {
+  public onSubmit(f: NgForm): void {
+    if (!f.valid) {
       return;
     }
 
     const group: UserGroupModel = {};
-    const {name, type, activated} = this.dxForm.formData;
+    const {name, type, activated} = f.value;
     group.name = name;
     group.type = type;
 
@@ -87,11 +83,11 @@ export class AdminUserGroupsItemComponent implements OnInit, OnDestroy {
     );
   }
 
-  public onDiscard(): void {
+  public onDiscard(f: NgForm): void {
     if (this.origItem) {
       this.item = Object.create(this.origItem);
     } else {
-      this.dxForm.instance.resetValues();
+      f.resetForm();
     }
   }
 

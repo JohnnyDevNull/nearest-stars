@@ -1,16 +1,15 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AdminUserGroupsService } from '@client-admin/admin-user-groups/admin-user-groups.service';
 import { NotifyService } from '@client-services/notify/notify.service';
 import { UserModel } from '@nearest-stars/schema';
-import { DxFormComponent } from 'devextreme-angular';
 import { Subscription } from 'rxjs';
 import { AdminUsersService } from '../admin-users.service';
 
 @Component({
   selector: 'nearest-stars-admin-users-item',
-  templateUrl: './admin-users-item.component.html',
-  styleUrls: ['./admin-users-item.component.scss']
+  templateUrl: './admin-users-item.component.html'
 })
 export class AdminUsersItemComponent implements OnInit, OnDestroy {
 
@@ -23,9 +22,6 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
   public item: UserModel | null = null;
   public userGroups = [];
   public selectedGroups = [];
-
-  @ViewChild('dxForm')
-  public dxForm: DxFormComponent;
 
   public constructor (
     private route: ActivatedRoute,
@@ -53,13 +49,13 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
-  public onDxSubmit(): void {
-    if (!this.dxForm.instance.validate().isValid) {
+  public onSubmit(f: NgForm): void {
+    if (!f.valid) {
       return;
     }
 
     const user: UserModel = {};
-    const {username, password, email, activated, locked} = this.dxForm.formData;
+    const {username, password, email, activated, locked} = f.value;
 
     user.username = username;
     user.email = email;
@@ -101,14 +97,14 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     );
   }
 
-  public onDiscard(): void {
+  public onDiscard(f: NgForm): void {
     if (this.origItem) {
       this.item = Object.create(this.origItem);
       if (this.item.groups !== undefined && this.item.groups instanceof Array) {
         this.selectedGroups = this.item.groups.slice(0);
       }
     } else {
-      this.dxForm.instance.resetValues();
+      f.resetForm();
       this.selectedGroups = [];
     }
   }
@@ -130,7 +126,6 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
       if (item !== null) {
         this.item = Object.create(item);
         this.origItem = Object.create(item);
-
         if (this.item.groups !== undefined && this.item.groups instanceof Array) {
           this.selectedGroups = this.item.groups.slice(0);
         }

@@ -3,3 +3,47 @@
 body {
   background-color: #f5f5f5;
 }
+
+mat-card.ns-form-card {
+  .mat-card-header-text {
+    margin: 0;
+  }
+  mat-card-content {
+    mat-chip-list {
+      display: block;
+      margin-bottom: 20px;
+
+      .mat-chip {
+        padding: 10px 12px;
+        min-height: unset;
+      }
+    }
+    section {
+      editor {
+        margin: 20px 0;
+      }
+    }
+    mat-selection-list.ns-user-groups {
+      width: 180px;
+      mat-list-option {
+        height: 40px;
+      }
+    }
+  }
+  mat-card-actions {
+    margin: 20px 0 0 0;
+    .mat-button:first-child,
+    .mat-raised-button:first-child {
+      margin-right: 8px;
+    }
+  }
+}
+
+.mat-table {
+  .mat-column-id {
+    max-width: 60px;
+  }
+  .mat-column-actions {
+    max-width: 64px;
+  }
+}

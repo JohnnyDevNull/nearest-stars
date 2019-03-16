@@ -1,22 +1,22 @@
-<mat-card>
-  <mat-card-title>Admin / Users / Item</mat-card-title>
+<mat-card class="ns-form-card">
+  <mat-card-header>
+    <mat-card-title>Admin / Users / Item</mat-card-title>
+    <mat-card-subtitle>
+      <span>Mode: {{ mode }}</span>&nbsp;
+      <span *ngIf="mode === 'edit'">Index: {{ index }}</span>&nbsp;
+      <span *ngIf="mode === 'edit'">Id: {{ item.id }}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
   <mat-card-content>
-    <mat-chip-list>
-      <mat-chip [color]="mode === 'new' ? 'primary' : 'warn'" selected>mode: {{ mode }}</mat-chip>
-      <mat-chip *ngIf="mode === 'edit'">index: {{ index }}</mat-chip>
-      <mat-chip *ngIf="item.id !== null">id: {{ item.id }}</mat-chip>
-    </mat-chip-list>
-
-    <form (submit)="onDxSubmit()" id="userEditForm">
-
+    <form #f="ngForm" (ngSubmit)="onSubmit()" id="userEditForm">
       <section>
         <mat-form-field>
-          <input matInput type="email" placeholder="Email" name="email" [ngModel]="item.email" required email>
+          <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="item.email" required email>
         </mat-form-field>
       </section>
       <section>
         <mat-form-field>
-          <input matInput type="text" placeholder="Username" name="username" [ngModel]="item.username" required>
+          <input matInput type="text" placeholder="Username" name="username" [(ngModel)]="item.username" required>
         </mat-form-field>
       </section>
       <section>
@@ -29,29 +29,33 @@
           <input matInput type="password" placeholder="Password Repeat" name="passwordRepeat" ngModel>
         </mat-form-field>
       </section>
-
-      <section>
-        <mat-selection-list style="width: 180px;">
+      <section class="my-2">
+        <label for="userGroupsList">User groups</label>
+        <mat-selection-list class="ns-user-groups" id="userGroupsList">
           <mat-list-option *ngFor="let group of userGroups">
             {{ group.name }}
           </mat-list-option>
         </mat-selection-list>
       </section>
-
       <section>
         <label for="activatedCheck-input" [style.width]="'75px'">Activated:</label>
-        <mat-checkbox id="activatedCheck" name="activated" [ngModel]="item.activated">{{ item.activatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
+        <mat-checkbox id="activatedCheck" name="activated" [(ngModel)]="item.activated">{{ item.activatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
       </section>
       <section>
         <label for="lockedCheck-input" [style.width]="'75px'">Locked:</label>
-        <mat-checkbox id="lockedCheck" name="locked" [ngModel]="item.locked">{{ item.lockedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
+        <mat-checkbox id="lockedCheck" name="locked" [(ngModel)]="item.locked">{{ item.lockedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
       </section>
-
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button type="submit" color="primary" form="userEditForm">Submit</button>
-    <button mat-raised-button type="button" color="warn" (onClick)="onDiscard()">Discard</button>
-    <button mat-raised-button type="button" color="warn" (onClick)="onDelete()">Delete</button>
+    <button mat-raised-button type="submit" color="primary" form="userEditForm" [disabled]="!f.valid">
+      {{ mode === 'new' ? 'Create' : 'Save' }}
+    </button>
+    <button mat-raised-button type="button" color="warn" (click)="onDiscard(f)" [disabled]="!f.touched">
+      Discard
+    </button>
+    <button mat-raised-button type="button" color="warn" (click)="onDelete()" *ngIf="mode === 'edit' && item.id !== null">
+      Delete
+    </button>
   </mat-card-actions>
 </mat-card>
