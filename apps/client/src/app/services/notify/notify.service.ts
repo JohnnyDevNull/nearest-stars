@@ -1,34 +1,21 @@
 import { Injectable } from '@angular/core';
-import notify from 'devextreme/ui/notify';
+import { MatSnackBar } from '@angular/material';
 import * as HttpStatus from 'http-status-codes';
-import { Subject } from 'rxjs';
 import { NotifyTypeEnum } from './notify-type.enum';
-import { NotifyModel } from './notify.model';
 
+// @todo: Theming snackbar for info, warning and error messages
 @Injectable({
   providedIn: 'root'
 })
 export class NotifyService {
 
-  private messages: NotifyModel[] = [];
-
-  public constructor() {
+  public constructor(
+    private snackBar: MatSnackBar
+  ) {
   }
 
-  public getMessages(): NotifyModel[] {
-    return this.messages;
-  }
-
-  public showMessage(text: string, type: NotifyTypeEnum): void {
-    this.messages.push({text, type});
-  }
-
-  public reset(): void {
-    this.messages = [];
-  }
-
-  public removeMessage(msg: NotifyModel): void {
-    this.messages.splice(this.messages.indexOf(msg), 1);
+  public showMessage(text: string, type: NotifyTypeEnum = NotifyTypeEnum.INFO): void {
+    this.snackBar.open(text, 'OK', {duration: 4000});
   }
 
   public showMessageByResult(result: any, timeout = 3000): void {
@@ -63,6 +50,6 @@ export class NotifyService {
       text = result.message;
     }
 
-    notify(text, type, timeout);
+    this.snackBar.open(text, 'Ok', { duration: timeout});
   }
 }
