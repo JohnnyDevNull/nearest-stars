@@ -17,7 +17,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev": "concurrently -k \"ng serve client\" \"ng serve api-auth\" \"ng serve api-portal\"",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"client,api-auth,api-portal\" -c \"green,blue,cyan\" \"ng serve client\" \"ng serve api-auth\" \"ng serve api-portal\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint",
