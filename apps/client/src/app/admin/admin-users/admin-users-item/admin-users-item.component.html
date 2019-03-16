@@ -11,12 +11,12 @@
 
       <section>
         <mat-form-field>
-          <input matInput type="email" placeholder="Email" name="email" ngModel required email>
+          <input matInput type="email" placeholder="Email" name="email" [ngModel]="item.email" required email>
         </mat-form-field>
       </section>
       <section>
         <mat-form-field>
-          <input matInput type="text" placeholder="Username" name="username" ngModel required>
+          <input matInput type="text" placeholder="Username" name="username" [ngModel]="item.username" required>
         </mat-form-field>
       </section>
       <section>
@@ -40,11 +40,11 @@
 
       <section>
         <label for="activatedCheck-input" [style.width]="'75px'">Activated:</label>
-        <mat-checkbox id="activatedCheck">{{ item.activatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
+        <mat-checkbox id="activatedCheck" name="activated" [ngModel]="item.activated">{{ item.activatedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
       </section>
       <section>
         <label for="lockedCheck-input" [style.width]="'75px'">Locked:</label>
-        <mat-checkbox id="lockedCheck">{{ item.lockedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
+        <mat-checkbox id="lockedCheck" name="locked" [ngModel]="item.locked">{{ item.lockedAt | date:'dd.MM.yyyy HH:mm:ss' }}</mat-checkbox>
       </section>
 
     </form>
