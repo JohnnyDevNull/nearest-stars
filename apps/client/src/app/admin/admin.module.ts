@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppIconModule, MaterialModule } from '@client-modules/index';
+import { MaterialModule } from '@client-modules/index';
 import { DxButtonModule, DxFormModule, DxHtmlEditorModule, DxListModule } from 'devextreme-angular';
 import { AdminArticlesItemComponent } from './admin-articles/admin-articles-item/admin-articles-item.component';
 import { AdminArticlesComponent } from './admin-articles/admin-articles.component';
@@ -42,7 +42,6 @@ import { AdminComponent } from './admin.component';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    AppIconModule,
     MaterialModule,
     DxHtmlEditorModule,
     DxFormModule,
