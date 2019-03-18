@@ -12,6 +12,7 @@ import { AdminCategoriesComponent } from './admin-categories/admin-categories.co
 import { AdminDasboardComponent } from './admin-dasboard/admin-dasboard.component';
 import { AdminExportComponent } from './admin-export/admin-export.component';
 import { AdminImportComponent } from './admin-import/admin-import.component';
+import { AdminObjectsComponent } from './admin-objects/admin-objects.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminUserGroupsItemComponent } from './admin-user-groups/admin-user-groups-item/admin-user-groups-item.component';
 import { AdminUserGroupsComponent } from './admin-user-groups/admin-user-groups.component';
@@ -27,6 +28,7 @@ import { AdminComponent } from './admin.component';
     AdminComponent,
     AdminImportComponent,
     AdminExportComponent,
+    AdminObjectsComponent,
     AdminBlogsComponent,
     AdminUsersItemComponent,
     AdminUserGroupsItemComponent,

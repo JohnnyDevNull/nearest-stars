@@ -9,6 +9,7 @@ import { AdminCategoriesComponent } from './admin-categories/admin-categories.co
 import { AdminDasboardComponent } from './admin-dasboard/admin-dasboard.component';
 import { AdminExportComponent } from './admin-export/admin-export.component';
 import { AdminImportComponent } from './admin-import/admin-import.component';
+import { AdminObjectsComponent } from './admin-objects/admin-objects.component';
 import { AdminUserGroupsItemComponent } from './admin-user-groups/admin-user-groups-item/admin-user-groups-item.component';
 import { AdminUserGroupsComponent } from './admin-user-groups/admin-user-groups.component';
 import { AdminUsersItemComponent } from './admin-users/admin-users-item/admin-users-item.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'groups/item/:mode/:index', component: AdminUserGroupsItemComponent },
     { path: 'import', component: AdminImportComponent },
     { path: 'export', component: AdminExportComponent },
+    { path: 'objects', component: AdminObjectsComponent },
     { path: 'blogs', component: AdminBlogsComponent },
     { path: 'blogs/item/:mode', component: AdminBlogsItemComponent },
     { path: 'blogs/item/:mode/:id', component: AdminBlogsItemComponent },
