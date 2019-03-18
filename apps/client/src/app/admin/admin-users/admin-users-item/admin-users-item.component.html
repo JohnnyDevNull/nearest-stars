@@ -32,7 +32,7 @@
       <section class="mt-2 mb-4">
         <label for="userGroupsList">User groups</label>
         <mat-selection-list class="ns-user-groups" id="userGroupsList" name="groups" ngModel>
-          <mat-list-option *ngFor="let group of userGroups" [value]="group">
+          <mat-list-option *ngFor="let group of userGroups" [value]="group" [selected]="isGroupSelected(group.id)">
             {{ group.name }}
           </mat-list-option>
         </mat-selection-list>

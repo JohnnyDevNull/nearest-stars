@@ -138,4 +138,19 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
       (err) => console.log(err))
     );
   }
+
+  public isGroupSelected(groupId: Number) {
+    if (
+      this.item !== null
+      && this.item.groups !== undefined
+      && isArray(this.item.groups)
+    ) {
+      this.item.groups.forEach(i => {
+        if (i.id === groupId) {
+          return true;
+        }
+      });
+    }
+    return false;
+  }
 }
