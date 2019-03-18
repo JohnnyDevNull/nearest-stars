@@ -8,7 +8,7 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <form #f="ngForm" (ngSubmit)="onSubmit()" id="userEditForm">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" id="userEditForm">
       <section>
         <mat-form-field>
           <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="item.email" required email>
@@ -29,10 +29,10 @@
           <input matInput type="password" placeholder="Password Repeat" name="passwordRepeat" ngModel>
         </mat-form-field>
       </section>
-      <section class="my-2">
+      <section class="mt-2 mb-4">
         <label for="userGroupsList">User groups</label>
-        <mat-selection-list class="ns-user-groups" id="userGroupsList">
-          <mat-list-option *ngFor="let group of userGroups">
+        <mat-selection-list class="ns-user-groups" id="userGroupsList" name="groups" ngModel>
+          <mat-list-option *ngFor="let group of userGroups" [value]="group">
             {{ group.name }}
           </mat-list-option>
         </mat-selection-list>

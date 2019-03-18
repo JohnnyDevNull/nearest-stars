@@ -27,6 +27,10 @@ mat-card.ns-form-card {
       width: 180px;
       mat-list-option {
         height: 40px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      mat-list-option:first-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
       }
     }
   }

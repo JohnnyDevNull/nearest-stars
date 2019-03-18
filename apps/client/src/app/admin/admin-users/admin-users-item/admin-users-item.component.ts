@@ -3,8 +3,9 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AdminUserGroupsService } from '@client-admin/admin-user-groups/admin-user-groups.service';
 import { NotifyService } from '@client-services/notify/notify.service';
-import { UserModel } from '@nearest-stars/schema';
+import { UserGroupModel, UserModel } from '@nearest-stars/schema';
 import { Subscription } from 'rxjs';
+import { isArray } from 'util';
 import { AdminUsersService } from '../admin-users.service';
 
 @Component({
@@ -20,8 +21,7 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
 
   public origItem: UserModel | null = null;
   public item: UserModel | null = null;
-  public userGroups = [];
-  public selectedGroups = [];
+  public userGroups: UserGroupModel[] = [];
 
   public constructor (
     private route: ActivatedRoute,
@@ -55,13 +55,15 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
     }
 
     const user: UserModel = {};
-    const {username, password, email, activated, locked} = f.value;
+    const {username, password, email, activated, locked, groups} = f.value;
 
     user.username = username;
     user.email = email;
 
-    if (this.selectedGroups.length > 0) {
-      user.groups = this.selectedGroups.slice(0);
+    if (isArray(groups) && groups.length > 0) {
+      user.groups = groups;
+    } else {
+      user.groups = [];
     }
 
     if (activated !== undefined) {
@@ -100,12 +102,8 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
   public onDiscard(f: NgForm): void {
     if (this.origItem) {
       this.item = Object.create(this.origItem);
-      if (this.item.groups !== undefined && this.item.groups instanceof Array) {
-        this.selectedGroups = this.item.groups.slice(0);
-      }
     } else {
       f.resetForm();
-      this.selectedGroups = [];
     }
   }
 
@@ -126,9 +124,6 @@ export class AdminUsersItemComponent implements OnInit, OnDestroy {
       if (item !== null) {
         this.item = Object.create(item);
         this.origItem = Object.create(item);
-        if (this.item.groups !== undefined && this.item.groups instanceof Array) {
-          this.selectedGroups = this.item.groups.slice(0);
-        }
       } else {
         this.router.navigate(['/admin/users']);
       }
