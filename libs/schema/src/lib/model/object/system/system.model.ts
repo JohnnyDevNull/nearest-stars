@@ -1,7 +1,7 @@
-import { ObjectModel } from '../object/object.model';
-import { SystemTypeModel } from './system-type.model';
+import { ObjectModel } from '../object.model';
+import { ObjectSystemTypeModel } from './system-type.model';
 
-export interface SystemModel {
+export interface ObjectSystemModel {
   id?: number;
   diskFlag?: boolean;
   planetsFlag?: boolean;
@@ -14,6 +14,6 @@ export interface SystemModel {
   createdAt?: Date;
   updatedAt?: Date;
 
-  systemType: SystemTypeModel;
+  systemType: ObjectSystemTypeModel;
   objects?: ObjectModel[];
 }

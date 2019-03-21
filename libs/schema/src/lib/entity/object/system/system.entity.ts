@@ -1,7 +1,7 @@
-import { SystemModel } from '../../../model/index';
+import { ObjectSystemModel } from '../../../model/index';
 import { EntitySchema } from 'typeorm';
 
-export const ObjectSystemEntity = new EntitySchema<SystemModel>({
+export const ObjectSystemEntity = new EntitySchema<ObjectSystemModel>({
   name: 'ObjectSystem',
   columns: {
     id: {

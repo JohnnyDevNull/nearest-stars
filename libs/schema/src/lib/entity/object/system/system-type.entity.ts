@@ -1,7 +1,7 @@
-import { SystemTypeModel } from '../../../model/index';
+import { ObjectSystemTypeModel } from '../../../model/index';
 import { EntitySchema } from 'typeorm';
 
-export const ObjectSystemTypeEntity = new EntitySchema<SystemTypeModel>({
+export const ObjectSystemTypeEntity = new EntitySchema<ObjectSystemTypeModel>({
   name: 'ObjectSystemType',
   columns: {
     id: {

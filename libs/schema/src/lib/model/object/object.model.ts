@@ -5,7 +5,7 @@ import { ObjectMagnitudeModel } from './object-magnitude.model';
 import { ObjectTypeModel } from './object-type.model';
 import { ObjectOrbitModel } from './object-orbit.model';
 import { ObjectPhysicalInfoModel } from './object-physical-info.model';
-import { SystemModel } from '../system/system.model';
+import { ObjectSystemModel } from './system/system.model';
 import { ObjectVectorModel } from './object-vector.model';
 
 export interface ObjectModel {
@@ -48,6 +48,6 @@ export interface ObjectModel {
   magnitudes?: ObjectMagnitudeModel;
   orbits?: ObjectOrbitModel;
   physicalInfo?: ObjectPhysicalInfoModel;
-  system?: SystemModel;
+  system?: ObjectSystemModel;
   vectors?: ObjectVectorModel;
 }
