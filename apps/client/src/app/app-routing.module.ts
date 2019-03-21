@@ -21,6 +21,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path: 'search', component: SearchComponent },
     { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
+    { path: 'objects', loadChildren: './modules/objects/objects.module#ObjectsModule' },
     { path: '**', redirectTo: 'home' }
   ] }
 ];
