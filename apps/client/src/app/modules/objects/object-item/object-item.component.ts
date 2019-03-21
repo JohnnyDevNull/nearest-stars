@@ -18,4 +18,11 @@ export class ObjectItemComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  public doSubmit(f): void {
+    if (!f.valid) {
+      return;
+    }
+    console.log(f);
+  }
+
 }

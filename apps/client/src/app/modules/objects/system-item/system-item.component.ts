@@ -18,4 +18,11 @@ export class SystemItemComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  public doSubmit(f): void {
+    if (!f.valid) {
+      return;
+    }
+    console.log(f);
+  }
+
 }

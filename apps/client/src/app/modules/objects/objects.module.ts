@@ -9,6 +9,7 @@ import { SystemItemComponent } from './system-item/system-item.component';
 import { MaterialModule } from '@client-modules/material/material.module';
 import { ObjectsService } from '@client-modules/objects/services/objects.service';
 import { SystemsService } from '@client-modules/objects/services/systems.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SystemsService } from '@client-modules/objects/services/systems.service
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ObjectsRoutingModule,
     MaterialModule
   ],

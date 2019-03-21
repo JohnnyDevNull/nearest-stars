@@ -1,10 +1,63 @@
 <div class="content-inner">
-  <mat-card>
+  <mat-card class="ns-form-card">
     <mat-card-header>
-      <mat-card-title>Object Item</mat-card-title>
+      <mat-card-title>Object / Item</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      ...coming soon.
+      <form #f="ngForm" (ngSubmit)="doSubmit(f)" id="objectItemForm">
+        <div class="d-flex">
+          <div>
+            <section>
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" placeholder="Name" name="name" ngModel required>
+                <mat-hint>The objects name</mat-hint>
+              </mat-form-field>
+            </section>
+            <section>
+              <mat-form-field appearance="outline">
+                <mat-label>Type</mat-label>
+                <input matInput type="text" placeholder="Type" name="type" ngModel required>
+                <mat-hint>The objects type</mat-hint>
+              </mat-form-field>
+            </section>
+            <section>
+              <mat-form-field appearance="outline">
+                <mat-label>Hierarchy</mat-label>
+                <input matInput type="text" placeholder="Hierarchy" name="hierarchy" ngModel required>
+                <mat-hint>e.g. ((A(BC))D)E</mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+          <div class="ml-2">
+            <section>
+              <mat-form-field appearance="outline">
+                <mat-label>System Name</mat-label>
+                <input matInput type="text" placeholder="System Name" name="systemName" ngModel required>
+                <mat-hint>The objects System Name</mat-hint>
+              </mat-form-field>
+            </section>
+            <section>
+              <mat-form-field appearance="outline">
+                <mat-label>System Type</mat-label>
+                <input matInput type="text" placeholder="System Type" name="systemType" ngModel required>
+                <mat-hint>The objects System Type</mat-hint>
+              </mat-form-field>
+            </section>
+            <section>
+              <mat-form-field appearance="outline">
+                <mat-label>System Description</mat-label>
+                <input matInput type="text" placeholder="System Description" name="systemDescr" ngModel required>
+                <mat-hint>The system description</mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+        </div>
+      </form>
     </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-raised-button type="submit" form="objectItemForm" color="primary">Create</button>
+      <button mat-raised-button type="reset" form="objectItemForm" color="warn">Discard</button>
+    </mat-card-actions>
   </mat-card>
 </div>
