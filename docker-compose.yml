@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  corp:
+  ns-corp:
     driver: bridge
 
 services:
@@ -9,33 +9,62 @@ services:
   ns-client:
     container_name: ns-client
     networks:
-      - corp
+      - ns-corp
     image: nginx:latest
     restart: always
     volumes:
-      - ./dist/apps:/var/www/apps
+      - ./dist/apps/client:/var/www/apps/client
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
     depends_on:
+      - ns-api-auth
+      - ns-api-portal
       - ns-api-objects
       - ns-api-socket
     command: ng serve client
 
+  ns-api-auth:
+    container_name: ns-api-auth
+    networks:
+      - ns-corp
+    image: ns-api-auth
+    build: ./apps
+    restart: always
+    volumes:
+      - ./apps/api-auth:/usr/src/apps/api-auth
+    ports:
+      - 3000:3000
+    depends_on:
+      - ns-mariadb
+    command: ng serve api-auth
+
+  ns-api-portal:
+    container_name: ns-api-portal
+    networks:
+      - ns-corp
+    image: ns-api-portal
+    build: ./apps
+    restart: always
+    volumes:
+      - ./apps/api-portal:/usr/src/apps/api-portal
+    ports:
+      - 3001:3001
+    depends_on:
+      - ns-mariadb
+    command: ng serve api-portal
+
   ns-api-objects:
     container_name: ns-api-objects
     networks:
-      - corp
+      - ns-corp
     image: ns-api-objects
     build: ./apps
     restart: always
     volumes:
       - ./apps/api-objects:/usr/src/apps/api-objects
-    environment:
-      NODE_ENV: development
-      PORT: 3000
     ports:
-      - 3000:3000
+      - 3003:3003
     depends_on:
       - ns-mariadb
     command: ng serve api-objects
@@ -43,17 +72,14 @@ services:
   ns-api-socket:
     container_name: ns-api-socket
     networks:
-      - corp
+      - ns-corp
     image: ns-api-socket
     build: ./apps
     restart: always
     volumes:
       - ./apps/api-socket:/usr/src/apps/api-socket
-    environment:
-      NODE_ENV: development
-      PORT: 3010
     ports:
-      - 3010:3010
+      - 3002:3002
     depends_on:
       - ns-mariadb
     command: ng serve api-socket
@@ -61,7 +87,7 @@ services:
   ns-mariadb:
     container_name: ns-mariadb
     networks:
-      - corp
+      - ns-corp
     image: mariadb
     restart: always
     environment:
@@ -77,7 +103,7 @@ services:
   phpmyadmin:
     container_name: phpmyadmin
     networks:
-      - corp
+      - ns-corp
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: ns-mariadb

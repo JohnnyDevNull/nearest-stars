@@ -1,4 +1,4 @@
-FROM node:8.12-stretch
+FROM node:10.15-stretch
 
 WORKDIR /usr/src/
 
@@ -9,4 +9,4 @@ RUN npm cache clean
 
 ADD . /usr/src/
 
-EXPOSE 3000 3010 3306 4200 8080 80
+EXPOSE 3000 3001 3002 3003 3306 4200 80
