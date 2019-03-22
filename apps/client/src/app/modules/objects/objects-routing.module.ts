@@ -9,9 +9,9 @@ import { ObjectsGridComponent } from './objects-grid/objects-grid.component';
 const routes: Routes = [
   { path: '', component: ObjectsComponent, children: [
     { path: 'o-grid', component: ObjectsGridComponent },
-    { path: 'o-item', component: ObjectItemComponent },
+    { path: 'o-grid/item', component: ObjectItemComponent },
     { path: 's-grid', component: SystemsGridComponent },
-    { path: 's-item', component: SystemItemComponent },
+    { path: 's-grid/item', component: SystemItemComponent },
     { path: '**', redirectTo: 'o-grid' }
   ]}
 ];

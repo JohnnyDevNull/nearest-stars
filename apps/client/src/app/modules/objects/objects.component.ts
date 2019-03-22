@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
        *ngFor="let link of navLinks"
        [routerLink]="link.path"
        routerLinkActive #rla="routerLinkActive"
+       [routerLinkActiveOptions]="{exact: false}"
        [active]="rla.isActive">
       {{link.label}}
     </a>
