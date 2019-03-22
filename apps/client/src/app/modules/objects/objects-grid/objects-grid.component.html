@@ -4,7 +4,14 @@
       <mat-card-title>Objects</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      ...coming soon.
+      <mat-toolbar [style.height]="'auto'">
+        <a mat-icon-button routerLink="/objects/o-item">
+          <mat-icon>add</mat-icon>
+        </a>
+        <button mat-icon-button (click)="onSync()">
+          <mat-icon>sync</mat-icon>
+        </button>
+      </mat-toolbar>
     </mat-card-content>
   </mat-card>
 </div>

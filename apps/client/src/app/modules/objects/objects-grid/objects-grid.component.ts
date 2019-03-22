@@ -18,4 +18,6 @@ export class ObjectsGridComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  public onSync(): void {
+  }
 }

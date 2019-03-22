@@ -1,39 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'nearest-stars-objects',
   template: `
-  <router-outlet *ngIf="hasChild; else grid"></router-outlet>
-  <ng-template #grid>
-    <mat-tab-group>
-      <mat-tab label="Objects">
-        <ng-template matTabContent>
-          <nearest-stars-objects-grid></nearest-stars-objects-grid>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Systems">
-        <ng-template matTabContent>
-          <nearest-stars-systems-grid></nearest-stars-systems-grid>
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
-  </ng-template>
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link
+       *ngFor="let link of navLinks"
+       [routerLink]="link.path"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      {{link.label}}
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
   `,
   styles: []
 })
 export class ObjectsComponent implements OnInit {
-  public hasChild = false;
+  public navLinks = [
+    { path: '/objects/o-grid', label: 'Objects'},
+    { path: '/objects/s-grid', label: 'Systems'}
+  ];
 
-  public constructor(
-    private route: ActivatedRoute
-  ) {
-  }
-
-  public ngOnInit (): void {
-    if (this.route.children.length > 0) {
-      this.hasChild = true;
-    }
-  }
-
+  public constructor() {}
+  public ngOnInit (): void {}
 }
