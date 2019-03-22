@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignoutComponent } from './pages/signout/signout.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { AuthGuard } from '@client-services/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: MainComponent, children: [
@@ -16,12 +17,12 @@ const routes: Routes = [
     { path: 'blog', component: CmsBlogComponent },
     { path: 'docs', component: DocsComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'signout', component: SignoutComponent },
+    { path: 'signout', component: SignoutComponent, canActivate: [ AuthGuard ] },
     { path: 'signup', component: SignupComponent },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
     { path: 'search', component: SearchComponent },
-    { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-    { path: 'objects', loadChildren: './modules/objects/objects.module#ObjectsModule' },
+    { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivateChild: [ AuthGuard ] },
+    { path: 'objects', loadChildren: './modules/objects/objects.module#ObjectsModule', canActivateChild: [ AuthGuard ] },
     { path: '**', redirectTo: 'home' }
   ] }
 ];
